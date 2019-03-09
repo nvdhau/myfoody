@@ -19,7 +19,7 @@ public class UserTokenService {
 	@Autowired
 	private UserTokenRepository tokenRepos;
 	
-	public Optional<UserToken> getToken(String email, String token) {
+	public Optional<UserToken> getToken(String token, String email) {
 		return tokenRepos.findByTokenAndEmail(token, email);
 	}
 	
@@ -40,5 +40,15 @@ public class UserTokenService {
 		}
 		
 		return userToken;
+	}
+	
+	public UserToken expireToken(String token, String email) {
+		Optional<UserToken> tokenObject = tokenRepos.findByTokenAndEmail(token, email);
+		
+		tokenObject.get().setExpired(new Timestamp(System.currentTimeMillis()));
+		
+		UserToken expiredToken = tokenRepos.save(tokenObject.get());
+		
+		return expiredToken;
 	}
 }

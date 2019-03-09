@@ -54,14 +54,24 @@ public class AuthenticationService {
 		if (token != null) {
 			String user = getUserNameFromJwtToken(token);
 			if (user != null) {
-				Optional<UserToken> userToken = tokenService.getToken(user, token);
-				if(userToken.isPresent() && Utils.isExpiredRecord(userToken.get().getExpired())) {
+				Optional<UserToken> userToken = tokenService.getToken(token, user);
+				if(userToken.isPresent() && !Utils.isExpiredRecord(userToken.get().getExpired())) {
 					return new UsernamePasswordAuthenticationToken(user, null, Collections.emptyList());
 				}
 				
 			}
 		}
 		return null;
+	}
+	
+	static public void expireToken(HttpServletRequest request) {
+		String token = request.getHeader("Authorization");
+		if (token != null) {
+			String user = getUserNameFromJwtToken(token);
+			if (user != null) {
+				tokenService.expireToken(token, user);			
+			}
+		}
 	}
 	
 	static public String getUserNameFromJwtToken(String token) {
