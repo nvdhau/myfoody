@@ -14,4 +14,10 @@
     <string name="confirmPassword">Confirm Password</string>
     <string name="signUp">SIGN UP</string>
     <string name="already_user">Already have and account? Login here.</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">My Foody</string>
+    <string name="nav_header_subtitle">My Foody</string>
+    <string name="nav_header_desc">My Foody</string>
 </resources>
