@@ -3,6 +3,7 @@ package com.douglas.foodordering.service;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.douglas.foodordering.domain.User;
@@ -18,9 +19,12 @@ public class UserService {
 	@Autowired
 	private UserProfileService userProfileService;
 	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+
 	public User createNewUser(String email, String password) throws Exception {
 		// Create new user object
-		User user = new User(email, password);		
+		User user = new User(email, passwordEncoder.encode(password));		
 		user.setRole(Constants.ROLE_USER);
 		
 		// Save to database
@@ -42,5 +46,17 @@ public class UserService {
 	
 	public Optional<User> getUser(Long id) {
 		return userRepos.findById(id);
+	}
+	
+	public User changeUserPassword(Long id, String oldPassword, String newPassword) {
+		Optional<User> user = userRepos.findById(id);
+		
+		if(user.isPresent() && passwordEncoder.matches(oldPassword, user.get().getPassword())) {
+			user.get().setPassword(passwordEncoder.encode(newPassword));
+			
+			return userRepos.save(user.get());
+		}
+		
+		return null;
 	}
 }

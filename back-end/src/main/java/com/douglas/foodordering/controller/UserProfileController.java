@@ -41,6 +41,7 @@ public class UserProfileController {
 	public ResponseEntity<UserProfile> updateUserProfile(@PathVariable("user_id") Long userId, @RequestBody String reqBody) {
 		
 		try {
+			@SuppressWarnings("unchecked")
 			HashMap<String, Object> requestBody =
 			        new ObjectMapper().readValue(reqBody, HashMap.class);			
 			

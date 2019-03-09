@@ -9,7 +9,7 @@ public class Utils {
 
 	public static boolean isExpiredRecord(Timestamp ts) {
 		Timestamp current = new Timestamp(System.currentTimeMillis());
-		return ts.after(current);
+		return !ts.after(current);
 	}
 	
 	public static Date parseStandardDate(String dateString) throws ParseException {
