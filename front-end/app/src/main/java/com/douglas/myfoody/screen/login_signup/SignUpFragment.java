@@ -2,7 +2,11 @@ package com.douglas.myfoody.screen.login_signup;
 
 
 import com.douglas.myfoody.R;
+
+import com.douglas.myfoody.core.models.User;
 import com.douglas.myfoody.screen.main.MainActivity;
+
+import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -13,6 +17,7 @@ import android.widget.Button;
 
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class SignUpFragment extends Fragment implements OnClickListener {
     private static View view;
@@ -61,6 +66,15 @@ public class SignUpFragment extends Fragment implements OnClickListener {
                 // Call checkValidation method
                 if (checkValidation()) {
                     // TODO: save data and redirect to login
+
+                    UserViewModel mUserViewModel = ViewModelProviders.of(this).get(UserViewModel.class);
+                    User user = new User(email.getText().toString());
+                    user.setFullName(fullName.getText().toString());
+                    user.setMobileNumber(mobileNumber.getText().toString());
+                    user.setAddress(location.getText().toString());
+                    user.setPassword(password.getText().toString());
+                    mUserViewModel.insert(user);
+
                     new MainActivity().loginFragment();
                 }
                 break;
@@ -81,18 +95,19 @@ public class SignUpFragment extends Fragment implements OnClickListener {
         String getConfirmPassword = confirmPassword.getText().toString();
 
         // check not empty
-        if (getFullName.equals("") || getFullName.length() == 0
-                || getEmailId.equals("") || getEmailId.length() == 0
-                || getMobileNumber.equals("") || getMobileNumber.length() == 0
-                || getLocation.equals("") || getLocation.length() == 0
-                || getPassword.equals("") || getPassword.length() == 0
-                || getConfirmPassword.equals("")
-                || getConfirmPassword.length() == 0) {
+        if (getFullName.equals("") || getEmailId.equals("")
+                || getMobileNumber.equals("") || getLocation.equals("")
+                || getPassword.equals("") || getConfirmPassword.equals("")) {
 
             new MyToast().showToast(getActivity(), view,
                     "Please fill all required fields.");
             return false;
+        }else if(getPassword.equals(getConfirmPassword) == false){
+            new MyToast().showToast(getActivity(), view,
+                    "Password and Confirm Password are not the same.");
+            return false;
         }
+
 
         return true;
     }

@@ -1,6 +1,7 @@
 package com.douglas.myfoody.core.repository;
 
 import android.app.Application;
+import android.arch.lifecycle.LiveData;
 import android.os.AsyncTask;
 
 import com.douglas.myfoody.core.DAO.UserDAO;
@@ -34,5 +35,9 @@ public class UserRepository {
             mAsyncTaskDao.add(params[0]);
             return null;
         }
+    }
+
+    public LiveData<User> getUserByEmail(String email) {
+        return userDAO.getUserByEmail(email);
     }
 }

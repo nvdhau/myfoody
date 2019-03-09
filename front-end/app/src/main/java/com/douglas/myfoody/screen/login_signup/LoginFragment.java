@@ -3,9 +3,15 @@ package com.douglas.myfoody.screen.login_signup;
 
 
 import com.douglas.myfoody.R;
+import com.douglas.myfoody.core.models.User;
+import com.douglas.myfoody.core.repository.UserRepository;
 
 
+import android.arch.lifecycle.LiveData;
+import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
@@ -24,6 +30,7 @@ public class LoginFragment extends Fragment implements OnClickListener {
     private static Button loginBtn;
     private static TextView signUpBtn;
     private static FragmentManager fragmentManager;
+    private UserViewModel mUserViewModel;
 
     public LoginFragment() {
 
@@ -59,6 +66,22 @@ public class LoginFragment extends Fragment implements OnClickListener {
             case R.id.loginBtn:
                 if (checkValidation()) {
                     // TODO: login success then redirect to search screen for searching restaurants
+                    //get user by email from email input
+                    mUserViewModel = ViewModelProviders.of(this).get(UserViewModel.class);
+                    mUserViewModel.getUserByEmail(email.getText().toString()).observe(this, new Observer<User>() {
+                        @Override
+                        public void onChanged(@Nullable User user) {
+                            if(user == null){
+                                new MyToast().showToast(getActivity(), view,
+                                        "Email is not exist.\nPlease try again!");
+                            }else if(user.getPassword().equals(password.getText().toString()) == false)
+                                new MyToast().showToast(getActivity(), view,
+                                        "Password is incorrect.\nPlease try again!");
+                            else
+                                new MyToast().showToast(getActivity(), view,"Success");
+
+                        }
+                    });
 
                 }
                 break;
@@ -78,8 +101,7 @@ public class LoginFragment extends Fragment implements OnClickListener {
         String getPassword = password.getText().toString();
 
         // Check for both field is empty or not
-        if (getEmailId.equals("") || getEmailId.length() == 0
-                || getPassword.equals("") || getPassword.length() == 0) {
+        if (getEmailId.equals("") || getPassword.equals("")) {
             new MyToast().showToast(getActivity(), view,
                     "Enter required credentials.");
             return false;
