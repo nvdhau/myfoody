@@ -20,4 +20,14 @@
     <string name="nav_header_title">My Foody</string>
     <string name="nav_header_subtitle">My Foody</string>
     <string name="nav_header_desc">My Foody</string>
+    <string name="editBtn">EDIT</string>
+    <string name="changePasswordButton">CHANGE</string>
+    <string name="displayChangePasswordBtn">CHANGE PASSWORD</string>
+    <string name="cancelChangePasswordBtn">CANCEL</string>
+    <string name="newPassword">New Password</string>
+    <string name="currentPassword">Current Password</string>
+    <string name="changePasswordTitle">CHANGE PASSWORD</string>
+    <string name="userInfoTitle">USER INFO</string>
+    <string name="exploreRestaurantTitle">EXPLORE RESTAURANT</string>
+    <string name="searchBtn">SEARCH NEAR BY</string>
 </resources>
