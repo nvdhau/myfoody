@@ -38,9 +38,6 @@ public interface UserDAO extends BaseDAO<User> {
     @Query("DELETE FROM user")
     void deleteAll();
 
-    @Query("SELECT * FROM user")
-    boolean checkDB();
-
     @Query("SELECT * FROM user WHERE email = :email")
     LiveData<User> getUserByEmail(String email);
 }

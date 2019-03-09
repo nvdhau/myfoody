@@ -68,13 +68,20 @@ public abstract class AppDatabase extends RoomDatabase {
             mRestaurantDao.deleteAll();
 
             // Initial data here
+            initUserData(mDao);
             initRestaurantData(mRestaurantDao);
 
             return null;
         }
     }
 
+    private static void initUserData(UserDAO dao) {
+        User admin = new User("admin@gmail.com");
+        dao.add(admin);
+    }
+
     private static void initRestaurantData(RestaurantDAO dao) {
+
         Restaurant rest1 = new Restaurant();
         rest1.setName("Big Star Sandwich Co");
         rest1.setAddress("664 Columbia St");

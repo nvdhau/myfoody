@@ -1,7 +1,9 @@
 package com.douglas.myfoody.screen.main;
 
+import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
+import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -21,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private UserViewModel mUserViewModel;
 
     public MainActivity() {
+
     }
 
     @Override
@@ -45,9 +48,14 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-//        mUserViewModel = ViewModelProviders.of(this).get(UserViewModel.class);
-//        User test = new User("test@gmail.com");
-//        mUserViewModel.insert(test);
+        mUserViewModel = ViewModelProviders.of(this).get(UserViewModel.class);
+        mUserViewModel.getUserByEmail("test@gmail.com").observe(this, new Observer<User>() {
+            @Override
+            public void onChanged(@Nullable User user) {
+                System.out.println("DB INITIALIZING");
+            }
+
+        });
     }
 
     public void loginFragment() {
