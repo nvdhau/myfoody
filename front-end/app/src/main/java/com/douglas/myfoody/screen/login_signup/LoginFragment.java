@@ -3,7 +3,7 @@ package com.douglas.myfoody.screen.login_signup;
 
 
 import com.douglas.myfoody.R;
-<<<<<<< Updated upstream
+
 import com.douglas.myfoody.core.models.User;
 import com.douglas.myfoody.core.repository.UserRepository;
 
@@ -11,13 +11,11 @@ import com.douglas.myfoody.core.repository.UserRepository;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
-=======
 import com.douglas.myfoody.screen.home.HomeActivity;
 import com.douglas.myfoody.screen.main.MainActivity;
 
-
 import android.content.Intent;
->>>>>>> Stashed changes
+
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -86,7 +84,6 @@ public class LoginFragment extends Fragment implements OnClickListener {
                                 new MyToast().showToast(getActivity(), view,
                                         "Password is incorrect.\nPlease try again!");
                             else
-                                new MyToast().showToast(getActivity(), view,"Success");
                                 startActivity(new Intent(getActivity(), HomeActivity.class));
                         }
                     });
