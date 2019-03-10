@@ -58,6 +58,11 @@ public class LoginFragment extends Fragment implements OnClickListener {
         password = view.findViewById(R.id.login_password);
         loginBtn = view.findViewById(R.id.loginBtn);
         signUpBtn = view.findViewById(R.id.createAccount);
+
+        // create default login account
+        email.setText("admin@gmail.com");
+        password.setText("123");
+        // end create default login account
     }
 
     // Set Listeners

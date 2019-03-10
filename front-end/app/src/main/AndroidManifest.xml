@@ -12,7 +12,7 @@
         <activity
             android:name=".screen.home.HomeActivity"
             android:label="@string/title_activity_home"
-            android:theme="@style/NoActionBar"></activity>
+            android:theme="@style/NoActionBar" />
         <activity android:name=".screen.main.MainActivity" />
         <activity android:name=".SplashActivity">
             <intent-filter>

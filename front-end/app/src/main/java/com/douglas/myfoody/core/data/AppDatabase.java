@@ -77,6 +77,7 @@ public abstract class AppDatabase extends RoomDatabase {
 
     private static void initUserData(UserDAO dao) {
         User admin = new User("admin@gmail.com");
+        admin.setPassword("123");
         dao.add(admin);
     }
 
