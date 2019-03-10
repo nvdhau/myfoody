@@ -98,17 +98,18 @@ public class HomeActivity extends AppCompatActivity
 
         if (id == R.id.nav_user_info) {
             // Handle the user_info
-            fragmentManager.beginTransaction().replace(R.id.homeFrameContainer, new UserInfoFragment(),
-                        "Uer_Info_Fragment").commit();
-        } else if (id == R.id.nav_gallery) {
+            fragmentManager.beginTransaction()
+                           .replace(R.id.homeFrameContainer, new UserInfoFragment(),
+                        "User_Info_Fragment").commit();
+        } else if (id == R.id.nav_explore_restaurant) {
+            fragmentManager.beginTransaction()
+                    .replace(R.id.homeFrameContainer, new ExploreRestaurantFragment(), "Explore_Restaurant_Fragment")
+                    .commit();
+        } else if (id == R.id.nav_my_orders) {
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_invite_friend) {
 
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_logout) {
 
         }
 
