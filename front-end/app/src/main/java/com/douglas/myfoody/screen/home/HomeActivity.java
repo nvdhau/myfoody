@@ -97,8 +97,9 @@ public class HomeActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_user_info) {
-            // Handle the camera action
-
+            // Handle the user_info
+            fragmentManager.beginTransaction().replace(R.id.homeFrameContainer, new UserInfoFragment(),
+                        "Uer_Info_Fragment").commit();
         } else if (id == R.id.nav_gallery) {
 
         } else if (id == R.id.nav_slideshow) {
