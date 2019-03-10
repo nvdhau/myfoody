@@ -8,5 +8,5 @@ import com.douglas.foodordering.domain.UserToken;
 
 public interface UserTokenRepository extends CrudRepository<UserToken, Long> {
 
-	Optional<UserToken> findByTokenAndEmail(String token, String email);
+	Optional<UserToken> findTop1ByTokenAndEmailInOrderByCreatedDesc(String token, String email);
 }

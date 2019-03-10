@@ -37,8 +37,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable().cors().and().authorizeRequests()
-		  .antMatchers(HttpMethod.POST, "/signup", "/login").permitAll()
-	        .anyRequest().authenticated()
+			// Permit signup and login requests
+		  	.antMatchers(HttpMethod.POST, "/signup", "/login").permitAll()
+		  	// Filter for accessing user's resources
+		  	.antMatchers("/api/user/{user_id}/**").access("@userRoleFilter.doFilter(authentication,#user_id)")
+		  	// Authenticate on all other requests
+		  	.anyRequest().authenticated()		  			  
 	        .and()
 	        // Filter for the api/login requests
 	        .addFilterBefore(new LoginFilter("/login", authenticationManager()),
@@ -46,8 +50,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	        // Filter for other requests to check JWT in header
 	        .addFilterBefore(new AuthenticationFilter(),
 	                UsernamePasswordAuthenticationFilter.class);
-		
-//		http.csrf().disable().cors().and().authorizeRequests().anyRequest().permitAll();
 	}
 
 	@Bean

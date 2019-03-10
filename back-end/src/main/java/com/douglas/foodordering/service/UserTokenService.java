@@ -20,12 +20,16 @@ public class UserTokenService {
 	private UserTokenRepository tokenRepos;
 	
 	public Optional<UserToken> getToken(String token, String email) {
-		return tokenRepos.findByTokenAndEmail(token, email);
+		return tokenRepos.findTop1ByTokenAndEmailInOrderByCreatedDesc(token, email);
 	}
 	
 	public UserToken createToken(String token, String email) {
-		UserToken userToken = null;
+		Optional<UserToken> tokenObject = getToken(token, email);
+		if(tokenObject.isPresent() && !Utils.isExpiredRecord(tokenObject.get().getExpired())) {
+			return tokenObject.get();
+		}
 		
+		UserToken userToken = null;		
 		try {
 			userToken = new UserToken(
 					token, 
@@ -38,12 +42,11 @@ public class UserTokenService {
 		} catch (ParseException e) {
 			throw new ControllerException(e.getMessage());
 		}
-		
 		return userToken;
 	}
 	
 	public UserToken expireToken(String token, String email) {
-		Optional<UserToken> tokenObject = tokenRepos.findByTokenAndEmail(token, email);
+		Optional<UserToken> tokenObject = getToken(token, email);
 		
 		tokenObject.get().setExpired(new Timestamp(System.currentTimeMillis()));
 		
