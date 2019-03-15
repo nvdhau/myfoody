@@ -40,4 +40,8 @@ public interface UserDAO extends BaseDAO<User> {
 
     @Query("SELECT * FROM user WHERE email = :email")
     LiveData<User> getUserByEmail(String email);
+
+    @Query("SELECT * FROM user WHERE email = :email")
+    User getUser(String email);
+
 }

@@ -1,12 +1,14 @@
 package com.douglas.myfoody.screen.home;
 
+import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
-import android.view.View;
-import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -14,18 +16,43 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 
 import com.douglas.myfoody.R;
+import com.douglas.myfoody.core.models.User;
+import com.douglas.myfoody.core.view_model.UserViewModel;
+import com.douglas.myfoody.screen.login_signup.MyToast;
+
+import es.dmoral.toasty.Toasty;
 
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private static FragmentManager fragmentManager;
+    private static NavigationView navigationView;
+    private int menuToChoose = R.menu.home;
+    private UserViewModel mUserViewModel;
+    public static User currentUser = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        //initialize currentUser
+        Intent intent = getIntent();
+        mUserViewModel = ViewModelProviders.of(this).get(UserViewModel.class);
+        if(intent != null){
+            mUserViewModel.getUser(intent.getStringExtra("email"));
+            mUserViewModel.mUser.observe(this, new Observer<User>() {
+                @Override
+                public void onChanged(@Nullable User user) {
+//                    Toast.makeText(HomeActivity.this, user.getEmail(), Toast.LENGTH_SHORT).show();
+                    currentUser = user;
+                }
+            });
+        }
 
         // create Fragment
         fragmentManager = getSupportFragmentManager();
@@ -48,14 +75,20 @@ public class HomeActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
         //add explore restaurant
-        if(savedInstanceState == null){
-            fragmentManager.beginTransaction().replace(R.id.homeFrameContainer, new ExploreRestaurantFragment(),
-                    "Explore_Restaurant_Fragment").commit();
-        }
+//        if(savedInstanceState == null){
+//            fragmentManager.beginTransaction().replace(R.id.homeFrameContainer, new ExploreRestaurantFragment(),
+//                    "Explore_Restaurant_Fragment").commit();
+//            setTitle("Explore Restaurant");
+//
+//        }
+        navigationView.getMenu().getItem(0).setChecked(true);
+//        navigationView.setCheckedItem(R.id.nav_explore_restaurant);
+        onNavigationItemSelected(navigationView.getCheckedItem());
+
     }
 
     @Override
@@ -71,7 +104,7 @@ public class HomeActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.home, menu);
+        getMenuInflater().inflate(menuToChoose, menu);
         return true;
     }
 
@@ -84,6 +117,7 @@ public class HomeActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Toast.makeText(this, "Settings", Toast.LENGTH_SHORT).show();
             return true;
         }
 
@@ -96,22 +130,30 @@ public class HomeActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_user_info) {
-            // Handle the user_info
+        if (id == R.id.nav_explore_restaurant) {
+            setTitle("Explore Restaurant");
+            menuToChoose = R.menu.home;
             fragmentManager.beginTransaction()
-                           .replace(R.id.homeFrameContainer, new UserInfoFragment(),
-                        "User_Info_Fragment").commit();
-        } else if (id == R.id.nav_explore_restaurant) {
+                    .replace(R.id.homeFrameContainer, new ExploreRestaurantFragment(),
+                            "Explore_Restaurant_Fragment").commit();
+        } else if (id == R.id.nav_user_info) {
+            setTitle("User Info");//change title
+            menuToChoose = R.menu.user_info_menu;//change menu
+
             fragmentManager.beginTransaction()
-                    .replace(R.id.homeFrameContainer, new ExploreRestaurantFragment(), "Explore_Restaurant_Fragment")
-                    .commit();
+                    .replace(R.id.homeFrameContainer, new UserInfoFragment(),
+                            "User_Info_Fragment").commit();
+
         } else if (id == R.id.nav_my_orders) {
 
         } else if (id == R.id.nav_invite_friend) {
 
+        } else if (id == R.id.nav_change_password) {
+
         } else if (id == R.id.nav_logout) {
 
         }
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

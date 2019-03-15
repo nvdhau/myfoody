@@ -4,6 +4,7 @@ package com.douglas.myfoody.screen.login_signup;
 import com.douglas.myfoody.R;
 
 import com.douglas.myfoody.core.models.User;
+import com.douglas.myfoody.core.view_model.UserViewModel;
 import com.douglas.myfoody.screen.main.MainActivity;
 
 import android.arch.lifecycle.ViewModelProviders;
@@ -17,7 +18,6 @@ import android.widget.Button;
 
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class SignUpFragment extends Fragment implements OnClickListener {
     private static View view;
@@ -75,12 +75,14 @@ public class SignUpFragment extends Fragment implements OnClickListener {
                     user.setPassword(password.getText().toString());
                     mUserViewModel.insert(user);
 
-                    new MainActivity().loginFragment();
+                    mUserViewModel.mUser.setValue(user);
+
+                    MainActivity.loginFragment();
                 }
                 break;
             case R.id.already_user:
                 // Replace login fragment
-                new MainActivity().loginFragment();
+                MainActivity.loginFragment();
                 break;
         }
     }

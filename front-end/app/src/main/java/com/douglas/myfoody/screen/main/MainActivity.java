@@ -1,7 +1,6 @@
 package com.douglas.myfoody.screen.main;
 
 import android.arch.lifecycle.Observer;
-import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
@@ -11,11 +10,11 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.douglas.myfoody.R;
-import com.douglas.myfoody.core.DAO.UserDAO;
-import com.douglas.myfoody.core.data.AppDatabase;
 import com.douglas.myfoody.core.models.User;
+import com.douglas.myfoody.database.DatabaseHelper;
 import com.douglas.myfoody.screen.login_signup.LoginFragment;
-import com.douglas.myfoody.screen.login_signup.UserViewModel;
+import com.douglas.myfoody.core.view_model.UserViewModel;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -56,9 +55,23 @@ public class MainActivity extends AppCompatActivity {
             }
 
         });
+
+
+        com.douglas.myfoody.database.User user = new com.douglas.myfoody.database.User("nvdhau@gmail.com");
+        user.setFirstName("Hau");
+        user.setLastName("Nguyen");
+        user.setPassword("123456");
+
+        DatabaseHelper databaseHelper = DatabaseHelper.getInstance(getApplicationContext());
+        if(databaseHelper.addUser(user)){
+            Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show();
+        }else
+            Toast.makeText(this, "Fail", Toast.LENGTH_SHORT).show();
+
     }
 
-    public void loginFragment() {
+    //return to login fragment
+    public static void loginFragment() {
         fragmentManager.beginTransaction()
                 .replace(R.id.frameContainer, new LoginFragment(), "Login_Fragment")
                 .commit();
