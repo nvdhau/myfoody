@@ -1,25 +1,30 @@
 package com.douglas.myfoody.screen.home;
 
 
+import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProvider;
+import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
 import com.douglas.myfoody.R;
+import com.douglas.myfoody.core.models.User;
+import com.douglas.myfoody.screen.login_signup.UserViewModel;
 
 
 public class UserInfoFragment extends Fragment implements OnClickListener {
     private static View view;
 
-//    private static EditText email, password;
-//    private static Button loginBtn;
-//    private static TextView signUpBtn;
+    private static EditText email, password;
     private static FragmentManager fragmentManager;
-//    private UserViewModel mUserViewModel;
+    private UserViewModel mUserViewModel;
 
     public UserInfoFragment() {
 
@@ -30,6 +35,14 @@ public class UserInfoFragment extends Fragment implements OnClickListener {
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.user_info_layout, container, false);
         initViews();
+        mUserViewModel = ViewModelProviders.of(getActivity()).get(UserViewModel.class);
+        mUserViewModel.getUser().observe(this, new Observer<User>() {
+            @Override
+            public void onChanged(@Nullable User user) {
+                System.out.println(user.getEmail());
+                email.setText(user.getEmail());
+            }
+        });
         setListeners();
         return view;
     }
@@ -37,52 +50,16 @@ public class UserInfoFragment extends Fragment implements OnClickListener {
     // Initiate Views
     private void initViews() {
         fragmentManager = getActivity().getSupportFragmentManager();
-//        email = view.findViewById(R.id.login_email);
-//        password = view.findViewById(R.id.login_password);
-//        loginBtn = view.findViewById(R.id.loginBtn);
-//        signUpBtn = view.findViewById(R.id.createAccount);
-//
-//        // create default login account
-//        email.setText("admin@gmail.com");
-//        password.setText("123");
-        // end create default login account
+        email = view.findViewById(R.id.userEmailId);
+        // add more field here ???
     }
 
     // Set Listeners
     private void setListeners() {
-//        loginBtn.setOnClickListener(this);
-//        signUpBtn.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-//        switch (v.getId()) {
-//            case R.id.loginBtn:
-//                if (checkValidation()) {
-//                    // TODO: login success then redirect to search screen for searching restaurants
-//                    //get user by email from email input
-//                    mUserViewModel = ViewModelProviders.of(this).get(UserViewModel.class);
-//                    mUserViewModel.getUserByEmail(email.getText().toString()).observe(this, new Observer<User>() {
-//                        @Override
-//                        public void onChanged(@Nullable User user) {
-//                            if(user == null){
-//                                new MyToast().showToast(getActivity(), view,
-//                                        "Email is not exist.\nPlease try again!");
-//                            }else if(user.getPassword().equals(password.getText().toString()) == false)
-//                                new MyToast().showToast(getActivity(), view,
-//                                        "Password is incorrect.\nPlease try again!");
-//                            else
-//                                startActivity(new Intent(getActivity(), HomeActivity.class));
-//                        }
-//                    });
-//                }
-//                break;
-//            case R.id.createAccount:
-//                fragmentManager.beginTransaction()
-//                               .replace(R.id.frameContainer, new SignUpFragment(), "SignUpFragment")
-//                               .commit();
-//                break;
-//        }
 
     }
 

@@ -3,19 +3,11 @@ package com.douglas.myfoody.screen.login_signup;
 
 
 import com.douglas.myfoody.R;
-
 import com.douglas.myfoody.core.models.User;
-import com.douglas.myfoody.core.repository.UserRepository;
-
-
-import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import com.douglas.myfoody.screen.home.HomeActivity;
-import com.douglas.myfoody.screen.main.MainActivity;
-
 import android.content.Intent;
-
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -58,11 +50,6 @@ public class LoginFragment extends Fragment implements OnClickListener {
         password = view.findViewById(R.id.login_password);
         loginBtn = view.findViewById(R.id.loginBtn);
         signUpBtn = view.findViewById(R.id.createAccount);
-
-        // create default login account
-        email.setText("admin@gmail.com");
-        password.setText("123");
-        // end create default login account
     }
 
     // Set Listeners
@@ -82,14 +69,17 @@ public class LoginFragment extends Fragment implements OnClickListener {
                     mUserViewModel.getUserByEmail(email.getText().toString()).observe(this, new Observer<User>() {
                         @Override
                         public void onChanged(@Nullable User user) {
-                            if(user == null){
+                            if (user == null) {
                                 new MyToast().showToast(getActivity(), view,
                                         "Email is not exist.\nPlease try again!");
-                            }else if(user.getPassword().equals(password.getText().toString()) == false)
+                            } else if (user.getPassword().equals(password.getText().toString()) == false) {
                                 new MyToast().showToast(getActivity(), view,
                                         "Password is incorrect.\nPlease try again!");
-                            else
-                                startActivity(new Intent(getActivity(), HomeActivity.class));
+                            } else {
+                                Intent intent = new Intent(getActivity(), HomeActivity.class);
+                                intent.putExtra("user", user);
+                                startActivity(intent);
+                            }
                         }
                     });
                 }

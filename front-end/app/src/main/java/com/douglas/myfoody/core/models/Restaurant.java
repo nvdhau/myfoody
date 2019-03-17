@@ -1,39 +1,53 @@
 package com.douglas.myfoody.core.models;
 
-import android.arch.persistence.room.ColumnInfo;
-import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.PrimaryKey;
-import android.support.annotation.NonNull;
 
-@Entity(tableName = "restaurant")
-public class Restaurant {
+import android.arch.lifecycle.LiveData;
+import android.os.Parcel;
+import android.os.Parcelable;
+import android.provider.BaseColumns;
 
-    @PrimaryKey(autoGenerate = true)
-    @NonNull
-    private Long id;
+public class Restaurant extends LiveData<User> implements Parcelable {
 
-    @ColumnInfo(name="name")
+    private int ID;
     private String name;
-
-    @ColumnInfo(name="address")
     private String address;
-
-    @ColumnInfo(name="category")
     private String category;
-
-    @ColumnInfo(name="rating")
     private String rating;
-
-    @ColumnInfo(name="menu")
     private String menu;
 
-    @NonNull
-    public Long getId() {
-        return id;
+    public Restaurant() {
+
     }
 
-    public void setId(@NonNull Long id) {
-        this.id = id;
+    public Restaurant(Parcel in) {
+        ID = in.readInt();
+        name = in.readString();
+        address = in.readString();
+        category = in.readString();
+        rating = in.readString();
+        menu = in.readString();
+    }
+
+
+    public static final class RESTAURANT_TABLE {
+        public static final String TB_NAME = "restaurant";
+
+        public static final class TB_COL implements BaseColumns {
+            public static final String ID = "id";
+            public static final String NAME = "name";
+            public static final String ADDRESS = "address";
+            public static final String CATEGORY = "category";
+            public static final String RATING = "rating";
+            public static final String MENU = "menu";
+        }
+    }
+
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
     }
 
     public String getName() {
@@ -75,4 +89,31 @@ public class Restaurant {
     public void setMenu(String menu) {
         this.menu = menu;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(ID);
+        dest.writeString(name);
+        dest.writeString(address);
+        dest.writeString(category);
+        dest.writeString(rating);
+        dest.writeString(menu);
+    }
+
+    public static final Creator<Restaurant> CREATOR = new Creator<Restaurant>() {
+        @Override
+        public Restaurant createFromParcel(Parcel in) {
+            return new Restaurant(in);
+        }
+
+        @Override
+        public Restaurant[] newArray(int size) {
+            return new Restaurant[size];
+        }
+    };
 }

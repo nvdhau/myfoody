@@ -2,42 +2,53 @@ package com.douglas.myfoody.core.repository;
 
 import android.app.Application;
 import android.arch.lifecycle.LiveData;
-import android.os.AsyncTask;
+import android.arch.lifecycle.MutableLiveData;
 
 import com.douglas.myfoody.core.DAO.UserDAO;
-import com.douglas.myfoody.core.data.AppDatabase;
 import com.douglas.myfoody.core.models.User;
+import java.util.List;
 
-public class UserRepository {
+public class UserRepository implements BaseRepository<User> {
 
-    private UserDAO userDAO;
+    private UserDAO myUserDAO;
+
 
     public UserRepository(Application application) {
-        AppDatabase db = AppDatabase.getDatabase(application);
-        userDAO = db.userDAO();
-        userDAO.findAll();
+        myUserDAO = new UserDAO(application);
     }
 
-    public void insert(User user) {
-        new insertAsyncTask(userDAO).execute(user);
+    @Override
+    public LiveData<List<User>> findAll() {
+        return null;
     }
 
-    private static class insertAsyncTask extends AsyncTask<User, Void, Void> {
-
-        private UserDAO mAsyncTaskDao;
-
-        insertAsyncTask(UserDAO dao) {
-            mAsyncTaskDao = dao;
-        }
-
-        @Override
-        protected Void doInBackground(final User... params) {
-            mAsyncTaskDao.add(params[0]);
-            return null;
-        }
+    @Override
+    public LiveData<User> findById(int id) {
+        return null;
     }
 
-    public LiveData<User> getUserByEmail(String email) {
-        return userDAO.getUserByEmail(email);
+    @Override
+    public boolean add(User data) {
+        return myUserDAO.insert(data);
+    }
+
+    @Override
+    public boolean update(User data) {
+        return true;
+    }
+
+    @Override
+    public boolean delete(int id) {
+        return true;
+    }
+
+    @Override
+    public boolean deleteAll() {
+        return true;
+    }
+
+    public User getUserByEmail(String email) {
+        //mUser.postValue(myUserDAO.findByEmail(email));
+        return myUserDAO.findByEmail(email);
     }
 }

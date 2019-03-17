@@ -2,28 +2,45 @@ package com.douglas.myfoody.core.repository;
 
 import android.app.Application;
 import android.arch.lifecycle.LiveData;
-
-import com.douglas.myfoody.core.DAO.BaseDAO;
 import com.douglas.myfoody.core.DAO.RestaurantDAO;
-import com.douglas.myfoody.core.data.AppDatabase;
 import com.douglas.myfoody.core.models.Restaurant;
-
 import java.util.List;
 
-public class RestaurantRepository {
+public class RestaurantRepository implements BaseRepository<Restaurant> {
 
     private RestaurantDAO restaurantDAO;
-    private LiveData<List<Restaurant>> mRestaurants;
 
     public RestaurantRepository(Application application) {
-        AppDatabase db = AppDatabase.getDatabase(application);
-        restaurantDAO = db.restaurantDAO();
-        mRestaurants = restaurantDAO.findAll();
+        restaurantDAO = new RestaurantDAO(application);
     }
 
-    public LiveData<List<Restaurant>> getAllRestaurants() {
-        return mRestaurants;
+    @Override
+    public LiveData<List<Restaurant>> findAll() {
+        return null;
     }
 
+    @Override
+    public LiveData<Restaurant> findById(int id) {
+        return null;
+    }
 
+    @Override
+    public boolean add(Restaurant data) {
+        return true;
+    }
+
+    @Override
+    public boolean update(Restaurant data) {
+        return true;
+    }
+
+    @Override
+    public boolean delete(int id) {
+        return true;
+    }
+
+    @Override
+    public boolean deleteAll() {
+        return true;
+    }
 }

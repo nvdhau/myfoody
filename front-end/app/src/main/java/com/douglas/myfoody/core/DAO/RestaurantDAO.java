@@ -1,38 +1,73 @@
 package com.douglas.myfoody.core.DAO;
 
-import android.arch.lifecycle.LiveData;
-import android.arch.persistence.room.Dao;
-import android.arch.persistence.room.Insert;
-import android.arch.persistence.room.Query;
-import android.arch.persistence.room.Update;
 
-import static android.arch.persistence.room.OnConflictStrategy.REPLACE;
+import android.app.Application;
+import android.database.sqlite.SQLiteDatabase;
+
+import com.douglas.myfoody.core.database.AppDatabase;
 import com.douglas.myfoody.core.models.Restaurant;
+
+
 import java.util.List;
 
-@Dao
-public interface RestaurantDAO extends BaseDAO<Restaurant> {
-    @Override
-    @Query("SELECT * FROM restaurant")
-    LiveData<List<Restaurant>> findAll();
+public class RestaurantDAO implements BaseDAO<Restaurant> {
+
+    private AppDatabase db;
+
+    public RestaurantDAO(Application application) {
+        db = AppDatabase.getDBInstance(application);
+    }
 
     @Override
-    @Query("SELECT * FROM restaurant WHERE id = :id")
-    LiveData<Restaurant> findById(int id);
+    public SQLiteDatabase getWriteDB() {
+        return db.getWritableDatabase();
+    }
 
     @Override
-    @Insert(onConflict = REPLACE)
-    void add(Restaurant data);
+    public SQLiteDatabase getReadDB() {
+        return db.getReadableDatabase();
+    }
 
     @Override
-    @Update(onConflict = REPLACE)
-    void update(Restaurant data);
+    public List<Restaurant> findAll() {
+        return null;
+    }
 
     @Override
-    @Query("DELETE FROM restaurant WHERE id = :id")
-    void delete(int id);
+    public Restaurant findById(int id) {
+        return null;
+    }
+
+    public Restaurant findByName(String email) {
+        Restaurant restaurant = null;
+        try {
+            // TODO Prepare your query. Refer to UserDAO for more information
+            return restaurant;
+
+        } catch (Exception ex) {
+            // throw error message
+            System.out.println(ex.getMessage());
+        } finally {
+            // Closing database connection
+            getWriteDB().close();
+        }
+
+        return restaurant;
+    }
 
     @Override
-    @Query("DELETE FROM restaurant")
-    void deleteAll();
+    public boolean insert(Restaurant restaurant) {
+        return true;
+    }
+
+    @Override
+    public boolean update(Restaurant restaurant) {
+        return true;
+    }
+
+    @Override
+    public boolean delete(int id) {
+        return true;
+    }
+
 }

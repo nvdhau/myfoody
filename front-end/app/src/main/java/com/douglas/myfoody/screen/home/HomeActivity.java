@@ -1,7 +1,9 @@
 package com.douglas.myfoody.screen.home;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
@@ -14,13 +16,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.douglas.myfoody.R;
+import com.douglas.myfoody.core.models.User;
+import com.douglas.myfoody.screen.login_signup.UserViewModel;
 
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private static FragmentManager fragmentManager;
+    private UserViewModel mUserViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +61,15 @@ public class HomeActivity extends AppCompatActivity
         if(savedInstanceState == null){
             fragmentManager.beginTransaction().replace(R.id.homeFrameContainer, new ExploreRestaurantFragment(),
                     "Explore_Restaurant_Fragment").commit();
+        }
+
+        // get user info and store in UserViewModel
+        Intent intent = getIntent();
+        if (intent != null) {
+            User parcelableUser = intent.getParcelableExtra("user");
+            mUserViewModel = ViewModelProviders.of(this).get(UserViewModel.class);
+            mUserViewModel.setUser(parcelableUser);
+
         }
     }
 

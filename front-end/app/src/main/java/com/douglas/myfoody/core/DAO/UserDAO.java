@@ -1,43 +1,122 @@
 package com.douglas.myfoody.core.DAO;
 
-import android.arch.lifecycle.LiveData;
-import android.arch.persistence.room.Dao;
-import android.arch.persistence.room.Insert;
-import android.arch.persistence.room.Query;
-import android.arch.persistence.room.Update;
 
+import android.app.Application;
+import android.content.ContentValues;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 
+import com.douglas.myfoody.core.database.AppDatabase;
 import com.douglas.myfoody.core.models.User;
+
 import java.util.List;
 
-import static android.arch.persistence.room.OnConflictStrategy.REPLACE;
+public class UserDAO implements BaseDAO<User> {
 
-@Dao
-public interface UserDAO extends BaseDAO<User> {
-    @Override
-    @Query("SELECT * FROM user")
-    LiveData<List<User>> findAll();
+    private AppDatabase db;
 
-    @Override
-    @Query("SELECT * FROM user WHERE id = :id")
-    LiveData<User> findById(int id);
+    public UserDAO(Application application) {
+        db = AppDatabase.getDBInstance(application);
+    }
 
     @Override
-    @Insert(onConflict = REPLACE)
-    void add(User data);
+    public SQLiteDatabase getWriteDB() {
+        return db.getWritableDatabase();
+    }
 
     @Override
-    @Update(onConflict = REPLACE)
-    void update(User data);
+    public SQLiteDatabase getReadDB() {
+        return db.getReadableDatabase();
+    }
 
     @Override
-    @Query("DELETE FROM user WHERE id = :id")
-    void delete(int id);
+    public List<User> findAll() {
+        return null;
+    }
 
     @Override
-    @Query("DELETE FROM user")
-    void deleteAll();
+    public User findById(int id) {
+        return null;
+    }
 
-    @Query("SELECT * FROM user WHERE email = :email")
-    LiveData<User> getUserByEmail(String email);
+    public User findByEmail(String email) {
+        User user = null;
+        try {
+            String[] columns = {
+                    User.USER_TABLE.TB_COL.ID, User.USER_TABLE.TB_COL.EMAIL,
+                    User.USER_TABLE.TB_COL.PASSWORD, User.USER_TABLE.TB_COL.FULL_NAME,
+                    User.USER_TABLE.TB_COL.PHONE, User.USER_TABLE.TB_COL.ADDRESS,
+                    User.USER_TABLE.TB_COL.ORDER_COUNT, User.USER_TABLE.TB_COL.IS_LOGGED_IN,
+            };
+
+            Cursor cursor = getReadDB().query(User.USER_TABLE.TB_NAME, columns,
+                    User.USER_TABLE.TB_COL.EMAIL + " = '" + email + "'", null,
+                    null, null, null);
+            if (cursor != null)
+                cursor.moveToFirst();
+
+            user = new User();
+            user.setID(Integer.parseInt(cursor.getString(0)));
+            user.setEmail(cursor.getString(1));
+            user.setPassword(cursor.getString(2));
+            user.setFullName(cursor.getString(3));
+            user.setPhone(cursor.getString(4));
+            user.setAddress(cursor.getString(5));
+            user.setOrderCount(cursor.getString(6));
+            user.setLoggedIn(cursor.getString(7));
+            return user;
+
+        } catch (Exception ex) {
+            // throw error message
+            System.out.println(ex.getMessage());
+        } finally {
+            // Closing database connection
+            getWriteDB().close();
+        }
+
+        return user;
+    }
+
+    @Override
+    public boolean insert(User user) {
+
+        try {
+            ContentValues values = new ContentValues();
+            values.put(User.USER_TABLE.TB_COL.EMAIL, user.getEmail());
+            values.put(User.USER_TABLE.TB_COL.PASSWORD, user.getPassword());
+            values.put(User.USER_TABLE.TB_COL.FULL_NAME, user.getFullName());
+            values.put(User.USER_TABLE.TB_COL.PHONE, user.getPhone());
+            values.put(User.USER_TABLE.TB_COL.ADDRESS, user.getAddress());
+            values.put(User.USER_TABLE.TB_COL.ORDER_COUNT, user.getOrderCount());
+            values.put(User.USER_TABLE.TB_COL.IS_LOGGED_IN, "false"); // default
+
+            // Inserting Row
+            long result = getWriteDB().insert(User.USER_TABLE.TB_NAME, null, values);
+
+            if (result > 0)
+                return true;
+            else
+                throw new Exception("Unable to create the record");
+
+        } catch (Exception ex) {
+            // throw error message
+            System.out.println(ex.getMessage());
+        } finally {
+            // Closing database connection
+            getWriteDB().close();
+        }
+
+        return false;
+    }
+
+    @Override
+    public boolean update(User data) {
+        return true;
+    }
+
+    @Override
+    public boolean delete(int id) {
+        return true;
+    }
+
 }
