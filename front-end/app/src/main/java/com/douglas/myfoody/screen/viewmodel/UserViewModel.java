@@ -37,11 +37,17 @@ public class UserViewModel extends AndroidViewModel {
         mUser.setValue(user);
     }
 
-    public void insert(User user) {
+    public boolean insert(User user) {
         if (!userRepository.add(user)) {
             Toast.makeText(getApplication(), "Cannot insert user!", Toast.LENGTH_SHORT).show();
+            return false;
         } else {
             setUser(user);
+            return true;
         }
+    }
+
+    public void deleteAll(){
+        userRepository.deleteAll();
     }
 }

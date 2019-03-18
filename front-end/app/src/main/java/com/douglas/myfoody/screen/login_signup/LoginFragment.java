@@ -7,6 +7,7 @@ import com.douglas.myfoody.core.models.User;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import com.douglas.myfoody.screen.home.HomeActivity;
+import com.douglas.myfoody.screen.main.MainActivity;
 import com.douglas.myfoody.screen.viewmodel.UserViewModel;
 
 import android.content.Intent;
@@ -52,6 +53,10 @@ public class LoginFragment extends Fragment implements OnClickListener {
         password = view.findViewById(R.id.login_password);
         loginBtn = view.findViewById(R.id.loginBtn);
         signUpBtn = view.findViewById(R.id.createAccount);
+
+        //set default login as admin
+        email.setText("admin@gmail.com");
+        password.setText("123");
     }
 
     // Set Listeners
@@ -87,9 +92,10 @@ public class LoginFragment extends Fragment implements OnClickListener {
                 }
                 break;
             case R.id.createAccount:
-                fragmentManager.beginTransaction()
-                               .replace(R.id.frameContainer, new SignUpFragment(), "SignUpFragment")
-                               .commit();
+//                fragmentManager.beginTransaction()
+//                               .replace(R.id.frameContainer, new SignUpFragment(), "SignUpFragment")
+//                               .commit();
+                MainActivity.signupFragment();
                 break;
         }
 

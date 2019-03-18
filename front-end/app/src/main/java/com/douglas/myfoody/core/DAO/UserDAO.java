@@ -52,19 +52,19 @@ public class UserDAO implements BaseDAO<User> {
             Cursor cursor = getReadDB().query(User.USER_TABLE.TB_NAME, columns,
                     User.USER_TABLE.TB_COL.EMAIL + " = '" + email + "'", null,
                     null, null, null);
-            if (cursor != null)
-                cursor.moveToFirst();
+            if (cursor != null && cursor.moveToFirst()) {
 
-            user = new User();
-            user.setID(Integer.parseInt(cursor.getString(0)));
-            user.setEmail(cursor.getString(1));
-            user.setPassword(cursor.getString(2));
-            user.setFullName(cursor.getString(3));
-            user.setPhone(cursor.getString(4));
-            user.setAddress(cursor.getString(5));
-            user.setOrderCount(cursor.getString(6));
-            user.setLoggedIn(cursor.getString(7));
-            return user;
+                user = new User();
+                user.setID(Integer.parseInt(cursor.getString(0)));
+                user.setEmail(cursor.getString(1));
+                user.setPassword(cursor.getString(2));
+                user.setFullName(cursor.getString(3));
+                user.setPhone(cursor.getString(4));
+                user.setAddress(cursor.getString(5));
+                user.setOrderCount(cursor.getString(6));
+                user.setLoggedIn(cursor.getString(7));
+                return user;
+            }
 
         } catch (Exception ex) {
             // throw error message
@@ -119,4 +119,7 @@ public class UserDAO implements BaseDAO<User> {
         return true;
     }
 
+    public void deleteAll(){
+        getWriteDB().execSQL("DELETE FROM " + User.USER_TABLE.TB_NAME);//delete all users
+    }
 }

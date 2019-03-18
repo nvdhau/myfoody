@@ -28,7 +28,11 @@ public class UserRepository implements BaseRepository<User> {
 
     @Override
     public boolean add(User data) {
-        return myUserDAO.insert(data);
+        if(myUserDAO.findByEmail(data.getEmail()) != null){
+            System.out.println("Unable to create the record. Email is used!");
+            return false;
+        }else
+            return myUserDAO.insert(data);
     }
 
     @Override
@@ -43,6 +47,7 @@ public class UserRepository implements BaseRepository<User> {
 
     @Override
     public boolean deleteAll() {
+        myUserDAO.deleteAll();
         return true;
     }
 
