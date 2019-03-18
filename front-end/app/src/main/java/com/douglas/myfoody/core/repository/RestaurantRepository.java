@@ -15,12 +15,12 @@ public class RestaurantRepository implements BaseRepository<Restaurant> {
     }
 
     @Override
-    public LiveData<List<Restaurant>> findAll() {
+    public List<Restaurant> findAll() {
         return null;
     }
 
     @Override
-    public LiveData<Restaurant> findById(int id) {
+    public Restaurant findById(int id) {
         return null;
     }
 

@@ -12,18 +12,17 @@ public class UserRepository implements BaseRepository<User> {
 
     private UserDAO myUserDAO;
 
-
     public UserRepository(Application application) {
         myUserDAO = new UserDAO(application);
     }
 
     @Override
-    public LiveData<List<User>> findAll() {
+    public List<User> findAll() {
         return null;
     }
 
     @Override
-    public LiveData<User> findById(int id) {
+    public User findById(int id) {
         return null;
     }
 
