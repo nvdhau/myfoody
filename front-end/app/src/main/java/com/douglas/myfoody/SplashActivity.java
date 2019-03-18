@@ -28,6 +28,7 @@ public class SplashActivity extends AppCompatActivity {
         };
 
         Timer opening = new Timer();
+        //set waiting time
         opening.schedule(task, 4000);
     }
 }
