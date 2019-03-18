@@ -7,15 +7,20 @@ import com.douglas.myfoody.screen.main.MainActivity;
 import com.douglas.myfoody.screen.viewmodel.UserViewModel;
 
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import static android.support.v4.content.ContextCompat.getSystemService;
 
 
 public class SignUpFragment extends Fragment implements OnClickListener {
@@ -61,6 +66,11 @@ public class SignUpFragment extends Fragment implements OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.signUpBtn:
+                //Hide the soft keyboard
+                InputMethodManager imm = (InputMethodManager)getActivity()
+                        .getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(getView().getWindowToken(), 0);
+
                 // Call checkValidation method
                 if (checkValidation()) {
                     UserViewModel mUserViewModel = ViewModelProviders.of(this).get(UserViewModel.class);
@@ -70,13 +80,13 @@ public class SignUpFragment extends Fragment implements OnClickListener {
                     user.setFullName(fullName.getText().toString());
                     user.setPhone(mobileNumber.getText().toString());
                     user.setAddress(location.getText().toString());
-                    mUserViewModel.insert(user);
-                    new MainActivity().loginFragment();
+                    if(mUserViewModel.insert(user))//insert success
+                        MainActivity.loginFragment();// navigate back to login screen
                 }
                 break;
             case R.id.already_user:
                 // Replace login fragment
-                new MainActivity().loginFragment();
+                MainActivity.loginFragment();
                 break;
         }
     }

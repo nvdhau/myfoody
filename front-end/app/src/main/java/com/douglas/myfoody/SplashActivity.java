@@ -19,7 +19,7 @@ public class SplashActivity extends AppCompatActivity {
         TimerTask task = new TimerTask() {
             @Override
             public void run() {
-                // release resourse
+                // release resource
                 finish();
 
                 // start Login screen
@@ -29,6 +29,6 @@ public class SplashActivity extends AppCompatActivity {
 
         Timer opening = new Timer();
         //set waiting time
-        opening.schedule(task, 4000);
+        opening.schedule(task, 000);
     }
 }

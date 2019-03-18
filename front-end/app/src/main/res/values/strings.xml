@@ -30,4 +30,5 @@
     <string name="userInfoTitle">USER INFO</string>
     <string name="exploreRestaurantTitle">EXPLORE RESTAURANT</string>
     <string name="searchBtn">SEARCH NEAR BY</string>
+    <string name="strDone">Done</string>
 </resources>

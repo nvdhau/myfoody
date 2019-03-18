@@ -25,6 +25,7 @@ public class HomeActivity extends AppCompatActivity
 
     private static FragmentManager fragmentManager;
     private UserViewModel mUserViewModel;
+    private int menuToChoose = R.menu.home;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,7 +85,7 @@ public class HomeActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.home, menu);
+        getMenuInflater().inflate(menuToChoose, menu);
         return true;
     }
 
@@ -109,18 +110,25 @@ public class HomeActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_user_info) {
-            // Handle the user_info
+        if (id == R.id.nav_explore_restaurant) {
+            setTitle("Explore Restaurant");
+            menuToChoose = R.menu.home;
             fragmentManager.beginTransaction()
-                           .replace(R.id.homeFrameContainer, new UserInfoFragment(),
-                        "User_Info_Fragment").commit();
-        } else if (id == R.id.nav_explore_restaurant) {
+                    .replace(R.id.homeFrameContainer, new ExploreRestaurantFragment(),
+                            "Explore_Restaurant_Fragment").commit();
+        } else if (id == R.id.nav_user_info) {
+            setTitle("User Info");//change title
+            menuToChoose = R.menu.user_info_menu;//change menu
+
             fragmentManager.beginTransaction()
-                    .replace(R.id.homeFrameContainer, new ExploreRestaurantFragment(), "Explore_Restaurant_Fragment")
-                    .commit();
+                    .replace(R.id.homeFrameContainer, new UserInfoFragment(),
+                            "User_Info_Fragment").commit();
+
         } else if (id == R.id.nav_my_orders) {
 
         } else if (id == R.id.nav_invite_friend) {
+
+        } else if (id == R.id.nav_change_password) {
 
         } else if (id == R.id.nav_logout) {
 

@@ -1,0 +1,12 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_edit"
+        android:icon="@drawable/ic_edit"
+        android:title="@string/editBtn"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_done"
+        android:title="@string/strDone"
+        app:showAsAction="always" />
+</menu>
