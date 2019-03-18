@@ -2,7 +2,6 @@ package com.douglas.myfoody.screen.home;
 
 
 import android.arch.lifecycle.Observer;
-import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -16,7 +15,7 @@ import android.widget.EditText;
 
 import com.douglas.myfoody.R;
 import com.douglas.myfoody.core.models.User;
-import com.douglas.myfoody.screen.login_signup.UserViewModel;
+import com.douglas.myfoody.screen.viewmodel.UserViewModel;
 
 
 public class UserInfoFragment extends Fragment implements OnClickListener {

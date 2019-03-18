@@ -7,6 +7,8 @@ import com.douglas.myfoody.core.models.User;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import com.douglas.myfoody.screen.home.HomeActivity;
+import com.douglas.myfoody.screen.viewmodel.UserViewModel;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;

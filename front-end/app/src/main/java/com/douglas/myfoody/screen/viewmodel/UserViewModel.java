@@ -1,4 +1,4 @@
-package com.douglas.myfoody.screen.login_signup;
+package com.douglas.myfoody.screen.viewmodel;
 
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;

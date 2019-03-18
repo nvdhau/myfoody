@@ -4,6 +4,8 @@ package com.douglas.myfoody.screen.login_signup;
 import com.douglas.myfoody.R;
 import com.douglas.myfoody.core.models.User;
 import com.douglas.myfoody.screen.main.MainActivity;
+import com.douglas.myfoody.screen.viewmodel.UserViewModel;
+
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
