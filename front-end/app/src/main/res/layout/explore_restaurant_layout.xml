@@ -4,7 +4,7 @@
     android:padding="20dp" >
 
     <LinearLayout
-        android:id="@+id/login_layout"
+        android:id="@+id/list_layout"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:background="@android:color/transparent"
-            android:drawableLeft="@drawable/email"
+            android:drawableLeft="@drawable/location"
             android:drawablePadding="8dp"
             android:gravity="center_vertical"
             android:hint="@string/email"
@@ -52,7 +52,7 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/loginBtn"
+            android:id="@+id/exploreBtn"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"

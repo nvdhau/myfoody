@@ -56,7 +56,6 @@ public class UserInfoFragment extends Fragment implements OnClickListener {
     private void initViews() {
         fragmentManager = getActivity().getSupportFragmentManager();
         email = view.findViewById(R.id.userEmailId);
-        // add more field here ???
     }
 
     // Set Listeners

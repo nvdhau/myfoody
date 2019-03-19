@@ -29,6 +29,7 @@
     <string name="changePasswordTitle">CHANGE PASSWORD</string>
     <string name="userInfoTitle">USER INFO</string>
     <string name="exploreRestaurantTitle">EXPLORE RESTAURANT</string>
+    <string name="listRestaurantTitle">List of Restaurant Nearby</string>
     <string name="searchBtn">SEARCH NEAR BY</string>
     <string name="strDone">Done</string>
 </resources>

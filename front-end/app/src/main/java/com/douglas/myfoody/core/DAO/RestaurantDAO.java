@@ -2,12 +2,15 @@ package com.douglas.myfoody.core.DAO;
 
 
 import android.app.Application;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.douglas.myfoody.core.database.AppDatabase;
 import com.douglas.myfoody.core.models.Restaurant;
+import com.douglas.myfoody.core.models.User;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RestaurantDAO implements BaseDAO<Restaurant> {
@@ -30,7 +33,41 @@ public class RestaurantDAO implements BaseDAO<Restaurant> {
 
     @Override
     public List<Restaurant> findAll() {
-        return null;
+        List<Restaurant> restaurants = new ArrayList<>();
+        try {
+            String[] columns = {
+                    Restaurant.RESTAURANT_TABLE.TB_COL.ID, Restaurant.RESTAURANT_TABLE.TB_COL.NAME,
+                    Restaurant.RESTAURANT_TABLE.TB_COL.ADDRESS, Restaurant.RESTAURANT_TABLE.TB_COL.CATEGORY,
+                    Restaurant.RESTAURANT_TABLE.TB_COL.MENU,
+            };
+
+            Cursor cursor = getReadDB().query(Restaurant.RESTAURANT_TABLE.TB_NAME, columns,
+                    null, null, null, null,
+                    Restaurant.RESTAURANT_TABLE.TB_COL.ID + " ASC");
+
+            if (cursor.moveToFirst()) {
+                do {
+                    Restaurant restaurant = new Restaurant();
+                    restaurant.setID(cursor.getInt(0));
+                    restaurant.setName(cursor.getString(1));
+                    restaurant.setAddress(cursor.getString(2));
+                    restaurant.setCategory(cursor.getString(3));
+                    restaurant.setMenu(cursor.getString(4));
+                    restaurants.add(restaurant);
+                } while (cursor.moveToNext());
+            }
+
+            return restaurants;
+
+        } catch (Exception ex) {
+            // throw error message
+            System.out.println(ex.getMessage());
+        } finally {
+            // Closing database connection
+            getWriteDB().close();
+        }
+
+        return restaurants;
     }
 
     @Override
