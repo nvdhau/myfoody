@@ -18,6 +18,8 @@ import android.view.MenuItem;
 
 import com.douglas.myfoody.R;
 import com.douglas.myfoody.core.models.User;
+import com.douglas.myfoody.screen.orders.OrdersListFragment;
+import com.douglas.myfoody.screen.promotion.InviteFriendFragment;
 import com.douglas.myfoody.screen.viewmodel.UserViewModel;
 
 public class HomeActivity extends AppCompatActivity
@@ -124,9 +126,13 @@ public class HomeActivity extends AppCompatActivity
                             "User_Info_Fragment").commit();
 
         } else if (id == R.id.nav_my_orders) {
-
+            fragmentManager.beginTransaction()
+                    .replace(R.id.homeFrameContainer, new OrdersListFragment(),
+                            "Orders_List_Fragment").commit();
         } else if (id == R.id.nav_invite_friend) {
-
+            fragmentManager.beginTransaction()
+                    .replace(R.id.homeFrameContainer, new InviteFriendFragment(),
+                            "Invite_Friend_Fragment").commit();
         } else if (id == R.id.nav_change_password) {
 
         } else if (id == R.id.nav_logout) {

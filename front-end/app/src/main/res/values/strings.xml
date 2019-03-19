@@ -60,4 +60,6 @@
     <string name="place_order_confirm">Confirm</string>
     <string name="place_order_thank_you">Thank You!</string>
     <string name="place_order_completed">Your order has been placed</string>
+    <string name="invite_friend_email">Friend's email</string>
+    <string name="invite_friend_button">Invite</string>
 </resources>
