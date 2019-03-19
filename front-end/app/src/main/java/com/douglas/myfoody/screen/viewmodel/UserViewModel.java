@@ -50,4 +50,27 @@ public class UserViewModel extends AndroidViewModel {
     public void deleteAll(){
         userRepository.deleteAll();
     }
+
+    public boolean updateUser(User user){
+        //get user by input email
+        User userExist = userRepository.getUserByEmail(user.getEmail());
+
+        //if the same user or new email is valid
+        if(userExist == null || user.getID() == userExist.getID()){
+            //update user
+            if(!userRepository.update(user)){
+                Toast.makeText(getApplication(), "Cannot update user!", Toast.LENGTH_SHORT).show();
+                return false;
+            }else{
+                setUser(user);
+                Toast.makeText(getApplication(), "Update user successfully!", Toast.LENGTH_SHORT).show();
+                return true;
+            }
+        }else{
+            Toast.makeText(getApplication(), "Cannot update user. Email is used!", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+    }
+
 }

@@ -37,7 +37,7 @@ public class UserRepository implements BaseRepository<User> {
 
     @Override
     public boolean update(User data) {
-        return true;
+            return myUserDAO.update(data);
     }
 
     @Override

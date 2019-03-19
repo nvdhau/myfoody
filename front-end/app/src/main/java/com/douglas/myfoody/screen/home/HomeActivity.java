@@ -68,7 +68,6 @@ public class HomeActivity extends AppCompatActivity
             User parcelableUser = intent.getParcelableExtra("user");
             mUserViewModel = ViewModelProviders.of(this).get(UserViewModel.class);
             mUserViewModel.setUser(parcelableUser);
-
         }
     }
 
