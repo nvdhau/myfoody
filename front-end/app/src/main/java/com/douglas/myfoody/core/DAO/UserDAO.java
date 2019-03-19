@@ -110,8 +110,32 @@ public class UserDAO implements BaseDAO<User> {
     }
 
     @Override
-    public boolean update(User data) {
-        return true;
+    public boolean update(User user) {//update 4 fields of user by id
+        try {
+            ContentValues values = new ContentValues();
+            values.put(User.USER_TABLE.TB_COL.EMAIL, user.getEmail());
+            values.put(User.USER_TABLE.TB_COL.FULL_NAME, user.getFullName());
+            values.put(User.USER_TABLE.TB_COL.PHONE, user.getPhone());
+            values.put(User.USER_TABLE.TB_COL.ADDRESS, user.getAddress());
+
+            // Updating Row
+            long result = getWriteDB().update(User.USER_TABLE.TB_NAME, values,
+                    User.USER_TABLE.TB_COL.ID + "= ?", new String[]{user.getID()+""});
+
+            if (result > 0)
+                return true;
+            else
+                throw new Exception("Unable to update the record");
+
+        } catch (Exception ex) {
+            // throw error message
+            System.out.println(ex.getMessage());
+        } finally {
+            // Closing database connection
+            getWriteDB().close();
+        }
+
+        return false;
     }
 
     @Override

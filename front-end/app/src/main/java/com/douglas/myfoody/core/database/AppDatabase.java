@@ -65,6 +65,27 @@ public class AppDatabase extends SQLiteOpenHelper {
         );
 
         // RUN INSERT QUERY TO INITIALIZE DATA
-
+        database.execSQL("INSERT INTO " + Restaurant.RESTAURANT_TABLE.TB_NAME + " VALUES " +
+                "(1, + 'Restaurant 1'," + "'332 NewWestminster', " + "'Japanese Restaurant', " + "'5'," + "'JSON STRING')," +
+                "(2, + 'Restaurant 2'," + "'332 NewWestminster', " + "'Japanese Restaurant', " + "'3'," + "'JSON STRING')," +
+                "(3, + 'Restaurant 3'," + "'332 NewWestminster', " + "'Japanese Restaurant', " + "'4'," + "'JSON STRING')," +
+                "(4, + 'Restaurant 4'," + "'332 NewWestminster', " + "'Japanese Restaurant', " + "'3'," + "'JSON STRING')," +
+                "(5, + 'Restaurant 5'," + "'332 NewWestminster', " + "'Japanese Restaurant', " + "'5'," + "'JSON STRING')," +
+                "(6, + 'Restaurant 6'," + "'332 NewWestminster', " + "'Japanese Restaurant', " + "'5'," + "'JSON STRING')," +
+                "(7, + 'Restaurant 7'," + "'332 NewWestminster', " + "'Japanese Restaurant', " + "'5'," + "'JSON STRING')," +
+                "(8, + 'Restaurant 8'," + "'332 NewWestminster', " + "'Japanese Restaurant', " + "'5'," + "'JSON STRING')," +
+                "(9, + 'Restaurant 9'," + "'332 NewWestminster', " + "'Japanese Restaurant', " + "'5'," + "'JSON STRING')," +
+                "(10, + 'Restaurant 10'," + "'332 NewWestminster', " + "'Japanese Restaurant', " + "'5'," + "'JSON STRING')," +
+                "(11, + 'Restaurant 11'," + "'332 NewWestminster', " + "'Japanese Restaurant', " + "'5'," + "'JSON STRING')," +
+                "(12, + 'Restaurant 12'," + "'332 NewWestminster', " + "'Japanese Restaurant', " + "'3'," + "'JSON STRING')," +
+                "(13, + 'Restaurant 13'," + "'332 NewWestminster', " + "'Mexico Restaurant', " + "'4'," + "'JSON STRING')," +
+                "(14, + 'Restaurant 14'," + "'332 NewWestminster', " + "'Japanese Restaurant', " + "'3'," + "'JSON STRING')," +
+                "(15, + 'Restaurant 15'," + "'332 NewWestminster', " + "'Japanese Restaurant', " + "'5'," + "'JSON STRING')," +
+                "(16, + 'Restaurant 16'," + "'332 NewWestminster', " + "'Japanese Restaurant', " + "'5'," + "'JSON STRING')," +
+                "(17, + 'Restaurant 17'," + "'332 NewWestminster', " + "'Japanese Restaurant', " + "'5'," + "'JSON STRING')," +
+                "(18, + 'Restaurant 18'," + "'332 NewWestminster', " + "'Japanese Restaurant', " + "'5'," + "'JSON STRING')," +
+                "(19, + 'Restaurant 19'," + "'332 NewWestminster', " + "'Japanese Restaurant', " + "'5'," + "'JSON STRING')," +
+                "(20, + 'Restaurant 20'," + "'332 NewWestminster', " + "'Japanese Restaurant', " + "'5'," + "'JSON STRING')"
+        );
     }
 }
