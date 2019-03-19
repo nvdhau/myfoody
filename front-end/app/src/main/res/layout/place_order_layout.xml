@@ -1,6 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="565dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="10sp">
+
+        <TextView
+            android:id="@+id/textViewPlaceOrder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5sp"
+            android:text="@string/place_order"
+            android:textSize="30sp" />
+
+        <View
+            android:id="@+id/divider1"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:layout_marginBottom="10sp"
+            android:layout_marginEnd="10sp"
+            android:background="?android:attr/listDivider" />
+
+        <TextView
+            android:id="@+id/textViewInstruction"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:layout_marginEnd="5sp"
+            android:text="@string/place_order_instruction"
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/editTextInstructions"
+            android:layout_width="match_parent"
+            android:layout_height="94dp"
+            android:ems="10"
+            android:inputType="textMultiLine"
+            android:textAlignment="viewStart"
+            android:textSize="24sp" />
+
+        <View
+            android:id="@+id/divider2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="10sp"
+            android:layout_marginEnd="10sp"
+            android:background="?android:attr/listDivider" />
+
+        <TextView
+            android:id="@+id/textViewDiscountCode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5sp"
+            android:text="@string/place_order_promotion"
+            android:textSize="24sp" />
+
+        <Spinner
+            android:id="@+id/spinnerDiscountCodes"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:entries="@array/discount_code"
+            android:spinnerMode="dialog" />
+
+        <View
+            android:id="@+id/divider3"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:layout_marginBottom="10sp"
+            android:layout_marginEnd="10sp"
+            android:background="?android:attr/listDivider" />
+
+
+        <TextView
+            android:id="@+id/textViewDeliveryOption"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/place_order_delivery"
+            android:textSize="24sp" />
+
+        <Spinner
+            android:id="@+id/spinnerDeliveryOptions"
+            android:layout_width="match_parent"
+            android:layout_height="50sp"
+            android:entries="@array/delivery_options" />
+
+        <TextView
+            android:id="@+id/textViewDeliveryTo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/place_order_delivery_to"
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/editTextDeliveryTo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:textSize="24sp" />
+
+        <View
+            android:id="@+id/divider4"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:layout_marginBottom="10sp"
+            android:layout_marginEnd="10sp"
+            android:background="?android:attr/listDivider" />
+
+        <Button
+            android:id="@+id/buttonPlaceOrder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/place_order" />
+
+    </LinearLayout>
+</RelativeLayout>

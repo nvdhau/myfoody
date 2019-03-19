@@ -14,6 +14,7 @@ public class Order extends LiveData<Order> implements Parcelable {
     private String specialInstruction;
     private double subTotal;
     private double deliveryFee;
+    private double discount;
     private double tax;
     private double total;
     private String createdAt;
@@ -32,6 +33,7 @@ public class Order extends LiveData<Order> implements Parcelable {
         specialInstruction = in.readString();
         subTotal = in.readDouble();
         deliveryFee = in.readDouble();
+        discount = in.readDouble();
         tax = in.readDouble();
         total = in.readDouble();
         createdAt = in.readString();
@@ -51,6 +53,7 @@ public class Order extends LiveData<Order> implements Parcelable {
             public static final String SPECIAL_INSTRUCTION = "specialInstruction";
             public static final String SUB_TOTAL = "subTotal";
             public static final String DELIVERY_FEE = "deliveryFee";
+            public static final String DISCOUNT = "discount";
             public static final String TAX = "tax";
             public static final String TOTAL = "total";
             public static final String CREATED_AT = "createdAt";
@@ -121,6 +124,14 @@ public class Order extends LiveData<Order> implements Parcelable {
         this.deliveryFee = deliveryFee;
     }
 
+    public double getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(double discount) {
+        this.discount = discount;
+    }
+
     public double getTax() {
         return tax;
     }
@@ -168,6 +179,7 @@ public class Order extends LiveData<Order> implements Parcelable {
         dest.writeString(specialInstruction);
         dest.writeDouble(subTotal);
         dest.writeDouble(deliveryFee);
+        dest.writeDouble(discount);
         dest.writeDouble(tax);
         dest.writeDouble(total);
         dest.writeString(createdAt);

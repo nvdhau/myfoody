@@ -13,7 +13,7 @@ import android.widget.Toast;
 public class MyToast {
 
     // custom toast method
-    public void showToast(Context context, View view, String error) {
+    public static void showToast(Context context, View view, String error) {
 
         // set layout for custom view
         LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);

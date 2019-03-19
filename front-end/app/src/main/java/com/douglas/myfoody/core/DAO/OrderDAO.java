@@ -20,7 +20,7 @@ public class OrderDAO implements BaseDAO<Order> {
             Order.ORDER_TABLE.TB_COL.ID, Order.ORDER_TABLE.TB_COL.USER_EMAIL,
             Order.ORDER_TABLE.TB_COL.RESTAURANT_ID, Order.ORDER_TABLE.TB_COL.ITEMS_JSON,
             Order.ORDER_TABLE.TB_COL.DELIVERY_ADDRESS, Order.ORDER_TABLE.TB_COL.SPECIAL_INSTRUCTION,
-            Order.ORDER_TABLE.TB_COL.SUB_TOTAL, Order.ORDER_TABLE.TB_COL.DELIVERY_FEE,
+            Order.ORDER_TABLE.TB_COL.SUB_TOTAL, Order.ORDER_TABLE.TB_COL.DELIVERY_FEE, Order.ORDER_TABLE.TB_COL.DISCOUNT,
             Order.ORDER_TABLE.TB_COL.TAX, Order.ORDER_TABLE.TB_COL.TOTAL,
             Order.ORDER_TABLE.TB_COL.CREATED_AT, Order.ORDER_TABLE.TB_COL.STATUS
     };
@@ -194,10 +194,11 @@ public class OrderDAO implements BaseDAO<Order> {
         order.setSpecialInstruction(cursor.getString(5));
         order.setSubTotal(Double.parseDouble(cursor.getString(6)));
         order.setDeliveryFee(Double.parseDouble(cursor.getString(7)));
-        order.setTax(Double.parseDouble(cursor.getString(8)));
-        order.setTotal(Double.parseDouble(cursor.getString(9)));
-        order.setCreatedAt(cursor.getString(10));
-        order.setStatus(cursor.getString(11));
+        order.setDiscount(Double.parseDouble(cursor.getString(8)));
+        order.setTax(Double.parseDouble(cursor.getString(9)));
+        order.setTotal(Double.parseDouble(cursor.getString(10)));
+        order.setCreatedAt(cursor.getString(11));
+        order.setStatus(cursor.getString(12));
 
         return order;
     }
@@ -213,6 +214,7 @@ public class OrderDAO implements BaseDAO<Order> {
         values.put(Order.ORDER_TABLE.TB_COL.SPECIAL_INSTRUCTION, order.getSpecialInstruction());
         values.put(Order.ORDER_TABLE.TB_COL.SUB_TOTAL, order.getSubTotal());
         values.put(Order.ORDER_TABLE.TB_COL.DELIVERY_FEE, order.getDeliveryFee());
+        values.put(Order.ORDER_TABLE.TB_COL.DISCOUNT, order.getDiscount());
         values.put(Order.ORDER_TABLE.TB_COL.TAX, order.getTax());
         values.put(Order.ORDER_TABLE.TB_COL.TOTAL, order.getTotal());
         values.put(Order.ORDER_TABLE.TB_COL.CREATED_AT, order.getCreatedAt());

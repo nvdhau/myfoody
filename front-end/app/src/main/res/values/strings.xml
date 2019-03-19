@@ -31,4 +31,32 @@
     <string name="exploreRestaurantTitle">EXPLORE RESTAURANT</string>
     <string name="searchBtn">SEARCH NEAR BY</string>
     <string name="strDone">Done</string>
+    <string name="place_order">Place Order</string>
+    <string name="place_order_instruction">Special Instructions</string>
+    <string name="place_order_promotion">Discount Code</string>
+    <string-array name="discount_code">
+        <item>None</item>
+    </string-array>
+    <string name="place_order_subtotal">Sub Total: $</string>
+    <string name="place_order_fee">Delivery Fee: $</string>
+    <string name="place_order_discount">Discount: $</string>
+    <string name="place_order_tax">Tax: $</string>
+    <string name="place_order_total">Total: $</string>
+    <string name="place_order_delivery">Delivery Option</string>
+    <string-array name="delivery_options">
+        <item>Delivery</item>
+        <item>Pick Up</item>
+    </string-array>
+    <string name="place_order_delivery_to">Delivery Address</string>
+    <string name="place_order_payment">Payment</string>
+    <string name="place_order_payment_card_name">Name on Card</string>
+    <string name="place_order_payment_card_number">Card Number</string>
+    <string name="place_order_payment_card_number_hint">XXXX XXXX XXXX XXXX</string>
+    <string name="place_order_payment_card_expiry">Expiry At</string>
+    <string name="place_order_payment_card_expiry_hint">MM/YY</string>
+    <string name="place_order_payment_card_code">Security Code</string>
+    <string name="place_order_payment_card_code_hint">XXX</string>
+    <string name="place_order_confirm">Confirm</string>
+    <string name="place_order_thank_you">Thank You!</string>
+    <string name="place_order_completed">Your order has been placed</string>
 </resources>
