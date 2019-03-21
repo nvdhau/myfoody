@@ -28,6 +28,7 @@ public class HomeActivity extends AppCompatActivity
     private static FragmentManager fragmentManager;
     private UserViewModel mUserViewModel;
     private int menuToChoose = R.menu.home;
+    private static NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,13 +56,19 @@ public class HomeActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+
 
         //add explore restaurant
         if(savedInstanceState == null){
-            fragmentManager.beginTransaction().replace(R.id.homeFrameContainer, new ExploreRestaurantFragment(),
-                    "Explore_Restaurant_Fragment").commit();
+//            fragmentManager.beginTransaction().replace(R.id.homeFrameContainer, new ExploreRestaurantFragment(),
+//                    "Explore_Restaurant_Fragment").commit();
+
+            //        navigationView.getMenu().getItem(0).setChecked(true);
+            navigationView.setCheckedItem(R.id.nav_explore_restaurant);
+            onNavigationItemSelected(navigationView.getCheckedItem());
         }
 
         // get user info and store in UserViewModel
@@ -134,7 +141,12 @@ public class HomeActivity extends AppCompatActivity
                     .replace(R.id.homeFrameContainer, new InviteFriendFragment(),
                             "Invite_Friend_Fragment").commit();
         } else if (id == R.id.nav_change_password) {
+            setTitle("Change Password");//change title
+            menuToChoose = R.menu.user_info_menu;//change menu
 
+            fragmentManager.beginTransaction()
+                    .replace(R.id.homeFrameContainer, new ChangePasswordFragment(),
+                            "Change_Password_Fragment").commit();
         } else if (id == R.id.nav_logout) {
 
         }
