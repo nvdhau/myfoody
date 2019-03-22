@@ -1,11 +1,13 @@
 package com.douglas.myfoody.screen.home;
 
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -81,12 +83,21 @@ public class HomeActivity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-//            super.onBackPressed();
+            //check current fragment is explore_restaurant
             ExploreRestaurantFragment exploreFragment
                     = (ExploreRestaurantFragment)fragmentManager.findFragmentByTag("Explore_Restaurant_Fragment");
-            if (exploreFragment != null && exploreFragment.isVisible()) {
-                super.onBackPressed();
-            }else{
+            if (exploreFragment != null && exploreFragment.isVisible()) {//yes, ask for exit app
+                //confirm to exit app
+                new AlertDialog.Builder(this)
+                        .setTitle("Do you want to exit MyFoody?")
+                        .setIcon(android.R.drawable.ic_dialog_info)
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int whichButton) {
+                                HomeActivity.this.finish();
+                                System.exit(0);
+                            }})
+                        .setNegativeButton(android.R.string.no, null).show();
+            }else{//no, navigate to the explore restaurant fragment
                 navigationView.setCheckedItem(R.id.nav_explore_restaurant);
                 onNavigationItemSelected(navigationView.getCheckedItem());
             }
