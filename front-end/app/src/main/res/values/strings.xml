@@ -62,4 +62,6 @@
     <string name="place_order_completed">Your order has been placed</string>
     <string name="invite_friend_email">Friend\'s email</string>
     <string name="invite_friend_button">Invite</string>
+    <string name="title_restaurant_list">Restaurants</string>
+    <string name="title_restaurant_detail">Restaurant Detail</string>
 </resources>

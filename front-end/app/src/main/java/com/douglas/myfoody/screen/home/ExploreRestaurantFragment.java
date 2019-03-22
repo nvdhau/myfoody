@@ -17,6 +17,7 @@ import android.widget.Button;
 import com.douglas.myfoody.R;
 import com.douglas.myfoody.core.models.User;
 //import com.douglas.myfoody.screen.restaurant.ListRestaurantActivity;
+import com.douglas.myfoody.screen.restaurant.RestaurantListActivity;
 import com.douglas.myfoody.screen.viewmodel.UserViewModel;
 
 
@@ -55,9 +56,10 @@ public class ExploreRestaurantFragment extends Fragment implements OnClickListen
         switch (v.getId()) {
             case R.id.exploreBtn:
                 // get address and display restaurants
-                fragmentManager.beginTransaction()
-                        .replace(R.id.homeFrameContainer, new ListRestaurantFragment(),
-                                "List_Restaurant_Fragment").commit();
+//                fragmentManager.beginTransaction()
+//                        .replace(R.id.homeFrameContainer, new ListRestaurantFragment(),
+//                                "List_Restaurant_Fragment").commit();
+                startActivity(new Intent(getActivity(), RestaurantListActivity.class));
                 break;
         }
 
