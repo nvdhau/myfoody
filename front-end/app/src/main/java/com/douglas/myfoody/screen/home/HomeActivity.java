@@ -77,7 +77,20 @@ public class HomeActivity extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
-        // disable onBackButton
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+//            super.onBackPressed();
+            ExploreRestaurantFragment exploreFragment
+                    = (ExploreRestaurantFragment)fragmentManager.findFragmentByTag("Explore_Restaurant_Fragment");
+            if (exploreFragment != null && exploreFragment.isVisible()) {
+                super.onBackPressed();
+            }else{
+                navigationView.setCheckedItem(R.id.nav_explore_restaurant);
+                onNavigationItemSelected(navigationView.getCheckedItem());
+            }
+        }
     }
 
     @Override
