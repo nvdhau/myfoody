@@ -1,6 +1,7 @@
 package com.douglas.myfoody.screen.restaurant;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,6 +34,34 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
     private final LayoutInflater mInflater;
     private List<Restaurant> mRestaurants;
 
+    private final View.OnClickListener mOnClickListener = new View.OnClickListener() {
+    @Override
+    public void onClick(View view) {
+
+        Restaurant restaurant = (Restaurant) view.getTag();
+        Context context = view.getContext();
+        Intent intent = new Intent(context, RestaurantDetailActivity.class);
+        intent.putExtra(RestaurantDetailFragment.ARG_ITEM_ID, String.valueOf(restaurant.getID()));
+        context.startActivity(intent);
+//        DummyContent.DummyItem item = (DummyContent.DummyItem) view.getTag();
+//        if (mTwoPane) {
+//            Bundle arguments = new Bundle();
+//            arguments.putString(RestaurantDetailFragment.ARG_ITEM_ID, item.id);
+//            RestaurantDetailFragment fragment = new RestaurantDetailFragment();
+//            fragment.setArguments(arguments);
+//            mParentActivity.getSupportFragmentManager().beginTransaction()
+//                    .replace(R.id.restaurant_detail_container, fragment)
+//                    .commit();
+//        } else {
+//            Context context = view.getContext();
+//            Intent intent = new Intent(context, RestaurantDetailActivity.class);
+//            intent.putExtra(RestaurantDetailFragment.ARG_ITEM_ID, item.id);
+//
+//            context.startActivity(intent);
+//        }
+    }
+};
+
     public RestaurantAdapter(Context context) {
         mInflater = LayoutInflater.from(context);
     }
@@ -51,6 +80,9 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
             holder.restaurantTitleView.setText(current.getName());
             holder.restaurantAddressView.setText(current.getAddress());
             holder.ratingBar.setRating(Float.parseFloat(current.getRating()));
+            holder.itemView.setTag(mRestaurants.get(position));
+            holder.itemView.setOnClickListener(mOnClickListener);
+
         } else {
             // Covers the case of data not being ready yet.
             holder.restaurantTitleView.setText("No Item");
