@@ -65,4 +65,6 @@
     <string name="invite_friend_email">Emails</string>
     <string name="invite_friend_email_hint">One email on each line.</string>
     <string name="invite_friend_button">Invite</string>
+    <string name="title_restaurant_list">Restaurants</string>
+    <string name="title_restaurant_detail">Restaurant Detail</string>
 </resources>

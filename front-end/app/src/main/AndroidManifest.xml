@@ -10,6 +10,24 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity
+            android:name=".screen.restaurant.RestaurantListActivity"
+            android:label="@string/title_restaurant_list"
+            android:parentActivityName=".screen.home.HomeActivity"
+            android:theme="@style/NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.douglas.myfoody.screen.home.HomeActivity" />
+        </activity>
+        <activity
+            android:name=".screen.restaurant.RestaurantDetailActivity"
+            android:label="@string/title_restaurant_detail"
+            android:parentActivityName=".screen.restaurant.RestaurantListActivity"
+            android:theme="@style/NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.douglas.myfoody.screen.restaurant.RestaurantListActivity" />
+        </activity>
+        <activity
             android:name=".screen.home.HomeActivity"
             android:label="@string/title_activity_home"
             android:theme="@style/NoActionBar" />

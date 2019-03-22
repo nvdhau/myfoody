@@ -1,11 +1,13 @@
 package com.douglas.myfoody.screen.home;
 
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -44,15 +46,6 @@ public class HomeActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -62,17 +55,10 @@ public class HomeActivity extends AppCompatActivity
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-
-
         //add explore restaurant
         if(savedInstanceState == null){
-//            fragmentManager.beginTransaction().replace(R.id.homeFrameContainer, new ExploreRestaurantFragment(),
-//                    "Explore_Restaurant_Fragment").commit();
-
-//                    navigationView.getMenu().getItem(0).setChecked(true);
-
-//            navigationView.setCheckedItem(R.id.nav_explore_restaurant);
-//            onNavigationItemSelected(navigationView.getCheckedItem());
+            navigationView.setCheckedItem(R.id.nav_explore_restaurant);
+            onNavigationItemSelected(navigationView.getCheckedItem());
         }
 
         // get user info and store in UserViewModel
@@ -97,7 +83,24 @@ public class HomeActivity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            //check current fragment is explore_restaurant
+            ExploreRestaurantFragment exploreFragment
+                    = (ExploreRestaurantFragment)fragmentManager.findFragmentByTag("Explore_Restaurant_Fragment");
+            if (exploreFragment != null && exploreFragment.isVisible()) {//yes, ask for exit app
+                //confirm to exit app
+                new AlertDialog.Builder(this)
+                        .setTitle("Do you want to exit MyFoody?")
+                        .setIcon(android.R.drawable.ic_dialog_info)
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int whichButton) {
+                                HomeActivity.this.finish();
+                                System.exit(0);
+                            }})
+                        .setNegativeButton(android.R.string.no, null).show();
+            }else{//no, navigate to the explore restaurant fragment
+                navigationView.setCheckedItem(R.id.nav_explore_restaurant);
+                onNavigationItemSelected(navigationView.getCheckedItem());
+            }
         }
     }
 
