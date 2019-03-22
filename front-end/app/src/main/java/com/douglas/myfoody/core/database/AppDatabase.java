@@ -4,6 +4,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.douglas.myfoody.core.models.Promotion;
 import com.douglas.myfoody.core.models.Restaurant;
 import com.douglas.myfoody.core.models.User;
 
@@ -87,5 +88,24 @@ public class AppDatabase extends SQLiteOpenHelper {
                 "(19, + 'Restaurant 19'," + "'332 NewWestminster', " + "'Japanese Restaurant', " + "'5'," + "'JSON STRING')," +
                 "(20, + 'Restaurant 20'," + "'332 NewWestminster', " + "'Japanese Restaurant', " + "'5'," + "'JSON STRING')"
         );
+
+        // Tables for Promotions - Start
+        database.execSQL("CREATE TABLE " + Promotion.PROMOTION_TABLE.TB_NAME + "(" +
+                Promotion.PROMOTION_TABLE.TB_COL.PROMOTION_CODE + " primary key, " +
+                Promotion.PROMOTION_TABLE.TB_COL.DISCOUNT_AMOUNT + "real, " +
+                Promotion.PROMOTION_TABLE.TB_COL.DISCOUNT_TYPE +
+                ")"
+        );
+        database.execSQL("CREATE TABLE " + Promotion.DISCOUNT_TABLE.TB_NAME + "(" +
+                Promotion.DISCOUNT_TABLE.TB_COL.ID + " primary key, " +
+                Promotion.DISCOUNT_TABLE.TB_COL.USER_EMAIL + ", " +
+                Promotion.DISCOUNT_TABLE.TB_COL.PROMOTION_CODE + ", " +
+                Promotion.DISCOUNT_TABLE.TB_COL.EXPIRY_DATE +
+                ")"
+        );
+        database.execSQL("INSERT INTO " + Promotion.PROMOTION_TABLE.TB_NAME + " VALUES " +
+                "('INVITE10'," + "'10', " + "'Percent')"
+        );
+        // Tables for Promotions - End
     }
 }

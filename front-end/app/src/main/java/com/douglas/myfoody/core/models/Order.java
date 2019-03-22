@@ -40,7 +40,7 @@ public class Order extends LiveData<Order> implements Parcelable {
         status = in.readString();
     }
 
-    // DEFINE TABLE USER
+    // DEFINE TABLE ORDER
     public static final class ORDER_TABLE {
         public static final String TB_NAME = "order";
 

@@ -7,6 +7,26 @@
     android:padding="10sp">
 
     <TextView
+        android:id="@+id/textViewInviteTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/invite_friend_description"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/textViewInviteBenefit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/invite_friend_benefit"
+        android:textSize="18sp" />
+
+    <View
+        android:id="@+id/divider6"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="?android:attr/listDivider" />
+
+    <TextView
         android:id="@+id/textViewInviteEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -14,11 +34,12 @@
         android:textSize="24sp" />
 
     <EditText
-        android:id="@+id/editTextFriendEmail"
+        android:id="@+id/editTextFriendEmails"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="97dp"
         android:ems="10"
-        android:inputType="textEmailAddress"
+        android:hint="@string/invite_friend_email_hint"
+        android:inputType="textMultiLine"
         android:textSize="24sp" />
 
     <Button
@@ -33,4 +54,5 @@
         android:layout_height="wrap_content"
         android:textAlignment="center"
         android:textSize="24sp" />
+
 </LinearLayout>

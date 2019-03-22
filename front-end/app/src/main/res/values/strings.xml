@@ -60,6 +60,9 @@
     <string name="place_order_confirm">Confirm</string>
     <string name="place_order_thank_you">Thank You!</string>
     <string name="place_order_completed">Your order has been placed</string>
-    <string name="invite_friend_email">Friend\'s email</string>
+    <string name="invite_friend_description">Lets your friends know</string>
+    <string name="invite_friend_benefit">And enjoy 10% off on your next order</string>
+    <string name="invite_friend_email">Emails</string>
+    <string name="invite_friend_email_hint">One email on each line.</string>
     <string name="invite_friend_button">Invite</string>
 </resources>

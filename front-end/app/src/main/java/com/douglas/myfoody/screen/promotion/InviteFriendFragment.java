@@ -18,7 +18,7 @@ public class InviteFriendFragment extends Fragment implements View.OnClickListen
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.invite_friend_layout, container, false);
         fragmentManager = getActivity().getSupportFragmentManager();
-        getActivity().findViewById(R.id.buttonInviteFriend).setOnClickListener(this);
+        view.findViewById(R.id.buttonInviteFriend).setOnClickListener(this);
         return view;
     }
 
