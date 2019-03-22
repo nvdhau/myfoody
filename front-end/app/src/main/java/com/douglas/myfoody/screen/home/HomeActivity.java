@@ -18,6 +18,7 @@ import android.view.MenuItem;
 
 import com.douglas.myfoody.R;
 import com.douglas.myfoody.core.models.User;
+import com.douglas.myfoody.screen.main.MainActivity;
 import com.douglas.myfoody.screen.orders.OrdersListFragment;
 import com.douglas.myfoody.screen.promotion.InviteFriendFragment;
 import com.douglas.myfoody.screen.viewmodel.UserViewModel;
@@ -66,8 +67,8 @@ public class HomeActivity extends AppCompatActivity
 //            fragmentManager.beginTransaction().replace(R.id.homeFrameContainer, new ExploreRestaurantFragment(),
 //                    "Explore_Restaurant_Fragment").commit();
 
-            //        navigationView.getMenu().getItem(0).setChecked(true);
-            navigationView.setCheckedItem(R.id.nav_explore_restaurant);
+//                    navigationView.getMenu().getItem(0).setChecked(true);
+            navigationView.setCheckedItem(R.id.nav_user_info);
             onNavigationItemSelected(navigationView.getCheckedItem());
         }
 
@@ -148,7 +149,8 @@ public class HomeActivity extends AppCompatActivity
                     .replace(R.id.homeFrameContainer, new ChangePasswordFragment(),
                             "Change_Password_Fragment").commit();
         } else if (id == R.id.nav_logout) {
-
+            mUserViewModel.setUser(new User());//delete User object
+            startActivity(new Intent(this, MainActivity.class));//navigate to login
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

@@ -73,4 +73,8 @@ public class UserViewModel extends AndroidViewModel {
 
     }
 
+    public boolean updatePassword(User user){
+        return userRepository.updatePassword(user);
+    }
+
 }

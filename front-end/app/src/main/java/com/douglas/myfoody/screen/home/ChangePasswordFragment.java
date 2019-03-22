@@ -7,10 +7,12 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.douglas.myfoody.R;
 import com.douglas.myfoody.core.models.User;
@@ -21,12 +23,9 @@ import com.douglas.myfoody.screen.viewmodel.UserViewModel;
 public class ChangePasswordFragment extends Fragment {
     private static View view;
 
-    private EditText fullName, email, mobileNumber, location;
-    private EditText[] editTextInputs;
+    private EditText currentPassword, newPassword, confirmPassword;
 
     private UserViewModel mUserViewModel;
-
-    private boolean isEdited =  false;
 
     public ChangePasswordFragment() {
 
@@ -36,6 +35,13 @@ public class ChangePasswordFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
+    }
+
+    @Override
+    public void onPrepareOptionsMenu(Menu menu) {
+        //hide edit menu
+        MenuItem item=menu.findItem(R.id.action_edit);
+        item.setVisible(false);
     }
 
     @Override
@@ -51,50 +57,32 @@ public class ChangePasswordFragment extends Fragment {
 
     // Initiate Views
     private void initViews() {
-//        fullName = view.findViewById(R.id.fullName);
-//        email = view.findViewById(R.id.userEmailId);
-//        mobileNumber = view.findViewById(R.id.mobileNumber);
-//        location = view.findViewById(R.id.location);
-
-//        editTextInputs = new EditText[] {fullName, email, mobileNumber, location};
-//
-//        //disable edit texts
-//        for (EditText editText : editTextInputs)
-//            UIHelper.disableEditText(editText);
-
-        // add more field here ???
+        currentPassword = view.findViewById(R.id.currentPassword);
+        newPassword = view.findViewById(R.id.newPassword);
+        confirmPassword = view.findViewById(R.id.confirmNewPassword);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
-            case R.id.action_edit:
-                for (EditText editText : editTextInputs)
-                    UIHelper.enableEditText(editText);
-
-                fullName.requestFocus();
-                isEdited = true;
-                return true;
             case R.id.action_done:
-                if(isEdited){
-                    User currentUser = mUserViewModel.getUser().getValue();
-
-                    currentUser.setFullName(fullName.getText().toString());
-                    currentUser.setEmail(email.getText().toString());
-                    currentUser.setPhone(mobileNumber.getText().toString());
-                    currentUser.setAddress(location.getText().toString());
-
-
-                    if(mUserViewModel.updateUser(currentUser)){//update success
-                        mUserViewModel.setUser(currentUser);
-                    }
-
-                    for (EditText editText : editTextInputs)
-                        UIHelper.disableEditText(editText);
-
-                    isEdited = false;//turn of edit mode
-                }
-
+                User currentUser = mUserViewModel.getUser().getValue();
+                //check current password is match
+                if(currentUser.getPassword().equals(currentPassword.getText().toString())){
+                    //check New Password and Confirm Password are equal and not empty
+                    if(newPassword.getText().toString().equals(confirmPassword.getText().toString())
+                            && !(newPassword.getText().toString().isEmpty())){
+                        currentUser.setPassword(newPassword.getText().toString());
+                        if(mUserViewModel.updatePassword(currentUser))
+                            Toast.makeText(getActivity(), "Password has successfully changed!", Toast.LENGTH_SHORT).show();
+                        else
+                            Toast.makeText(getActivity(), "Password has not been changed.\nPlease try again!", Toast.LENGTH_SHORT).show();
+                    }else
+                        Toast.makeText(getActivity(), "New Password and Confirm Password are not matched!",
+                                Toast.LENGTH_SHORT).show();
+                }else
+                    Toast.makeText(getActivity(), "Current Password is not matched!", Toast.LENGTH_SHORT).show();
+                
                 return true;
         }
 

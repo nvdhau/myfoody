@@ -138,6 +138,31 @@ public class UserDAO implements BaseDAO<User> {
         return false;
     }
 
+    public boolean updatePassword(User user){
+        try {
+            ContentValues values = new ContentValues();
+            values.put(User.USER_TABLE.TB_COL.PASSWORD, user.getPassword());
+
+            // Updating Row
+            long result = getWriteDB().update(User.USER_TABLE.TB_NAME, values,
+                    User.USER_TABLE.TB_COL.ID + "= ?", new String[]{user.getID()+""});
+
+            if (result > 0)
+                return true;
+            else
+                throw new Exception("Unable to change the password");
+
+        } catch (Exception ex) {
+            // throw error message
+            System.out.println(ex.getMessage());
+        } finally {
+            // Closing database connection
+            getWriteDB().close();
+        }
+
+        return false;
+    }
+
     @Override
     public boolean delete(int id) {
         return true;

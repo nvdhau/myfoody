@@ -86,6 +86,7 @@ public class LoginFragment extends Fragment implements OnClickListener {
                                 Intent intent = new Intent(getActivity(), HomeActivity.class);
                                 intent.putExtra("user", user);
                                 startActivity(intent);
+                                getActivity().finish();//prevent go back to login screen
                             }
                         }
                     });

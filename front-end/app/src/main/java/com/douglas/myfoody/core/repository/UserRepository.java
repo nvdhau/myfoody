@@ -40,6 +40,10 @@ public class UserRepository implements BaseRepository<User> {
             return myUserDAO.update(data);
     }
 
+    public boolean updatePassword(User data){
+        return myUserDAO.updatePassword(data);
+    }
+
     @Override
     public boolean delete(int id) {
         return true;
