@@ -15,6 +15,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.douglas.myfoody.R;
 import com.douglas.myfoody.core.models.User;
@@ -68,8 +70,9 @@ public class HomeActivity extends AppCompatActivity
 //                    "Explore_Restaurant_Fragment").commit();
 
 //                    navigationView.getMenu().getItem(0).setChecked(true);
-            navigationView.setCheckedItem(R.id.nav_user_info);
-            onNavigationItemSelected(navigationView.getCheckedItem());
+
+//            navigationView.setCheckedItem(R.id.nav_explore_restaurant);
+//            onNavigationItemSelected(navigationView.getCheckedItem());
         }
 
         // get user info and store in UserViewModel
@@ -78,6 +81,13 @@ public class HomeActivity extends AppCompatActivity
             User parcelableUser = intent.getParcelableExtra("user");
             mUserViewModel = ViewModelProviders.of(this).get(UserViewModel.class);
             mUserViewModel.setUser(parcelableUser);
+
+            //update username and user avatar as the first letter of username
+            View headerView = navigationView.getHeaderView(0);
+            TextView avatar = headerView.findViewById(R.id.avatar);
+            avatar.setText(parcelableUser.getFullName().toUpperCase().charAt(0) + "");
+            TextView navUsername = (TextView) headerView.findViewById(R.id.username);
+            navUsername.setText(parcelableUser.getFullName());
         }
     }
 
@@ -125,6 +135,7 @@ public class HomeActivity extends AppCompatActivity
             fragmentManager.beginTransaction()
                     .replace(R.id.homeFrameContainer, new ExploreRestaurantFragment(),
                             "Explore_Restaurant_Fragment").commit();
+
         } else if (id == R.id.nav_user_info) {
             setTitle("User Info");//change title
             menuToChoose = R.menu.user_info_menu;//change menu
@@ -137,10 +148,12 @@ public class HomeActivity extends AppCompatActivity
             fragmentManager.beginTransaction()
                     .replace(R.id.homeFrameContainer, new OrdersListFragment(),
                             "Orders_List_Fragment").commit();
+
         } else if (id == R.id.nav_invite_friend) {
             fragmentManager.beginTransaction()
                     .replace(R.id.homeFrameContainer, new InviteFriendFragment(),
                             "Invite_Friend_Fragment").commit();
+
         } else if (id == R.id.nav_change_password) {
             setTitle("Change Password");//change title
             menuToChoose = R.menu.user_info_menu;//change menu
@@ -148,6 +161,7 @@ public class HomeActivity extends AppCompatActivity
             fragmentManager.beginTransaction()
                     .replace(R.id.homeFrameContainer, new ChangePasswordFragment(),
                             "Change_Password_Fragment").commit();
+
         } else if (id == R.id.nav_logout) {
             mUserViewModel.setUser(new User());//delete User object
             startActivity(new Intent(this, MainActivity.class));//navigate to login
