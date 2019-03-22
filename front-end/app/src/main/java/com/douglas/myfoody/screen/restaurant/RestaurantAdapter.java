@@ -1,15 +1,13 @@
-package com.douglas.myfoody.screen.home;
-
-import com.douglas.myfoody.R;
+package com.douglas.myfoody.screen.restaurant;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.douglas.myfoody.R;
 import com.douglas.myfoody.core.models.Restaurant;
 
 import java.util.List;

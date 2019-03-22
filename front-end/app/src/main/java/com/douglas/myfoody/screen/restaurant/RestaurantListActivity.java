@@ -1,10 +1,14 @@
 package com.douglas.myfoody.screen.restaurant;
 
+import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.support.design.widget.FloatingActionButton;
@@ -19,7 +23,9 @@ import android.view.MenuItem;
 
 import com.douglas.myfoody.R;
 
+import com.douglas.myfoody.core.models.Restaurant;
 import com.douglas.myfoody.screen.restaurant.dummy.DummyContent;
+import com.douglas.myfoody.screen.viewmodel.RestaurantViewModel;
 
 import java.util.List;
 
@@ -38,6 +44,7 @@ public class RestaurantListActivity extends AppCompatActivity {
      * device.
      */
     private boolean mTwoPane;
+    private RestaurantViewModel mRestaurantViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,91 +86,91 @@ public class RestaurantListActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == android.R.id.home) {
-
-            // This ID represents the Home or Up button. In the case of this
-            // activity, the Up button is shown. Use NavUtils to allow users
-            // to navigate up one level in the application structure. For
-            // more details, see the Navigation pattern on Android Design:
-            //
-            // http://developer.android.com/design/patterns/navigation.html#up-vs-back
-            //
-//            NavUtils.getParentActivityIntent(this);
-            super.onBackPressed();
+            super.onBackPressed(); // back to home Activity
             return true;
         }
         return super.onOptionsItemSelected(item);
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(this, DummyContent.ITEMS, mTwoPane));
-    }
+        final RestaurantAdapter adapter = new RestaurantAdapter(this);
+        recyclerView.setAdapter(adapter);
 
-    public static class SimpleItemRecyclerViewAdapter
-            extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
-
-        private final RestaurantListActivity mParentActivity;
-        private final List<DummyContent.DummyItem> mValues;
-        private final boolean mTwoPane;
-        private final View.OnClickListener mOnClickListener = new View.OnClickListener() {
+        mRestaurantViewModel = ViewModelProviders.of(this).get(RestaurantViewModel.class);
+        mRestaurantViewModel.findAllRestaurants().observe(this, new Observer<List<Restaurant>>() {
             @Override
-            public void onClick(View view) {
-                DummyContent.DummyItem item = (DummyContent.DummyItem) view.getTag();
-                if (mTwoPane) {
-                    Bundle arguments = new Bundle();
-                    arguments.putString(RestaurantDetailFragment.ARG_ITEM_ID, item.id);
-                    RestaurantDetailFragment fragment = new RestaurantDetailFragment();
-                    fragment.setArguments(arguments);
-                    mParentActivity.getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.restaurant_detail_container, fragment)
-                            .commit();
-                } else {
-                    Context context = view.getContext();
-                    Intent intent = new Intent(context, RestaurantDetailActivity.class);
-                    intent.putExtra(RestaurantDetailFragment.ARG_ITEM_ID, item.id);
-
-                    context.startActivity(intent);
-                }
+            public void onChanged(@Nullable List<Restaurant> restaurantList) {
+                adapter.setRestaurants(restaurantList);
             }
-        };
-
-        SimpleItemRecyclerViewAdapter(RestaurantListActivity parent,
-                                      List<DummyContent.DummyItem> items,
-                                      boolean twoPane) {
-            mValues = items;
-            mParentActivity = parent;
-            mTwoPane = twoPane;
-        }
-
-        @Override
-        public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.restaurant_list_content, parent, false);
-            return new ViewHolder(view);
-        }
-
-        @Override
-        public void onBindViewHolder(final ViewHolder holder, int position) {
-            holder.mIdView.setText(mValues.get(position).id);
-            holder.mContentView.setText(mValues.get(position).content);
-
-            holder.itemView.setTag(mValues.get(position));
-            holder.itemView.setOnClickListener(mOnClickListener);
-        }
-
-        @Override
-        public int getItemCount() {
-            return mValues.size();
-        }
-
-        class ViewHolder extends RecyclerView.ViewHolder {
-            final TextView mIdView;
-            final TextView mContentView;
-
-            ViewHolder(View view) {
-                super(view);
-                mIdView = (TextView) view.findViewById(R.id.id_text);
-                mContentView = (TextView) view.findViewById(R.id.content);
-            }
-        }
+        });
     }
+
+//    public static class SimpleItemRecyclerViewAdapter
+//            extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
+//
+//        private final RestaurantListActivity mParentActivity;
+//        private final List<DummyContent.DummyItem> mValues;
+//        private final boolean mTwoPane;
+//        private final View.OnClickListener mOnClickListener = new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                DummyContent.DummyItem item = (DummyContent.DummyItem) view.getTag();
+//                if (mTwoPane) {
+//                    Bundle arguments = new Bundle();
+//                    arguments.putString(RestaurantDetailFragment.ARG_ITEM_ID, item.id);
+//                    RestaurantDetailFragment fragment = new RestaurantDetailFragment();
+//                    fragment.setArguments(arguments);
+//                    mParentActivity.getSupportFragmentManager().beginTransaction()
+//                            .replace(R.id.restaurant_detail_container, fragment)
+//                            .commit();
+//                } else {
+//                    Context context = view.getContext();
+//                    Intent intent = new Intent(context, RestaurantDetailActivity.class);
+//                    intent.putExtra(RestaurantDetailFragment.ARG_ITEM_ID, item.id);
+//
+//                    context.startActivity(intent);
+//                }
+//            }
+//        };
+//
+//        SimpleItemRecyclerViewAdapter(RestaurantListActivity parent,
+//                                      List<DummyContent.DummyItem> items,
+//                                      boolean twoPane) {
+//            mValues = items;
+//            mParentActivity = parent;
+//            mTwoPane = twoPane;
+//        }
+//
+//        @Override
+//        public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+//            View view = LayoutInflater.from(parent.getContext())
+//                    .inflate(R.layout.restaurant_list_content, parent, false);
+//            return new ViewHolder(view);
+//        }
+//
+//        @Override
+//        public void onBindViewHolder(final ViewHolder holder, int position) {
+//            holder.mIdView.setText(mValues.get(position).id);
+//            holder.mContentView.setText(mValues.get(position).content);
+//
+//            holder.itemView.setTag(mValues.get(position));
+//            holder.itemView.setOnClickListener(mOnClickListener);
+//        }
+//
+//        @Override
+//        public int getItemCount() {
+//            return mValues.size();
+//        }
+//
+//        class ViewHolder extends RecyclerView.ViewHolder {
+//            final TextView mIdView;
+//            final TextView mContentView;
+//
+//            ViewHolder(View view) {
+//                super(view);
+//                mIdView = (TextView) view.findViewById(R.id.title_restaurant);
+//                mContentView = (TextView) view.findViewById(R.id.address_restaurant);
+//            }
+//        }
+//    }
 }

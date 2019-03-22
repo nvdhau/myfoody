@@ -8,6 +8,7 @@
     android:layout_height="match_parent"
     android:layout_marginLeft="16dp"
     android:layout_marginRight="16dp"
+    android:background="@color/white_greyish"
     app:layoutManager="LinearLayoutManager"
     tools:context=".screen.restaurant.RestaurantListActivity"
     tools:listitem="@layout/restaurant_list_content" />
