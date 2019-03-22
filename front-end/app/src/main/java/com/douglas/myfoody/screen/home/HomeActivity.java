@@ -55,11 +55,6 @@ public class HomeActivity extends AppCompatActivity
 
         //add explore restaurant
         if(savedInstanceState == null){
-//            fragmentManager.beginTransaction().replace(R.id.homeFrameContainer, new ExploreRestaurantFragment(),
-//                    "Explore_Restaurant_Fragment").commit();
-
-//                    navigationView.getMenu().getItem(0).setChecked(true);
-
             navigationView.setCheckedItem(R.id.nav_explore_restaurant);
             onNavigationItemSelected(navigationView.getCheckedItem());
         }
@@ -82,12 +77,7 @@ public class HomeActivity extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
+        // disable onBackButton
     }
 
     @Override
