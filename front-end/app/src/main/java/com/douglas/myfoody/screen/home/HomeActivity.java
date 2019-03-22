@@ -44,15 +44,6 @@ public class HomeActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -62,8 +53,6 @@ public class HomeActivity extends AppCompatActivity
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-
-
         //add explore restaurant
         if(savedInstanceState == null){
 //            fragmentManager.beginTransaction().replace(R.id.homeFrameContainer, new ExploreRestaurantFragment(),
@@ -71,8 +60,8 @@ public class HomeActivity extends AppCompatActivity
 
 //                    navigationView.getMenu().getItem(0).setChecked(true);
 
-//            navigationView.setCheckedItem(R.id.nav_explore_restaurant);
-//            onNavigationItemSelected(navigationView.getCheckedItem());
+            navigationView.setCheckedItem(R.id.nav_explore_restaurant);
+            onNavigationItemSelected(navigationView.getCheckedItem());
         }
 
         // get user info and store in UserViewModel
