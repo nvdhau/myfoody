@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.douglas.myfoody.R;
@@ -18,11 +19,13 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
     class RestaurantViewHolder extends RecyclerView.ViewHolder {
         private final TextView restaurantTitleView;
         private final TextView restaurantAddressView;
+        private final RatingBar ratingBar;
 
         private RestaurantViewHolder(View itemView) {
             super(itemView);
             restaurantTitleView = itemView.findViewById(R.id.title_restaurant);
             restaurantAddressView = itemView.findViewById(R.id.address_restaurant);
+            ratingBar = itemView.findViewById(R.id.ratingBar);
 
         }
     }
@@ -37,7 +40,7 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
 
     @Override
     public RestaurantViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView = mInflater.inflate(R.layout.restaurant_list_row, parent, false);
+        View itemView = mInflater.inflate(R.layout.restaurant_list_content, parent, false);
         return new RestaurantViewHolder(itemView);
     }
 
@@ -47,10 +50,12 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
             Restaurant current = mRestaurants.get(position);
             holder.restaurantTitleView.setText(current.getName());
             holder.restaurantAddressView.setText(current.getAddress());
+            holder.ratingBar.setRating(Float.parseFloat(current.getRating()));
         } else {
             // Covers the case of data not being ready yet.
             holder.restaurantTitleView.setText("No Item");
             holder.restaurantAddressView.setText("No Address");
+            holder.ratingBar.setRating(0.0f);
         }
     }
 

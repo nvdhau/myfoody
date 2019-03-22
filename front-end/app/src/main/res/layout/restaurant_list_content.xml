@@ -2,19 +2,48 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:orientation="horizontal">
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="600dp"
+        android:layout_height="300dp"
+        android:background="@drawable/rest_1"
+        android:layout_marginTop="4dp"
+        android:padding="10dp" />
 
     <TextView
         android:id="@+id/title_restaurant"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/text_margin"
-        android:textAppearance="?attr/textAppearanceListItem" />
+        android:textColor="@color/white_greyish"
+        android:textStyle="italic"
+        android:textSize="28sp"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+        />
+
+    <RatingBar
+        android:id="@+id/ratingBar"
+        style="?android:attr/ratingBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:isIndicator="true"
+        android:rating="5"
+        android:numStars="5"
+        android:stepSize="1" />
 
     <TextView
         android:id="@+id/address_restaurant"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/text_margin"
-        android:textAppearance="?attr/textAppearanceListItem" />
+        android:textColor="@color/white"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1px"
+        android:background="@color/grey" />
 </LinearLayout>
