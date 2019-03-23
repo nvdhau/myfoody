@@ -7,6 +7,9 @@ public class Promotion {
     private float discountAmount;
     private String discountType;
 
+    public static final String DISCOUNT_TYPE_PERCENT = "Percent";
+    public static final String DISCOUNT_TYPE_FLAT = "Flat";
+
     public Promotion() {
 
     }

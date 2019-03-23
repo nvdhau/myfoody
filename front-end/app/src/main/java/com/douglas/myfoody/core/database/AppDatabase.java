@@ -92,12 +92,12 @@ public class AppDatabase extends SQLiteOpenHelper {
         // Tables for Promotions - Start
         database.execSQL("CREATE TABLE " + Promotion.PROMOTION_TABLE.TB_NAME + "(" +
                 Promotion.PROMOTION_TABLE.TB_COL.PROMOTION_CODE + " primary key, " +
-                Promotion.PROMOTION_TABLE.TB_COL.DISCOUNT_AMOUNT + "real, " +
+                Promotion.PROMOTION_TABLE.TB_COL.DISCOUNT_AMOUNT + " real, " +
                 Promotion.PROMOTION_TABLE.TB_COL.DISCOUNT_TYPE +
                 ")"
         );
         database.execSQL("CREATE TABLE " + Promotion.DISCOUNT_TABLE.TB_NAME + "(" +
-                Promotion.DISCOUNT_TABLE.TB_COL.ID + " primary key, " +
+                Promotion.DISCOUNT_TABLE.TB_COL.ID + " integer primary key, " +
                 Promotion.DISCOUNT_TABLE.TB_COL.USER_EMAIL + ", " +
                 Promotion.DISCOUNT_TABLE.TB_COL.PROMOTION_CODE + ", " +
                 Promotion.DISCOUNT_TABLE.TB_COL.EXPIRY_DATE +

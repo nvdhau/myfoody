@@ -44,4 +44,20 @@ public class PromotionRepository implements BaseRepository<Promotion> {
     public boolean deleteAll() {
         return false;
     }
+
+    public boolean insertDiscount(Promotion data, String email, String expiry) {
+        return promotionDAO.insertDiscount(data, email, expiry);
+    }
+
+    public List<Promotion> getSpecificUserDiscounts(String promotionCode, String email) {
+        return promotionDAO.getSpecificUserDiscounts(promotionCode, email);
+    }
+
+    public List<Promotion> getUserDiscounts(String email) {
+        return promotionDAO.getAllUserDiscounts(email);
+    }
+
+    public boolean expireDiscount(Promotion data, String email) {
+        return promotionDAO.expireDiscount(data, email);
+    }
 }
