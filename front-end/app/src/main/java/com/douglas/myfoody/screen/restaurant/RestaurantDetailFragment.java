@@ -13,10 +13,15 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.douglas.myfoody.R;
+import com.douglas.myfoody.core.models.MenuItem;
 import com.douglas.myfoody.core.models.Restaurant;
+import com.douglas.myfoody.core.utilities.JSONHelper;
 import com.douglas.myfoody.screen.restaurant.dummy.DummyContent;
 import com.douglas.myfoody.screen.viewmodel.RestaurantViewModel;
 import com.douglas.myfoody.screen.viewmodel.UserViewModel;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A fragment representing a single Restaurant detail screen.
@@ -68,6 +73,10 @@ public class RestaurantDetailFragment extends Fragment {
                     if (appBarLayout != null) {
                         appBarLayout.setTitle(mRestaurant.getName());
                     }
+
+                    // get a list of menu items
+                    List<MenuItem> menuItems = new ArrayList<>();
+                    menuItems = JSONHelper.getMenuItemListsFromJSON(restaurant.getMenu());
                 }
             });
         }
