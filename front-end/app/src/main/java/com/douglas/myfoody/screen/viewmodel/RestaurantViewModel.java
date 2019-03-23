@@ -18,6 +18,7 @@ public class RestaurantViewModel extends AndroidViewModel {
 
     private RestaurantRepository restaurantRepository;
     private MutableLiveData<List<Restaurant>> mAllRestaurants;
+    private MutableLiveData<Restaurant> mRestaurant;
 
     public RestaurantViewModel(Application application) {
         super(application);
@@ -25,6 +26,10 @@ public class RestaurantViewModel extends AndroidViewModel {
 
         if (mAllRestaurants == null) {
             mAllRestaurants = new MutableLiveData<>();
+        }
+
+        if (mRestaurant == null) {
+            mRestaurant = new MutableLiveData<>();
         }
     }
 
@@ -35,5 +40,10 @@ public class RestaurantViewModel extends AndroidViewModel {
 
     public LiveData<List<Restaurant>> getAllRestaurants() {
         return mAllRestaurants;
+    }
+
+    public LiveData<Restaurant> findRestaurantByID(int id) {
+        mRestaurant.setValue(restaurantRepository.findById(id));
+        return mRestaurant;
     }
 }

@@ -1,6 +1,9 @@
 package com.douglas.myfoody.screen.restaurant;
 
 import android.app.Activity;
+import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProviders;
+import android.support.annotation.Nullable;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -10,7 +13,10 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.douglas.myfoody.R;
+import com.douglas.myfoody.core.models.Restaurant;
 import com.douglas.myfoody.screen.restaurant.dummy.DummyContent;
+import com.douglas.myfoody.screen.viewmodel.RestaurantViewModel;
+import com.douglas.myfoody.screen.viewmodel.UserViewModel;
 
 /**
  * A fragment representing a single Restaurant detail screen.
@@ -30,6 +36,10 @@ public class RestaurantDetailFragment extends Fragment {
      */
     private DummyContent.DummyItem mItem;
 
+    private RestaurantViewModel mRestaurantViewModel;
+
+    private Restaurant mRestaurant = new Restaurant();
+
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
@@ -47,13 +57,19 @@ public class RestaurantDetailFragment extends Fragment {
             // to load content from a content provider.
 //            mItem = DummyContent.ITEM_MAP.get(getArguments().getString(ARG_ITEM_ID));
 
-//            Activity activity = this.getActivity();
-//            CollapsingToolbarLayout appBarLayout = (CollapsingToolbarLayout) activity.findViewById(R.id.toolbar_layout);
-//            if (appBarLayout != null) {
-//                appBarLayout.setTitle(mItem.content);
-//            }
-
-            System.out.println("HERE " +getArguments().getString(ARG_ITEM_ID));
+            int restaurantID =  Integer.parseInt(getArguments().getString(ARG_ITEM_ID));
+            mRestaurantViewModel = ViewModelProviders.of(this).get(RestaurantViewModel.class);
+            mRestaurantViewModel.findRestaurantByID(restaurantID).observe(this, new Observer<Restaurant>() {
+                @Override
+                public void onChanged(@Nullable Restaurant restaurant) {
+                    mRestaurant = restaurant;
+                    Activity activity = getActivity();
+                    CollapsingToolbarLayout appBarLayout = (CollapsingToolbarLayout) activity.findViewById(R.id.toolbar_layout);
+                    if (appBarLayout != null) {
+                        appBarLayout.setTitle(mRestaurant.getName());
+                    }
+                }
+            });
         }
     }
 
@@ -64,7 +80,7 @@ public class RestaurantDetailFragment extends Fragment {
 
         // Show the dummy content as text in a TextView.
         if (mItem != null) {
-            ((TextView) rootView.findViewById(R.id.restaurant_detail)).setText(mItem.details);
+//            ((TextView) rootView.findViewById(R.id.restaurant_detail)).setText(mItem.details);
         }
 
         return rootView;

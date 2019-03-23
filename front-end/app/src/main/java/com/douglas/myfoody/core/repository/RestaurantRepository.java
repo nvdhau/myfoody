@@ -21,7 +21,7 @@ public class RestaurantRepository implements BaseRepository<Restaurant> {
 
     @Override
     public Restaurant findById(int id) {
-        return null;
+        return restaurantDAO.findById(id);
     }
 
     @Override

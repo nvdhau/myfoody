@@ -73,7 +73,39 @@ public class RestaurantDAO implements BaseDAO<Restaurant> {
 
     @Override
     public Restaurant findById(int id) {
-        return null;
+        Restaurant restaurant = null;
+        try {
+            String[] columns = {
+                    Restaurant.RESTAURANT_TABLE.TB_COL.ID, Restaurant.RESTAURANT_TABLE.TB_COL.NAME,
+                    Restaurant.RESTAURANT_TABLE.TB_COL.ADDRESS, Restaurant.RESTAURANT_TABLE.TB_COL.CATEGORY,
+                    Restaurant.RESTAURANT_TABLE.TB_COL.MENU, Restaurant.RESTAURANT_TABLE.TB_COL.RATING
+            };
+
+            Cursor cursor = getReadDB().query(Restaurant.RESTAURANT_TABLE.TB_NAME, columns,
+                    Restaurant.RESTAURANT_TABLE.TB_COL.ID + " = '" + id + "'", null,
+                    null, null, null);
+            if (cursor != null && cursor.moveToFirst()) {
+
+                restaurant = new Restaurant();
+                restaurant.setID(Integer.parseInt(cursor.getString(0)));
+                restaurant.setName(cursor.getString(1));
+                restaurant.setAddress(cursor.getString(2));
+                restaurant.setCategory(cursor.getString(3));
+                restaurant.setMenu(cursor.getString(4));
+                restaurant.setRating(cursor.getString(5));
+
+                return restaurant;
+            }
+
+        } catch (Exception ex) {
+            // throw error message
+            System.out.println(ex.getMessage());
+        } finally {
+            // Closing database connection
+            getWriteDB().close();
+        }
+
+        return restaurant;
     }
 
     public Restaurant findByName(String email) {

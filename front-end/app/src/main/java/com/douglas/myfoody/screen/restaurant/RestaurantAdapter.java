@@ -43,22 +43,6 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
         Intent intent = new Intent(context, RestaurantDetailActivity.class);
         intent.putExtra(RestaurantDetailFragment.ARG_ITEM_ID, String.valueOf(restaurant.getID()));
         context.startActivity(intent);
-//        DummyContent.DummyItem item = (DummyContent.DummyItem) view.getTag();
-//        if (mTwoPane) {
-//            Bundle arguments = new Bundle();
-//            arguments.putString(RestaurantDetailFragment.ARG_ITEM_ID, item.id);
-//            RestaurantDetailFragment fragment = new RestaurantDetailFragment();
-//            fragment.setArguments(arguments);
-//            mParentActivity.getSupportFragmentManager().beginTransaction()
-//                    .replace(R.id.restaurant_detail_container, fragment)
-//                    .commit();
-//        } else {
-//            Context context = view.getContext();
-//            Intent intent = new Intent(context, RestaurantDetailActivity.class);
-//            intent.putExtra(RestaurantDetailFragment.ARG_ITEM_ID, item.id);
-//
-//            context.startActivity(intent);
-//        }
     }
 };
 
