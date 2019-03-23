@@ -1,5 +1,6 @@
 package com.douglas.myfoody.core.database;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -7,6 +8,11 @@ import android.database.sqlite.SQLiteOpenHelper;
 import com.douglas.myfoody.core.models.Promotion;
 import com.douglas.myfoody.core.models.Restaurant;
 import com.douglas.myfoody.core.models.User;
+import com.douglas.myfoody.core.utilities.JSONHelper;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.List;
 
 public class AppDatabase extends SQLiteOpenHelper {
 
@@ -66,28 +72,60 @@ public class AppDatabase extends SQLiteOpenHelper {
         );
 
         // RUN INSERT QUERY TO INITIALIZE DATA
-        database.execSQL("INSERT INTO " + Restaurant.RESTAURANT_TABLE.TB_NAME + " VALUES " +
-                "(1, + 'Restaurant 1'," + "'332 NewWestminster', " + "'Japanese Restaurant', " + "'5'," + "'JSON STRING')," +
-                "(2, + 'Restaurant 2'," + "'332 NewWestminster', " + "'Japanese Restaurant', " + "'3'," + "'JSON STRING')," +
-                "(3, + 'Restaurant 3'," + "'332 NewWestminster', " + "'Japanese Restaurant', " + "'4'," + "'JSON STRING')," +
-                "(4, + 'Restaurant 4'," + "'332 NewWestminster', " + "'Japanese Restaurant', " + "'3'," + "'JSON STRING')," +
-                "(5, + 'Restaurant 5'," + "'332 NewWestminster', " + "'Japanese Restaurant', " + "'5'," + "'JSON STRING')," +
-                "(6, + 'Restaurant 6'," + "'332 NewWestminster', " + "'Japanese Restaurant', " + "'5'," + "'JSON STRING')," +
-                "(7, + 'Restaurant 7'," + "'332 NewWestminster', " + "'Japanese Restaurant', " + "'5'," + "'JSON STRING')," +
-                "(8, + 'Restaurant 8'," + "'332 NewWestminster', " + "'Japanese Restaurant', " + "'5'," + "'JSON STRING')," +
-                "(9, + 'Restaurant 9'," + "'332 NewWestminster', " + "'Japanese Restaurant', " + "'5'," + "'JSON STRING')," +
-                "(10, + 'Restaurant 10'," + "'332 NewWestminster', " + "'Japanese Restaurant', " + "'5'," + "'JSON STRING')," +
-                "(11, + 'Restaurant 11'," + "'332 NewWestminster', " + "'Japanese Restaurant', " + "'5'," + "'JSON STRING')," +
-                "(12, + 'Restaurant 12'," + "'332 NewWestminster', " + "'Japanese Restaurant', " + "'3'," + "'JSON STRING')," +
-                "(13, + 'Restaurant 13'," + "'332 NewWestminster', " + "'Mexico Restaurant', " + "'4'," + "'JSON STRING')," +
-                "(14, + 'Restaurant 14'," + "'332 NewWestminster', " + "'Japanese Restaurant', " + "'3'," + "'JSON STRING')," +
-                "(15, + 'Restaurant 15'," + "'332 NewWestminster', " + "'Japanese Restaurant', " + "'5'," + "'JSON STRING')," +
-                "(16, + 'Restaurant 16'," + "'332 NewWestminster', " + "'Japanese Restaurant', " + "'5'," + "'JSON STRING')," +
-                "(17, + 'Restaurant 17'," + "'332 NewWestminster', " + "'Japanese Restaurant', " + "'5'," + "'JSON STRING')," +
-                "(18, + 'Restaurant 18'," + "'332 NewWestminster', " + "'Japanese Restaurant', " + "'5'," + "'JSON STRING')," +
-                "(19, + 'Restaurant 19'," + "'332 NewWestminster', " + "'Japanese Restaurant', " + "'5'," + "'JSON STRING')," +
-                "(20, + 'Restaurant 20'," + "'332 NewWestminster', " + "'Japanese Restaurant', " + "'5'," + "'JSON STRING')"
-        );
+
+        // Tables for User - Start
+        try {
+            ContentValues values = new ContentValues();
+            values.put(User.USER_TABLE.TB_COL.EMAIL, "admin@gmail.com");
+            values.put(User.USER_TABLE.TB_COL.PASSWORD, "123");
+            values.put(User.USER_TABLE.TB_COL.FULL_NAME, "Admin");
+            values.put(User.USER_TABLE.TB_COL.PHONE, "123456789");
+            values.put(User.USER_TABLE.TB_COL.ADDRESS, "Douglas College");
+            values.put(User.USER_TABLE.TB_COL.ORDER_COUNT, "0");
+            values.put(User.USER_TABLE.TB_COL.IS_LOGGED_IN, "false"); // default
+
+            // Inserting Row
+            if (database.insert(User.USER_TABLE.TB_NAME, null, values) <= 0)
+                throw new Exception("Unable to create the record");
+
+        } catch (Exception ex) {
+            // throw error message
+            System.out.println(ex.getMessage());
+        }
+        // Tables for User - End
+
+        // Tables for Restaurant - Start
+        String file = "res/raw/restaurants.json";
+        String json = null;
+        try {
+            InputStream is = this.getClass().getClassLoader().getResourceAsStream(file);
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            json = new String(buffer, "utf-8");
+
+            List<Restaurant> restaurants = JSONHelper.getRestaurantListsFromJSON(json);
+
+
+            for(int i=0; i<restaurants.size(); i++){
+                ContentValues values = new ContentValues();
+                values.put(Restaurant.RESTAURANT_TABLE.TB_COL.NAME, restaurants.get(i).getName());
+                values.put(Restaurant.RESTAURANT_TABLE.TB_COL.ADDRESS, restaurants.get(i).getAddress());
+                values.put(Restaurant.RESTAURANT_TABLE.TB_COL.CATEGORY, restaurants.get(i).getCategory());
+                values.put(Restaurant.RESTAURANT_TABLE.TB_COL.RATING, restaurants.get(i).getRating());
+                values.put(Restaurant.RESTAURANT_TABLE.TB_COL.MENU, restaurants.get(i).getMenu());
+
+                // Inserting Row
+                if(database.insert(Restaurant.RESTAURANT_TABLE.TB_NAME, null, values) <= 0){
+                    System.out.println("AppDatabase: fail to insert restaurant data!");
+                }
+            }
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        // Tables for Restaurant - End
 
         // Tables for Promotions - Start
         database.execSQL("CREATE TABLE " + Promotion.PROMOTION_TABLE.TB_NAME + "(" +
