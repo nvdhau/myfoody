@@ -36,22 +36,4 @@ public class RestaurantViewModel extends AndroidViewModel {
     public LiveData<List<Restaurant>> getAllRestaurants() {
         return mAllRestaurants;
     }
-//
-//    public void setUser(User user) {
-//        mUser.setValue(user);
-//    }
-//
-//    public boolean insert(User user) {
-//        if (!userRepository.add(user)) {
-//            Toast.makeText(getApplication(), "Cannot insert user!", Toast.LENGTH_SHORT).show();
-//            return false;
-//        } else {
-//            setUser(user);
-//            return true;
-//        }
-//    }
-//
-//    public void deleteAll(){
-//        userRepository.deleteAll();
-//    }
 }

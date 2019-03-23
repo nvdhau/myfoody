@@ -38,7 +38,7 @@ public class RestaurantDAO implements BaseDAO<Restaurant> {
             String[] columns = {
                     Restaurant.RESTAURANT_TABLE.TB_COL.ID, Restaurant.RESTAURANT_TABLE.TB_COL.NAME,
                     Restaurant.RESTAURANT_TABLE.TB_COL.ADDRESS, Restaurant.RESTAURANT_TABLE.TB_COL.CATEGORY,
-                    Restaurant.RESTAURANT_TABLE.TB_COL.MENU,
+                    Restaurant.RESTAURANT_TABLE.TB_COL.MENU, Restaurant.RESTAURANT_TABLE.TB_COL.RATING
             };
 
             Cursor cursor = getReadDB().query(Restaurant.RESTAURANT_TABLE.TB_NAME, columns,
@@ -53,6 +53,7 @@ public class RestaurantDAO implements BaseDAO<Restaurant> {
                     restaurant.setAddress(cursor.getString(2));
                     restaurant.setCategory(cursor.getString(3));
                     restaurant.setMenu(cursor.getString(4));
+                    restaurant.setRating(cursor.getString(5));
                     restaurants.add(restaurant);
                 } while (cursor.moveToNext());
             }
