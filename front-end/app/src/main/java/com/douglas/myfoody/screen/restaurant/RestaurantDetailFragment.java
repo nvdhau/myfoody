@@ -10,6 +10,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.douglas.myfoody.R;
@@ -72,6 +73,10 @@ public class RestaurantDetailFragment extends Fragment {
                     CollapsingToolbarLayout appBarLayout = (CollapsingToolbarLayout) activity.findViewById(R.id.toolbar_layout);
                     if (appBarLayout != null) {
                         appBarLayout.setTitle(mRestaurant.getName());
+                        int imageResource = getActivity().getResources().getIdentifier(mRestaurant.getImage(),
+                                "drawable", getActivity().getPackageName());
+                        ImageView image = appBarLayout.findViewById(R.id.imageView);
+                        image.setImageResource(imageResource);
                     }
 
                     // get a list of menu items

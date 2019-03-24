@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
@@ -21,18 +22,21 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
         private final TextView restaurantTitleView;
         private final TextView restaurantAddressView;
         private final RatingBar ratingBar;
+        private final ImageView imageView;
 
         private RestaurantViewHolder(View itemView) {
             super(itemView);
             restaurantTitleView = itemView.findViewById(R.id.title_restaurant);
             restaurantAddressView = itemView.findViewById(R.id.address_restaurant);
             ratingBar = itemView.findViewById(R.id.ratingBar);
+            imageView = itemView.findViewById(R.id.imageView);
 
         }
     }
 
     private final LayoutInflater mInflater;
     private List<Restaurant> mRestaurants;
+    private Context context;
 
     private final View.OnClickListener mOnClickListener = new View.OnClickListener() {
     @Override
@@ -48,6 +52,7 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
 
     public RestaurantAdapter(Context context) {
         mInflater = LayoutInflater.from(context);
+        this.context = context;
     }
 
 
@@ -64,8 +69,12 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
             holder.restaurantTitleView.setText(current.getName());
             holder.restaurantAddressView.setText(current.getAddress());
             holder.ratingBar.setRating(Float.parseFloat(current.getRating()));
+            String imageName = current.getImage();
+            int imageResource = context.getResources().getIdentifier(imageName, "drawable", context.getPackageName());
+            holder.imageView.setImageResource(imageResource);
             holder.itemView.setTag(mRestaurants.get(position));
             holder.itemView.setOnClickListener(mOnClickListener);
+
 
         } else {
             // Covers the case of data not being ready yet.

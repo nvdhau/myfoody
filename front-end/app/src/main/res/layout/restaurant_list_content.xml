@@ -8,9 +8,8 @@
         android:id="@+id/imageView"
         android:layout_width="600dp"
         android:layout_height="300dp"
-        android:background="@drawable/rest_1"
         android:layout_marginTop="4dp"
-        android:padding="10dp" />
+        />
 
     <TextView
         android:id="@+id/title_restaurant"

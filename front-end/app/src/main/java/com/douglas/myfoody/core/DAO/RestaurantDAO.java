@@ -38,7 +38,8 @@ public class RestaurantDAO implements BaseDAO<Restaurant> {
             String[] columns = {
                     Restaurant.RESTAURANT_TABLE.TB_COL.ID, Restaurant.RESTAURANT_TABLE.TB_COL.NAME,
                     Restaurant.RESTAURANT_TABLE.TB_COL.ADDRESS, Restaurant.RESTAURANT_TABLE.TB_COL.CATEGORY,
-                    Restaurant.RESTAURANT_TABLE.TB_COL.MENU, Restaurant.RESTAURANT_TABLE.TB_COL.RATING
+                    Restaurant.RESTAURANT_TABLE.TB_COL.MENU, Restaurant.RESTAURANT_TABLE.TB_COL.RATING,
+                    Restaurant.RESTAURANT_TABLE.TB_COL.IMAGE
             };
 
             Cursor cursor = getReadDB().query(Restaurant.RESTAURANT_TABLE.TB_NAME, columns,
@@ -54,6 +55,7 @@ public class RestaurantDAO implements BaseDAO<Restaurant> {
                     restaurant.setCategory(cursor.getString(3));
                     restaurant.setMenu(cursor.getString(4));
                     restaurant.setRating(cursor.getString(5));
+                    restaurant.setImage(cursor.getString(6));
                     restaurants.add(restaurant);
                 } while (cursor.moveToNext());
             }
@@ -78,7 +80,8 @@ public class RestaurantDAO implements BaseDAO<Restaurant> {
             String[] columns = {
                     Restaurant.RESTAURANT_TABLE.TB_COL.ID, Restaurant.RESTAURANT_TABLE.TB_COL.NAME,
                     Restaurant.RESTAURANT_TABLE.TB_COL.ADDRESS, Restaurant.RESTAURANT_TABLE.TB_COL.CATEGORY,
-                    Restaurant.RESTAURANT_TABLE.TB_COL.MENU, Restaurant.RESTAURANT_TABLE.TB_COL.RATING
+                    Restaurant.RESTAURANT_TABLE.TB_COL.MENU, Restaurant.RESTAURANT_TABLE.TB_COL.RATING,
+                    Restaurant.RESTAURANT_TABLE.TB_COL.IMAGE
             };
 
             Cursor cursor = getReadDB().query(Restaurant.RESTAURANT_TABLE.TB_NAME, columns,
@@ -93,6 +96,7 @@ public class RestaurantDAO implements BaseDAO<Restaurant> {
                 restaurant.setCategory(cursor.getString(3));
                 restaurant.setMenu(cursor.getString(4));
                 restaurant.setRating(cursor.getString(5));
+                restaurant.setImage(cursor.getString(6));
 
                 return restaurant;
             }

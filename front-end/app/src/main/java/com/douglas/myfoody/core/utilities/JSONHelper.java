@@ -30,6 +30,7 @@ public class JSONHelper {
                 restaurant.setAddress(restaurantJSON.getString("address"));
                 restaurant.setRating(restaurantJSON.getString("rating") + "");
                 restaurant.setCategory(restaurantJSON.getString("category"));
+                restaurant.setImage(restaurantJSON.getString("image"));
                 restaurant.setMenu(restaurantJSON.getString("menus"));
 
 //                System.out.println("JSON: " + restaurant.getName());

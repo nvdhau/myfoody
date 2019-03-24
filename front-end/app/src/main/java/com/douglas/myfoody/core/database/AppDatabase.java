@@ -67,6 +67,7 @@ public class AppDatabase extends SQLiteOpenHelper {
                 Restaurant.RESTAURANT_TABLE.TB_COL.ADDRESS + ", " +
                 Restaurant.RESTAURANT_TABLE.TB_COL.CATEGORY + ", " +
                 Restaurant.RESTAURANT_TABLE.TB_COL.RATING + ", " +
+                Restaurant.RESTAURANT_TABLE.TB_COL.IMAGE + ", " +
                 Restaurant.RESTAURANT_TABLE.TB_COL.MENU +
                 ")"
         );
@@ -114,6 +115,7 @@ public class AppDatabase extends SQLiteOpenHelper {
                 values.put(Restaurant.RESTAURANT_TABLE.TB_COL.ADDRESS, restaurants.get(i).getAddress());
                 values.put(Restaurant.RESTAURANT_TABLE.TB_COL.CATEGORY, restaurants.get(i).getCategory());
                 values.put(Restaurant.RESTAURANT_TABLE.TB_COL.RATING, restaurants.get(i).getRating());
+                values.put(Restaurant.RESTAURANT_TABLE.TB_COL.IMAGE, restaurants.get(i).getImage());
                 values.put(Restaurant.RESTAURANT_TABLE.TB_COL.MENU, restaurants.get(i).getMenu());
 
                 // Inserting Row

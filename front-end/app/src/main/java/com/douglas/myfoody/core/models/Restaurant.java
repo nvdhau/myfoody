@@ -13,6 +13,7 @@ public class Restaurant extends LiveData<User> implements Parcelable {
     private String address;
     private String category;
     private String rating;
+    private String image;
     private String menu;
 
     public Restaurant() {
@@ -26,6 +27,7 @@ public class Restaurant extends LiveData<User> implements Parcelable {
         category = in.readString();
         rating = in.readString();
         menu = in.readString();
+        image = in.readString();
     }
 
 
@@ -38,6 +40,7 @@ public class Restaurant extends LiveData<User> implements Parcelable {
             public static final String ADDRESS = "address";
             public static final String CATEGORY = "category";
             public static final String RATING = "rating";
+            public static final String IMAGE = "image";
             public static final String MENU = "menu";
         }
     }
@@ -90,6 +93,14 @@ public class Restaurant extends LiveData<User> implements Parcelable {
         this.menu = menu;
     }
 
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -102,6 +113,7 @@ public class Restaurant extends LiveData<User> implements Parcelable {
         dest.writeString(address);
         dest.writeString(category);
         dest.writeString(rating);
+        dest.writeString(image);
         dest.writeString(menu);
     }
 
