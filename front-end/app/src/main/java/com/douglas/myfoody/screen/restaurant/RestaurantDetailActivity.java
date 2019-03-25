@@ -24,12 +24,14 @@ import com.douglas.myfoody.screen.main.MainActivity;
  */
 public class RestaurantDetailActivity extends AppCompatActivity {
 
+    String location;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurant_detail);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.detail_toolbar);
-        setSupportActionBar(toolbar);
+//        Toolbar toolbar = (Toolbar) findViewById(R.id.detail_toolbar);
+//        //setSupportActionBar(toolbar);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -42,10 +44,10 @@ public class RestaurantDetailActivity extends AppCompatActivity {
         });
 
         // Show the Up button in the action bar.
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(true);
-        }
+//        ActionBar actionBar = getSupportActionBar();
+//        if (actionBar != null) {
+//            actionBar.setDisplayHomeAsUpEnabled(true);
+//        }
 
         // savedInstanceState is non-null when there is fragment state
         // saved from previous configurations of this activity
@@ -57,6 +59,8 @@ public class RestaurantDetailActivity extends AppCompatActivity {
         // http://developer.android.com/guide/components/fragments.html
         //
 
+        Intent intent = getIntent();
+        location = intent.getStringExtra("search_location");
 
         if (savedInstanceState == null) {
             // Create the detail fragment and add it to the activity

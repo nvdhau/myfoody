@@ -24,6 +24,7 @@ import android.view.MenuItem;
 import com.douglas.myfoody.R;
 
 import com.douglas.myfoody.core.models.Restaurant;
+import com.douglas.myfoody.screen.home.HomeActivity;
 import com.douglas.myfoody.screen.restaurant.dummy.DummyContent;
 import com.douglas.myfoody.screen.viewmodel.RestaurantViewModel;
 
@@ -52,22 +53,15 @@ public class RestaurantListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_restaurant_list);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
         toolbar.setTitle(getTitle());
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                startActivity(new Intent(view.getContext(), HomeActivity.class));
             }
         });
-        // Show the Up button in the action bar.
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(true);
-        }
 
         if (findViewById(R.id.restaurant_detail_container) != null) {
             // The detail container view will be present only in the
@@ -96,81 +90,14 @@ public class RestaurantListActivity extends AppCompatActivity {
         final RestaurantAdapter adapter = new RestaurantAdapter(this);
         recyclerView.setAdapter(adapter);
 
+        Intent intent = getIntent();
+        String searchLocation = intent.getStringExtra("search_location");
         mRestaurantViewModel = ViewModelProviders.of(this).get(RestaurantViewModel.class);
-        mRestaurantViewModel.findAllRestaurants().observe(this, new Observer<List<Restaurant>>() {
+        mRestaurantViewModel.findAllRestaurants(searchLocation).observe(this, new Observer<List<Restaurant>>() {
             @Override
             public void onChanged(@Nullable List<Restaurant> restaurantList) {
                 adapter.setRestaurants(restaurantList);
             }
         });
     }
-
-//    public static class SimpleItemRecyclerViewAdapter
-//            extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
-//
-//        private final RestaurantListActivity mParentActivity;
-//        private final List<DummyContent.DummyItem> mValues;
-//        private final boolean mTwoPane;
-//        private final View.OnClickListener mOnClickListener = new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                DummyContent.DummyItem item = (DummyContent.DummyItem) view.getTag();
-//                if (mTwoPane) {
-//                    Bundle arguments = new Bundle();
-//                    arguments.putString(RestaurantDetailFragment.ARG_ITEM_ID, item.id);
-//                    RestaurantDetailFragment fragment = new RestaurantDetailFragment();
-//                    fragment.setArguments(arguments);
-//                    mParentActivity.getSupportFragmentManager().beginTransaction()
-//                            .replace(R.id.restaurant_detail_container, fragment)
-//                            .commit();
-//                } else {
-//                    Context context = view.getContext();
-//                    Intent intent = new Intent(context, RestaurantDetailActivity.class);
-//                    intent.putExtra(RestaurantDetailFragment.ARG_ITEM_ID, item.id);
-//
-//                    context.startActivity(intent);
-//                }
-//            }
-//        };
-//
-//        SimpleItemRecyclerViewAdapter(RestaurantListActivity parent,
-//                                      List<DummyContent.DummyItem> items,
-//                                      boolean twoPane) {
-//            mValues = items;
-//            mParentActivity = parent;
-//            mTwoPane = twoPane;
-//        }
-//
-//        @Override
-//        public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-//            View view = LayoutInflater.from(parent.getContext())
-//                    .inflate(R.layout.restaurant_list_content, parent, false);
-//            return new ViewHolder(view);
-//        }
-//
-//        @Override
-//        public void onBindViewHolder(final ViewHolder holder, int position) {
-//            holder.mIdView.setText(mValues.get(position).id);
-//            holder.mContentView.setText(mValues.get(position).content);
-//
-//            holder.itemView.setTag(mValues.get(position));
-//            holder.itemView.setOnClickListener(mOnClickListener);
-//        }
-//
-//        @Override
-//        public int getItemCount() {
-//            return mValues.size();
-//        }
-//
-//        class ViewHolder extends RecyclerView.ViewHolder {
-//            final TextView mIdView;
-//            final TextView mContentView;
-//
-//            ViewHolder(View view) {
-//                super(view);
-//                mIdView = (TextView) view.findViewById(R.id.title_restaurant);
-//                mContentView = (TextView) view.findViewById(R.id.address_restaurant);
-//            }
-//        }
-//    }
 }

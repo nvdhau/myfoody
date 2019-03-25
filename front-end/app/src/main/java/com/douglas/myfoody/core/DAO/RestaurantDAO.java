@@ -73,6 +73,47 @@ public class RestaurantDAO implements BaseDAO<Restaurant> {
         return restaurants;
     }
 
+    public List<Restaurant> findAllByLocation(String location) {
+        List<Restaurant> restaurants = new ArrayList<>();
+        try {
+            String[] columns = {
+                    Restaurant.RESTAURANT_TABLE.TB_COL.ID, Restaurant.RESTAURANT_TABLE.TB_COL.NAME,
+                    Restaurant.RESTAURANT_TABLE.TB_COL.ADDRESS, Restaurant.RESTAURANT_TABLE.TB_COL.CATEGORY,
+                    Restaurant.RESTAURANT_TABLE.TB_COL.MENU, Restaurant.RESTAURANT_TABLE.TB_COL.RATING,
+                    Restaurant.RESTAURANT_TABLE.TB_COL.IMAGE
+            };
+
+            Cursor cursor = getReadDB().query(Restaurant.RESTAURANT_TABLE.TB_NAME, columns,
+                    Restaurant.RESTAURANT_TABLE.TB_COL.ADDRESS + " LIKE '%" + location+ "%'", null,
+                    null, null, null);
+
+            if (cursor.moveToFirst()) {
+                do {
+                    Restaurant restaurant = new Restaurant();
+                    restaurant.setID(cursor.getInt(0));
+                    restaurant.setName(cursor.getString(1));
+                    restaurant.setAddress(cursor.getString(2));
+                    restaurant.setCategory(cursor.getString(3));
+                    restaurant.setMenu(cursor.getString(4));
+                    restaurant.setRating(cursor.getString(5));
+                    restaurant.setImage(cursor.getString(6));
+                    restaurants.add(restaurant);
+                } while (cursor.moveToNext());
+            }
+
+            return restaurants;
+
+        } catch (Exception ex) {
+            // throw error message
+            System.out.println(ex.getMessage());
+        } finally {
+            // Closing database connection
+            getWriteDB().close();
+        }
+
+        return restaurants;
+    }
+
     @Override
     public Restaurant findById(int id) {
         Restaurant restaurant = null;

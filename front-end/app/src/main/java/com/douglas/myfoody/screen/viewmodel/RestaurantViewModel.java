@@ -33,8 +33,13 @@ public class RestaurantViewModel extends AndroidViewModel {
         }
     }
 
-    public LiveData<List<Restaurant>> findAllRestaurants() {
-        mAllRestaurants.setValue(restaurantRepository.findAll());
+    public LiveData<List<Restaurant>> findAllRestaurants(String location) {
+        if (location.isEmpty()) {
+            mAllRestaurants.setValue(restaurantRepository.findAll());
+        } else {
+            mAllRestaurants.setValue(restaurantRepository.findAllByLocation(location));
+        }
+
         return mAllRestaurants;
     }
 
