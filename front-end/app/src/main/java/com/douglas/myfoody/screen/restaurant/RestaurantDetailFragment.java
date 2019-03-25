@@ -7,10 +7,12 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.douglas.myfoody.R;
@@ -44,7 +46,12 @@ public class RestaurantDetailFragment extends Fragment {
 
     private RestaurantViewModel mRestaurantViewModel;
 
-    private Restaurant mRestaurant = new Restaurant();
+    private Restaurant mRestaurant;
+
+    private TextView mResCategory;
+    private TextView mResAddress;
+    private RatingBar mRating;
+    private RecyclerView mItemsRecylerView;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -54,15 +61,11 @@ public class RestaurantDetailFragment extends Fragment {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        final View rootView = inflater.inflate(R.layout.restaurant_detail, container, false);
 
         if (getArguments().containsKey(ARG_ITEM_ID)) {
-            // Load the dummy content specified by the fragment
-            // arguments. In a real-world scenario, use a Loader
-            // to load content from a content provider.
-//            mItem = DummyContent.ITEM_MAP.get(getArguments().getString(ARG_ITEM_ID));
-
             int restaurantID =  Integer.parseInt(getArguments().getString(ARG_ITEM_ID));
             mRestaurantViewModel = ViewModelProviders.of(this).get(RestaurantViewModel.class);
             mRestaurantViewModel.findRestaurantByID(restaurantID).observe(this, new Observer<Restaurant>() {
@@ -79,22 +82,25 @@ public class RestaurantDetailFragment extends Fragment {
                         image.setImageResource(imageResource);
                     }
 
+                    mResAddress = rootView.findViewById(R.id.address);
+                    mResAddress.setText(mRestaurant.getAddress());
+
+                    mResCategory = rootView.findViewById(R.id.category);
+                    mResCategory.setText(mRestaurant.getCategory());
+
+                    mRating = rootView.findViewById(R.id.ratingRestaurant);
+                    mRating.setRating(Float.parseFloat(mRestaurant.getRating()));
+
                     // get a list of menu items
+                    mItemsRecylerView = rootView.findViewById(R.id.restaurant_list_menu);
+                    final RestaurantMenuAdapter adapter = new RestaurantMenuAdapter(getContext());
+                    mItemsRecylerView.setAdapter(adapter);
+
                     List<MenuItem> menuItems = new ArrayList<>();
                     menuItems = JSONHelper.getMenuItemListsFromJSON(restaurant.getMenu());
+                    adapter.setMenuRestaurant(menuItems);
                 }
             });
-        }
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.restaurant_detail, container, false);
-
-        // Show the dummy content as text in a TextView.
-        if (mItem != null) {
-//            ((TextView) rootView.findViewById(R.id.restaurant_detail)).setText(mItem.details);
         }
 
         return rootView;

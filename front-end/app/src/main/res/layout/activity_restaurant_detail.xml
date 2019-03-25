@@ -30,7 +30,6 @@
                 android:layout_width="600dp"
                 android:layout_height="300dp"
                 android:layout_marginTop="4dp"
-                android:background="@drawable/rest_1"
                 android:padding="10dp" />
 
             <android.support.v7.widget.Toolbar
@@ -45,11 +44,14 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <android.support.v4.widget.NestedScrollView
+    <FrameLayout
         android:id="@+id/restaurant_detail_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <include layout="@layout/restaurant_detail" />
+    </FrameLayout>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
@@ -59,6 +61,5 @@
         android:layout_margin="@dimen/fab_margin"
         app:layout_anchor="@+id/restaurant_detail_container"
         app:layout_anchorGravity="top|end"
-        app:srcCompat="@android:drawable/stat_notify_chat" />
-
+        app:srcCompat="@drawable/home" />
 </android.support.design.widget.CoordinatorLayout>

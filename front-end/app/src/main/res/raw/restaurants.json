@@ -95,7 +95,7 @@
       "name":"American Cheesesteak Co.",
       "address":"4700 Kingsway E10, V5H 4M5 Vancouver",
       "rating":3.7,
-      "category":"Sandwiches",
+      "category":"Vietnamese,Asian",
       "image": "rest_2",
       "menus":{
         "menus":[
@@ -1277,7 +1277,7 @@
       "name":"Freshslice Pizza - E Hastings",
       "address":"2529 E Hastings St, V5K1Z2 Vancouver",
       "rating":4.1,
-      "category":"Pizza",
+      "category":"Japanese, pizza",
       "image": "rest_1",
       "menus":{
         "menus":[
