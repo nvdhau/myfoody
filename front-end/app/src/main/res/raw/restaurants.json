@@ -219,7 +219,7 @@
     },
     {
       "name":"Yaguchiya Ramen",
-      "address":"4679 Kingsway, V5H 2B3 Vancouver",
+      "address":"4679 Kingsway, V5H 2B3 Surrey",
       "rating":4.3,
       "category":"Japanese",
       "image": "rest_3",
@@ -877,7 +877,7 @@
     },
     {
       "name":"Pacific Poke - Burnaby",
-      "address":"4461 Lougheed Hwy, V5C 3Z2 Vancouver",
+      "address":"4461 Lougheed Hwy, V5C 3Z2 Surrey",
       "rating":4.3,
       "category":"Japanese",
       "image": "rest_2",
@@ -933,7 +933,7 @@
     },
     {
       "name":"Dae Ji Cutlet House",
-      "address":"4883 Kingsway, V5H 4T5 Vancouver",
+      "address":"4883 Kingsway, V5H 4T5 Surrey",
       "rating":4.3,
       "category":"Korean",
       "image": "rest_3",
@@ -1219,7 +1219,7 @@
     },
     {
       "name":"Riz Sushi & Poke",
-      "address":"2887 E Broadway, V5M 1Y9 Vancouver",
+      "address":"2887 E Broadway, V5M 1Y9 New Westminster",
       "rating":4.8,
       "category":"Japanese,Sushi",
       "image": "rest_4",
@@ -1275,7 +1275,7 @@
     },
     {
       "name":"Freshslice Pizza - E Hastings",
-      "address":"2529 E Hastings St, V5K1Z2 Vancouver",
+      "address":"2529 E Hastings St, V5K1Z2 New Westminster",
       "rating":4.1,
       "category":"Japanese, pizza",
       "image": "rest_1",
@@ -1391,7 +1391,7 @@
     },
     {
       "name":"Mordimi Bite of Italy",
-      "address":"2638 E Hastings, V5K 1Z6 Vancouver",
+      "address":"2638 E Hastings, V5K 1Z6 New Westminster",
       "rating":4,
       "category":"Pizza,Italian",
       "image": "rest_2",
