@@ -10,6 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity
+            android:name=".screen.restaurant.OrderActivity"
+            android:label="@string/title_activity_order"
+            android:parentActivityName=".screen.restaurant.RestaurantDetailActivity"
+            android:theme="@style/NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.douglas.myfoody.screen.restaurant.RestaurantDetailActivity" />
+        </activity>
+        <activity
             android:name=".screen.restaurant.RestaurantListActivity"
             android:label="@string/title_restaurant_list"
             android:parentActivityName=".screen.home.HomeActivity"

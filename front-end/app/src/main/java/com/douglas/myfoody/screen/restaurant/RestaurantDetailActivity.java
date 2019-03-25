@@ -12,6 +12,7 @@ import android.support.v7.app.ActionBar;
 import android.view.MenuItem;
 
 import com.douglas.myfoody.R;
+import com.douglas.myfoody.core.models.Order;
 import com.douglas.myfoody.screen.home.HomeActivity;
 import com.douglas.myfoody.screen.main.MainActivity;
 
@@ -88,6 +89,7 @@ public class RestaurantDetailActivity extends AppCompatActivity {
     }
 
     private void backToHome() {
-        super.onBackPressed(); // Still don't know how to back to Home instead of List of Restaurant
+        // pass Order Items into next Activity
+        startActivity(new Intent(this, OrderActivity.class));
     }
 }
