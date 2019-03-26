@@ -38,19 +38,23 @@ public class OrderViewModel extends AndroidViewModel {
         return mOrder;
     }
 
-    public void insert(Order order) {
+    public boolean insert(Order order) {
         if (!orderRepository.add(order)) {
             Toast.makeText(getApplication(), "Cannot create order!", Toast.LENGTH_SHORT).show();
+            return false;
         } else {
             setOrder(order);
+            return true;
         }
     }
 
-    public void update(Order order) {
+    public boolean update(Order order) {
         if (!orderRepository.update(order)) {
             Toast.makeText(getApplication(), "Cannot update order!", Toast.LENGTH_SHORT).show();
+            return false;
         } else {
             setOrder(order);
+            return true;
         }
     }
 }

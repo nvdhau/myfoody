@@ -27,4 +27,12 @@ public class PromotionViewModel extends AndroidViewModel {
     public boolean addDiscount(Promotion promotion, String email, String expiry) {
         return promotionRepository.insertDiscount(promotion, email, expiry);
     }
+
+    public List<Promotion> getUserDiscounts(String email) {
+        return promotionRepository.getUserDiscounts(email);
+    }
+
+    public boolean expireDiscount(Promotion data, String email) {
+        return promotionRepository.expireDiscount(data, email);
+    }
 }

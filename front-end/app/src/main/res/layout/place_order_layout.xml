@@ -6,7 +6,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="565dp"
+        android:layout_height="605dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:gravity="center_horizontal"
@@ -14,19 +14,27 @@
         android:padding="10sp">
 
         <TextView
-            android:id="@+id/textViewPlaceOrder"
+            android:id="@+id/textViewItemNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="5sp"
-            android:text="@string/place_order"
-            android:textSize="30sp" />
+            android:textAlignment="textEnd"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/textViewSubTotal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5sp"
+            android:textAlignment="textEnd"
+            android:textSize="24sp" />
 
         <View
             android:id="@+id/divider1"
             android:layout_width="match_parent"
             android:layout_height="5dp"
-            android:layout_marginBottom="10sp"
             android:layout_marginEnd="10sp"
+            android:layout_marginBottom="10sp"
             android:background="?android:attr/listDivider" />
 
         <TextView
@@ -50,8 +58,8 @@
             android:id="@+id/divider2"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginBottom="10sp"
             android:layout_marginEnd="10sp"
+            android:layout_marginBottom="10sp"
             android:background="?android:attr/listDivider" />
 
         <TextView
@@ -73,8 +81,8 @@
             android:id="@+id/divider3"
             android:layout_width="match_parent"
             android:layout_height="5dp"
-            android:layout_marginBottom="10sp"
             android:layout_marginEnd="10sp"
+            android:layout_marginBottom="10sp"
             android:background="?android:attr/listDivider" />
 
 
@@ -110,15 +118,16 @@
             android:id="@+id/divider4"
             android:layout_width="match_parent"
             android:layout_height="5dp"
-            android:layout_marginBottom="10sp"
             android:layout_marginEnd="10sp"
+            android:layout_marginBottom="10sp"
             android:background="?android:attr/listDivider" />
 
         <Button
             android:id="@+id/buttonPlaceOrder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/place_order" />
+            android:text="@string/place_order_to_payment"
+            android:textSize="24sp" />
 
     </LinearLayout>
 </RelativeLayout>

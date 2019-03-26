@@ -3,6 +3,7 @@ package com.douglas.myfoody.screen.restaurant;
 import android.app.Activity;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.os.Bundle;
@@ -47,6 +48,7 @@ public class RestaurantDetailFragment extends Fragment {
     private RestaurantViewModel mRestaurantViewModel;
 
     private Restaurant mRestaurant;
+    private ArrayList<MenuItem> mItems;
 
     private TextView mResCategory;
     private TextView mResAddress;
@@ -96,13 +98,27 @@ public class RestaurantDetailFragment extends Fragment {
                     final RestaurantMenuAdapter adapter = new RestaurantMenuAdapter(getContext());
                     mItemsRecylerView.setAdapter(adapter);
 
-                    List<MenuItem> menuItems = new ArrayList<>();
-                    menuItems = JSONHelper.getMenuItemListsFromJSON(restaurant.getMenu());
-                    adapter.setMenuRestaurant(menuItems);
+                    mItems = new ArrayList<>();
+                    mItems = new ArrayList<>(JSONHelper.getMenuItemListsFromJSON(restaurant.getMenu()));
+                    adapter.setMenuRestaurant(mItems);
                 }
             });
         }
 
         return rootView;
+    }
+
+    public boolean itemAddedToOrder() {
+        for(int i=0; i<mItems.size(); i++) {
+            if(mItems.get(i).getQuantity() > 0) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void addExtraToIntent(Intent intent) {
+        intent.putExtra("restaurant", mRestaurant);
+        intent.putExtra("items", mItems);
     }
 }

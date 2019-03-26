@@ -169,7 +169,7 @@ public class PromotionDAO implements BaseDAO<Promotion> {
         List<Promotion> promotions = new ArrayList<>();
 
         try {
-            String query = "SELECT " + Promotion.PROMOTION_TABLE.TB_COL.PROMOTION_CODE + ", "
+            String query = "SELECT p." + Promotion.PROMOTION_TABLE.TB_COL.PROMOTION_CODE + ", "
                                     + Promotion.PROMOTION_TABLE.TB_COL.DISCOUNT_AMOUNT + ", "
                                     + Promotion.PROMOTION_TABLE.TB_COL.DISCOUNT_TYPE + ", "
                                     + Promotion.DISCOUNT_TABLE.TB_COL.EXPIRY_DATE + " "

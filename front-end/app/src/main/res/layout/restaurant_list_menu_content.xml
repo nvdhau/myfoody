@@ -36,15 +36,39 @@
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
             />
 
-        <Button
-            android:id="@+id/addItem"
-            android:layout_width="70dp"
-            android:layout_gravity="right"
-            android:layout_height="40dp"
-            android:layout_marginEnd="5dp"
-            android:background="@color/colorPrimary"
-            android:drawableLeft="@android:drawable/ic_menu_add"
-            android:text="@string/addItem" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/minusItem"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="right"
+                android:layout_marginEnd="5dp"
+                android:background="@color/colorPrimary"
+                android:drawableLeft="@drawable/minus" />
+
+            <TextView
+                android:id="@+id/textViewItemQuantity"
+                android:layout_width="50dp"
+                android:layout_height="40dp"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"/>
+
+            <Button
+                android:id="@+id/addItem"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="right"
+                android:background="@color/colorPrimary"
+                android:drawableLeft="@drawable/add" />
+
+        </LinearLayout>
 
         <View
             android:layout_width="wrap_content"

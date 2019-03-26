@@ -22,6 +22,7 @@ import android.widget.Toast;
 
 import com.douglas.myfoody.R;
 import com.douglas.myfoody.core.models.User;
+import com.douglas.myfoody.core.utilities.Utils;
 import com.douglas.myfoody.screen.main.MainActivity;
 import com.douglas.myfoody.screen.orders.OrdersListFragment;
 import com.douglas.myfoody.screen.promotion.InviteFriendFragment;
@@ -65,6 +66,11 @@ public class HomeActivity extends AppCompatActivity
         Intent intent = getIntent();
         if (intent != null) {
             User parcelableUser = intent.getParcelableExtra("user");
+
+            if(parcelableUser == null) {
+                parcelableUser = Utils.getLoggedInUser();
+            }
+
             mUserViewModel = ViewModelProviders.of(this).get(UserViewModel.class);
             mUserViewModel.setUser(parcelableUser);
 
@@ -74,6 +80,9 @@ public class HomeActivity extends AppCompatActivity
             avatar.setText(parcelableUser.getFullName().toUpperCase().charAt(0) + "");
             TextView navUsername = (TextView) headerView.findViewById(R.id.username);
             navUsername.setText(parcelableUser.getFullName());
+
+            // Set user object to static class
+            Utils.setLoggedInUser(parcelableUser);
         }
     }
 
@@ -167,6 +176,7 @@ public class HomeActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_logout) {
             mUserViewModel.setUser(new User());//delete User object
+            Utils.setLoggedInUser(new User());
             startActivity(new Intent(this, MainActivity.class));//navigate to login
         }
 

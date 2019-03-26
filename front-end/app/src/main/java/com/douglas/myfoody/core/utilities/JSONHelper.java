@@ -20,8 +20,6 @@ public class JSONHelper {
             JSONObject obj = new JSONObject(jsonString);
             JSONArray restaurantsJSON = obj.getJSONArray("restaurants");
 
-//            System.out.println("JSON: Number of restaurants - " + restaurantsJSON.length());
-
             for (int i = 0; i < restaurantsJSON.length(); i++) {
                 JSONObject restaurantJSON = restaurantsJSON.getJSONObject(i);
 
@@ -32,8 +30,6 @@ public class JSONHelper {
                 restaurant.setCategory(restaurantJSON.getString("category"));
                 restaurant.setImage(restaurantJSON.getString("image"));
                 restaurant.setMenu(restaurantJSON.getString("menus"));
-
-//                System.out.println("JSON: " + restaurant.getName());
 
                 restaurants.add(restaurant);
             }
@@ -52,17 +48,11 @@ public class JSONHelper {
             JSONObject obj = new JSONObject(jsonString);
             JSONArray menusJSON = obj.getJSONArray("menus");
 
-            System.out.println("JSON: Number of menu items - " + menusJSON.length());
-
             for (int i = 0; i < menusJSON.length(); i++) {
                 JSONObject menuItemJSON = menusJSON.getJSONObject(i);
 
                 MenuItem menuItem = new MenuItem(menuItemJSON.getString("item_name"),
                         menuItemJSON.getString("description"), menuItemJSON.getDouble("price"));
-
-                System.out.println("JSON: " + menuItem.getItemName());
-                System.out.println("JSON: " + menuItem.getDescription());
-                System.out.println("JSON: " + menuItem.getPrice());
 
                 menus.add(menuItem);
             }
@@ -73,4 +63,41 @@ public class JSONHelper {
         return menus;
     }
 
+    public static String parseMenuItemsListToJSON(List<MenuItem> menuItems) {
+        JSONArray items = new JSONArray();
+        for(int i=0; i<menuItems.size(); i++) {
+            MenuItem item = menuItems.get(i);
+            JSONObject itemJSON = new JSONObject();
+            try {
+                itemJSON.put("item_name", item.getItemName());
+                itemJSON.put("description", item.getDescription());
+                itemJSON.put("price", item.getPrice());
+                itemJSON.put("quantity", item.getQuantity());
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            items.put(itemJSON);
+        }
+        return items.toString();
+    }
+
+    public static List<MenuItem> getItemListFromOrderDetail(String itemJSON) {
+        List<MenuItem> items = new ArrayList<>();
+
+        try {
+            JSONArray array = new JSONArray(itemJSON);
+            for (int i = 0; i < array.length(); i++) {
+                JSONObject menuItemJSON = array.getJSONObject(i);
+
+                MenuItem menuItem = new MenuItem(menuItemJSON.getString("item_name"),
+                        menuItemJSON.getString("description"), menuItemJSON.getDouble("price"));
+                menuItem.setQuantity(menuItemJSON.getInt("quantity"));
+                items.add(menuItem);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return items;
+    }
 }

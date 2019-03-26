@@ -3,8 +3,6 @@ package com.douglas.myfoody.screen.restaurant;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.NavUtils;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.support.v7.app.AppCompatActivity;
@@ -13,8 +11,7 @@ import android.view.MenuItem;
 
 import com.douglas.myfoody.R;
 import com.douglas.myfoody.core.models.Order;
-import com.douglas.myfoody.screen.home.HomeActivity;
-import com.douglas.myfoody.screen.main.MainActivity;
+import com.douglas.myfoody.screen.place_order.OrderActivity;
 
 /**
  * An activity representing a single Restaurant detail screen. This
@@ -31,16 +28,6 @@ public class RestaurantDetailActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.detail_toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own detail action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-                backToHome();
-            }
-        });
-
         // Show the Up button in the action bar.
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
@@ -56,20 +43,32 @@ public class RestaurantDetailActivity extends AppCompatActivity {
         //
         // http://developer.android.com/guide/components/fragments.html
         //
-
-
+        final RestaurantDetailFragment fragment = new RestaurantDetailFragment();
         if (savedInstanceState == null) {
             // Create the detail fragment and add it to the activity
             // using a fragment transaction.
             Bundle arguments = new Bundle();
             arguments.putString(RestaurantDetailFragment.ARG_ITEM_ID,
                     getIntent().getStringExtra(RestaurantDetailFragment.ARG_ITEM_ID));
-            RestaurantDetailFragment fragment = new RestaurantDetailFragment();
+
             fragment.setArguments(arguments);
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.restaurant_detail_container, fragment)
                     .commit();
         }
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(fragment.itemAddedToOrder()) {
+                    Intent intent = new Intent(RestaurantDetailActivity.this, OrderActivity.class);
+                    fragment.addExtraToIntent(intent);
+                    startActivity(intent);
+                }
+            }
+        });
+
     }
 
     @Override

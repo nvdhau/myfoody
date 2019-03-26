@@ -1,10 +1,12 @@
 package com.douglas.myfoody.core.models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.provider.BaseColumns;
 
-public class Promotion {
+public class Promotion implements Parcelable {
     private String promotionCode;
-    private float discountAmount;
+    private double discountAmount;
     private String discountType;
 
     public static final String DISCOUNT_TYPE_PERCENT = "Percent";
@@ -12,6 +14,36 @@ public class Promotion {
 
     public Promotion() {
 
+    }
+
+    protected Promotion(Parcel in) {
+        promotionCode = in.readString();
+        discountAmount = in.readDouble();
+        discountType = in.readString();
+    }
+
+    public static final Creator<Promotion> CREATOR = new Creator<Promotion>() {
+        @Override
+        public Promotion createFromParcel(Parcel in) {
+            return new Promotion(in);
+        }
+
+        @Override
+        public Promotion[] newArray(int size) {
+            return new Promotion[size];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(promotionCode);
+        dest.writeDouble(discountAmount);
+        dest.writeString(discountType);
     }
 
     // DEFINE TABLE PROMOTION
@@ -45,11 +77,11 @@ public class Promotion {
         this.promotionCode = promotionCode;
     }
 
-    public float getDiscountAmount() {
+    public double getDiscountAmount() {
         return discountAmount;
     }
 
-    public void setDiscountAmount(float discountAmount) {
+    public void setDiscountAmount(double discountAmount) {
         this.discountAmount = discountAmount;
     }
 
@@ -59,5 +91,15 @@ public class Promotion {
 
     public void setDiscountType(String discountType) {
         this.discountType = discountType;
+    }
+
+    public double getDiscountAmount(double subtotal) {
+        double discount = 0.0;
+        if(DISCOUNT_TYPE_PERCENT.equals(discountType)) {
+            discount = subtotal * discountAmount / 100.0;
+        } else if(DISCOUNT_TYPE_FLAT.equals(discountType)) {
+            discount = Math.min(subtotal, discountAmount);
+        }
+        return discount;
     }
 }

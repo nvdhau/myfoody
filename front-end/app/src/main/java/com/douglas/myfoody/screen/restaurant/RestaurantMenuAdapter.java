@@ -23,15 +23,17 @@ public class RestaurantMenuAdapter extends RecyclerView.Adapter<RestaurantMenuAd
     class RestaurantMenuViewHolder extends RecyclerView.ViewHolder {
         private final TextView menuName;
         private final TextView menuDesc;
+        private final TextView itemQuantity;
         private final Button addItem;
-//        private final RatingBar ratingBar;
-//        private final ImageView imageView;
+        private final Button minusItem;
 
         private RestaurantMenuViewHolder(View itemView) {
             super(itemView);
             menuName = itemView.findViewById(R.id.menu_name);
             menuDesc = itemView.findViewById(R.id.menu_description);
+            itemQuantity = itemView.findViewById(R.id.textViewItemQuantity);
             addItem = itemView.findViewById(R.id.addItem);
+            minusItem = itemView.findViewById(R.id.minusItem);
         }
     }
 
@@ -42,15 +44,15 @@ public class RestaurantMenuAdapter extends RecyclerView.Adapter<RestaurantMenuAd
     private final View.OnClickListener mOnClickListener = new View.OnClickListener() {
     @Override
     public void onClick(View view) {
+        MenuItem item = mMenuRestaurants.get((int) view.getTag());
+        if(view.getId() == R.id.addItem) {
+            item.setQuantity(item.getQuantity() + 1);
+        } else if(view.getId() == R.id.minusItem) {
+            if(item.getQuantity() > 0)
+                item.setQuantity(item.getQuantity() - 1);
+        }
 
-        // add order item here
-
-
-//        Restaurant restaurant = (Restaurant) view.getTag();
-//        Context context = view.getContext();
-//        Intent intent = new Intent(context, RestaurantDetailActivity.class);
-//        intent.putExtra(RestaurantDetailFragment.ARG_ITEM_ID, String.valueOf(restaurant.getID()));
-//        context.startActivity(intent);
+        notifyDataSetChanged();
     }
 };
 
@@ -72,8 +74,11 @@ public class RestaurantMenuAdapter extends RecyclerView.Adapter<RestaurantMenuAd
             MenuItem current = mMenuRestaurants.get(position);
             holder.menuName.setText(current.getItemName() + " ($" +current.getPrice() + ")");
             holder.menuDesc.setText(current.getDescription());
+            holder.itemQuantity.setText(""+current.getQuantity());
             holder.addItem.setOnClickListener(mOnClickListener);
-            holder.itemView.setTag(mMenuRestaurants.get(position));
+            holder.minusItem.setOnClickListener(mOnClickListener);
+            holder.addItem.setTag(position);
+            holder.minusItem.setTag(position);
         } else {
             // Covers the case of data not being ready yet.
             holder.menuName.setText("No Item");

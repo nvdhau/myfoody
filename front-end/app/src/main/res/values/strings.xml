@@ -32,6 +32,7 @@
     <string name="listRestaurantTitle">List of Restaurant Nearby</string>
     <string name="menuItems">*** Menu ***</string>
     <string name="addItem">Add</string>
+    <string name="removeItem">Remove</string>
     <string name="searchBtn">SEARCH NEAR BY</string>
     <string name="strDone">Done</string>
     <string name="place_order">Place Order</string>
@@ -47,10 +48,11 @@
     <string name="place_order_total">Total: $</string>
     <string name="place_order_delivery">Delivery Option</string>
     <string-array name="delivery_options">
-        <item>Delivery</item>
         <item>Pick Up</item>
+        <item>Delivery</item>
     </string-array>
     <string name="place_order_delivery_to">Delivery Address</string>
+    <string name="place_order_to_payment">To Payment</string>
     <string name="place_order_payment">Payment</string>
     <string name="place_order_payment_card_name">Name on Card</string>
     <string name="place_order_payment_card_number">Card Number</string>

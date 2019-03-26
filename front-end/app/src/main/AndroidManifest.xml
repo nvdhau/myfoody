@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity
-            android:name=".screen.restaurant.OrderActivity"
+            android:name=".screen.place_order.OrderActivity"
             android:label="@string/title_activity_order"
             android:parentActivityName=".screen.restaurant.RestaurantDetailActivity"
             android:theme="@style/NoActionBar">

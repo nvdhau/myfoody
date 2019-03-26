@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.douglas.myfoody.core.models.Order;
 import com.douglas.myfoody.core.models.Promotion;
 import com.douglas.myfoody.core.models.Restaurant;
 import com.douglas.myfoody.core.models.User;
@@ -128,6 +129,24 @@ public class AppDatabase extends SQLiteOpenHelper {
             ex.printStackTrace();
         }
         // Tables for Restaurant - End
+
+        // Table for Order - Start
+        database.execSQL("CREATE TABLE " + Order.ORDER_TABLE.TB_NAME + "(" +
+                Order.ORDER_TABLE.TB_COL.ID + " integer primary key, " +
+                Order.ORDER_TABLE.TB_COL.USER_EMAIL + ", " +
+                Order.ORDER_TABLE.TB_COL.RESTAURANT_ID + " integer, " +
+                Order.ORDER_TABLE.TB_COL.ITEMS_JSON + ", " +
+                Order.ORDER_TABLE.TB_COL.DELIVERY_ADDRESS + ", " +
+                Order.ORDER_TABLE.TB_COL.SPECIAL_INSTRUCTION + ", " +
+                Order.ORDER_TABLE.TB_COL.SUB_TOTAL + " real, " +
+                Order.ORDER_TABLE.TB_COL.DELIVERY_FEE + " real, " +
+                Order.ORDER_TABLE.TB_COL.DISCOUNT + " real, " +
+                Order.ORDER_TABLE.TB_COL.TAX + " real, " +
+                Order.ORDER_TABLE.TB_COL.TOTAL + " real, " +
+                Order.ORDER_TABLE.TB_COL.CREATED_AT +
+                ")"
+        );
+        // Table for Order - End
 
         // Tables for Promotions - Start
         database.execSQL("CREATE TABLE " + Promotion.PROMOTION_TABLE.TB_NAME + "(" +

@@ -61,5 +61,5 @@
         android:layout_margin="@dimen/fab_margin"
         app:layout_anchor="@+id/restaurant_detail_container"
         app:layout_anchorGravity="top|end"
-        app:srcCompat="@drawable/home" />
+        app:srcCompat="@drawable/place_order" />
 </android.support.design.widget.CoordinatorLayout>

@@ -18,7 +18,6 @@ public class Order extends LiveData<Order> implements Parcelable {
     private double tax;
     private double total;
     private String createdAt;
-    private String status; // "S": Started, "I": In-Progress, "C": Completed
 
     public Order() {
 
@@ -37,12 +36,11 @@ public class Order extends LiveData<Order> implements Parcelable {
         tax = in.readDouble();
         total = in.readDouble();
         createdAt = in.readString();
-        status = in.readString();
     }
 
     // DEFINE TABLE ORDER
     public static final class ORDER_TABLE {
-        public static final String TB_NAME = "order";
+        public static final String TB_NAME = "orderdetail";
 
         public static final class TB_COL implements BaseColumns {
             public static final String ID = "id";
@@ -57,7 +55,6 @@ public class Order extends LiveData<Order> implements Parcelable {
             public static final String TAX = "tax";
             public static final String TOTAL = "total";
             public static final String CREATED_AT = "createdAt";
-            public static final String STATUS = "status";
         }
     }
     public int getID() {
@@ -156,14 +153,6 @@ public class Order extends LiveData<Order> implements Parcelable {
         this.createdAt = createdAt;
     }
 
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
     @Override
     public int describeContents() {
         return 0;
@@ -183,7 +172,6 @@ public class Order extends LiveData<Order> implements Parcelable {
         dest.writeDouble(tax);
         dest.writeDouble(total);
         dest.writeString(createdAt);
-        dest.writeString(status);
     }
 
     public static final Creator<Order> CREATOR = new Creator<Order>() {

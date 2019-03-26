@@ -1,5 +1,7 @@
 package com.douglas.myfoody.core.utilities;
 
+import com.douglas.myfoody.core.models.User;
+
 import java.text.ParseException;
 import java.util.Date;
 import java.text.SimpleDateFormat;
@@ -18,7 +20,7 @@ public class Utils {
 
     public static boolean checkExpired(Date d) {
         Date today = getToday();
-        if(d.after(today))
+        if(today.after(d))
             return true;
         else
             return false;
@@ -32,5 +34,15 @@ public class Utils {
             e.printStackTrace();
         }
         return false;
+    }
+
+    private static User loggedInUser;
+
+    public static User getLoggedInUser() {
+        return loggedInUser;
+    }
+
+    public static void setLoggedInUser(User user) {
+        loggedInUser = user;
     }
 }
