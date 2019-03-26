@@ -10,7 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity
-            android:name=".screen.place_order.OrderActivity"
             android:name=".screen.orders.OrderListActivity"
             android:label="@string/title_order_list"
             android:parentActivityName=".screen.home.HomeActivity"
@@ -29,7 +28,7 @@
                 android:value="com.douglas.myfoody.screen.orders.OrderListActivity" />
         </activity>
         <activity
-            android:name=".screen.restaurant.OrderActivity"
+            android:name=".screen.place_order.OrderActivity"
             android:label="@string/title_activity_order"
             android:parentActivityName=".screen.restaurant.RestaurantDetailActivity"
             android:theme="@style/NoActionBar">
