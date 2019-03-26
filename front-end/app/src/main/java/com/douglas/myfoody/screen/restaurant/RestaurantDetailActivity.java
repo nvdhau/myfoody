@@ -11,6 +11,7 @@ import android.view.MenuItem;
 
 import com.douglas.myfoody.R;
 import com.douglas.myfoody.core.models.Order;
+import com.douglas.myfoody.screen.login_signup.MyToast;
 import com.douglas.myfoody.screen.place_order.OrderActivity;
 
 /**
@@ -71,6 +72,10 @@ public class RestaurantDetailActivity extends AppCompatActivity {
                     Intent intent = new Intent(RestaurantDetailActivity.this, OrderActivity.class);
                     fragment.addExtraToIntent(intent);
                     startActivity(intent);
+                } else {
+                    // display Toast message
+                    new MyToast().showToast(RestaurantDetailActivity.this, view,
+                            "There are no items in your cart!");
                 }
             }
         });
