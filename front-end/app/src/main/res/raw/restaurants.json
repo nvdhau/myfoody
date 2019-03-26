@@ -40,7 +40,7 @@
           },
           {
             "item_name":"Buy 12 Get 2",
-            "description":null,
+            "description":"",
             "price":3
           },
           {
@@ -65,7 +65,7 @@
           },
           {
             "item_name":"Bottled Water",
-            "description":null,
+            "description":"",
             "price":2
           },
           {
@@ -75,7 +75,7 @@
           },
           {
             "item_name":"White Coffee",
-            "description":null,
+            "description":"",
             "price":2.25
           },
           {
@@ -146,12 +146,12 @@
           },
           {
             "item_name":"Chicken Fingers and Fries with Dip",
-            "description":null,
+            "description":"",
             "price":8
           },
           {
             "item_name":"Extra Dip",
-            "description":null,
+            "description":"",
             "price":1
           },
           {
@@ -171,7 +171,7 @@
           },
           {
             "item_name":"Onion Rings",
-            "description":null,
+            "description":"",
             "price":4.5
           },
           {
@@ -181,7 +181,7 @@
           },
           {
             "item_name":"Side Salad",
-            "description":null,
+            "description":"",
             "price":4.5
           },
           {
@@ -206,12 +206,12 @@
           },
           {
             "item_name":"Nestea",
-            "description":null,
+            "description":"",
             "price":2.5
           },
           {
             "item_name":"Soft Drinks",
-            "description":null,
+            "description":"",
             "price":2.5
           }
         ]
@@ -219,7 +219,7 @@
     },
     {
       "name":"Yaguchiya Ramen",
-      "address":"4679 Kingsway, V5H 2B3 Vancouver",
+      "address":"4679 Kingsway, V5H 2B3 Surrey",
       "rating":4.3,
       "category":"Japanese",
       "image": "rest_3",
@@ -257,7 +257,7 @@
           },
           {
             "item_name":"White Rice",
-            "description":null,
+            "description":"",
             "price":2
           },
           {
@@ -302,17 +302,17 @@
           },
           {
             "item_name":"Soft Drink",
-            "description":null,
+            "description":"",
             "price":2.5
           },
           {
             "item_name":"Orange Juice",
-            "description":null,
+            "description":"",
             "price":2.5
           },
           {
             "item_name":"Sparkling Water",
-            "description":null,
+            "description":"",
             "price":2.5
           }
         ]
@@ -338,137 +338,137 @@
           },
           {
             "item_name":"Taiwanese Meat Sauce With Rice",
-            "description":null,
+            "description":"",
             "price":7.99
           },
           {
             "item_name":"Fried Buns With Condensed Milk",
-            "description":null,
+            "description":"",
             "price":5.59
           },
           {
             "item_name":"Marinated Beef Trip",
-            "description":null,
+            "description":"",
             "price":7.99
           },
           {
             "item_name":"Braised Beef Tendon",
-            "description":null,
+            "description":"",
             "price":7.99
           },
           {
             "item_name":"Cucumber With Sauce",
-            "description":null,
+            "description":"",
             "price":4.99
           },
           {
             "item_name":"Marinated Egg",
-            "description":null,
+            "description":"",
             "price":1.99
           },
           {
             "item_name":"Marinated Beef Muscle",
-            "description":null,
+            "description":"",
             "price":7.99
           },
           {
             "item_name":"Marinated Pork Ear",
-            "description":null,
+            "description":"",
             "price":5.99
           },
           {
             "item_name":"Marinated Dry Tofu",
-            "description":null,
+            "description":"",
             "price":4.99
           },
           {
             "item_name":"Shredded Tofu With Sauce",
-            "description":null,
+            "description":"",
             "price":4.99
           },
           {
             "item_name":"Milky Bubble Tea",
-            "description":null,
+            "description":"",
             "price":5.99
           },
           {
             "item_name":"Milky Taro Tea",
-            "description":null,
+            "description":"",
             "price":5.99
           },
           {
             "item_name":"Milky Malt Tea",
-            "description":null,
+            "description":"",
             "price":5.99
           },
           {
             "item_name":"Milky Papaya Tea",
-            "description":null,
+            "description":"",
             "price":5.99
           },
           {
             "item_name":"Milky Honey Tea",
-            "description":null,
+            "description":"",
             "price":5.99
           },
           {
             "item_name":"Mocha Malt Tea",
-            "description":null,
+            "description":"",
             "price":5.99
           },
           {
             "item_name":"Lemon",
-            "description":null,
+            "description":"",
             "price":4.99
           },
           {
             "item_name":"Honey",
-            "description":null,
+            "description":"",
             "price":4.99
           },
           {
             "item_name":"Lychee",
-            "description":null,
+            "description":"",
             "price":4.99
           },
           {
             "item_name":"Passion Fruit",
-            "description":null,
+            "description":"",
             "price":4.99
           },
           {
             "item_name":"Peach",
-            "description":null,
+            "description":"",
             "price":4.99
           },
           {
             "item_name":"Soybean Milk",
-            "description":null,
+            "description":"",
             "price":4.99
           },
           {
             "item_name":"Sweet Soybean Milk",
-            "description":null,
+            "description":"",
             "price":4.99
           },
           {
             "item_name":"Coke",
-            "description":null,
+            "description":"",
             "price":2
           },
           {
             "item_name":"7-UP",
-            "description":null,
+            "description":"",
             "price":2
           },
           {
             "item_name":"Red Bean Porridge",
-            "description":null,
+            "description":"",
             "price":4.99
           },
           {
             "item_name":"Millet Congee",
-            "description":null,
+            "description":"",
             "price":4.99
           }
         ]
@@ -484,392 +484,392 @@
         "menus":[
           {
             "item_name":"Honey Green Tea",
-            "description":null,
+            "description":"",
             "price":4.25
           },
           {
             "item_name":"Honey Black Tea",
-            "description":null,
+            "description":"",
             "price":4.25
           },
           {
             "item_name":"Honey Lemon Green Tea",
-            "description":null,
+            "description":"",
             "price":4.75
           },
           {
             "item_name":"Honey Lemon Black Tea",
-            "description":null,
+            "description":"",
             "price":4.75
           },
           {
             "item_name":"Iced Honey Citron Tea",
-            "description":null,
+            "description":"",
             "price":4.95
           },
           {
             "item_name":"Lychee Green Tea",
-            "description":null,
+            "description":"",
             "price":5.25
           },
           {
             "item_name":"Pineapple Green Tea",
-            "description":null,
+            "description":"",
             "price":5.25
           },
           {
             "item_name":"Mango Green Tea",
-            "description":null,
+            "description":"",
             "price":5.25
           },
           {
             "item_name":"Peach Green Tea",
-            "description":null,
+            "description":"",
             "price":5.25
           },
           {
             "item_name":"Strawberry Green Tea",
-            "description":null,
+            "description":"",
             "price":5.25
           },
           {
             "item_name":"Passion Fruit Green Tea",
-            "description":null,
+            "description":"",
             "price":5.25
           },
           {
             "item_name":"Iced Honey Ginger Lemon Tea",
-            "description":null,
+            "description":"",
             "price":5.25
           },
           {
             "item_name":"Red Bean Milk",
-            "description":null,
+            "description":"",
             "price":4.95
           },
           {
             "item_name":"Fresh Taro Milk",
-            "description":null,
+            "description":"",
             "price":4.95
           },
           {
             "item_name":"Avocado Milk",
-            "description":null,
+            "description":"",
             "price":5.75
           },
           {
             "item_name":"Papaya Milk",
-            "description":null,
+            "description":"",
             "price":5.75
           },
           {
             "item_name":"Mango Milk",
-            "description":null,
+            "description":"",
             "price":5.95
           },
           {
             "item_name":"Strawberry Milk",
-            "description":null,
+            "description":"",
             "price":5.95
           },
           {
             "item_name":"Taro Bubble Milk Tea",
-            "description":null,
+            "description":"",
             "price":4.95
           },
           {
             "item_name":"Honeydew Bubble Milk Tea",
-            "description":null,
+            "description":"",
             "price":4.95
           },
           {
             "item_name":"Coconut Bubble Milk Tea",
-            "description":null,
+            "description":"",
             "price":4.95
           },
           {
             "item_name":"Almond Bubble Milk Tea",
-            "description":null,
+            "description":"",
             "price":4.95
           },
           {
             "item_name":"Pudding Bubble Milk Tea",
-            "description":null,
+            "description":"",
             "price":4.95
           },
           {
             "item_name":"Chocolate Bubble Milk Tea",
-            "description":null,
+            "description":"",
             "price":4.95
           },
           {
             "item_name":"Mint Chocolate Bubble Milk Tea",
-            "description":null,
+            "description":"",
             "price":4.95
           },
           {
             "item_name":"Original Black Milk Tea",
-            "description":null,
+            "description":"",
             "price":5
           },
           {
             "item_name":"Jasmine Green Milk Tea",
-            "description":null,
+            "description":"",
             "price":5
           },
           {
             "item_name":"Malt Milk Tea",
-            "description":null,
+            "description":"",
             "price":5.2
           },
           {
             "item_name":"Honey Milk Tea",
-            "description":null,
+            "description":"",
             "price":5.2
           },
           {
             "item_name":"Vanilla Milk Tea",
-            "description":null,
+            "description":"",
             "price":5.2
           },
           {
             "item_name":"Caramel Milk Tea",
-            "description":null,
+            "description":"",
             "price":5.2
           },
           {
             "item_name":"Hazelnut Milk Tea",
-            "description":null,
+            "description":"",
             "price":5.2
           },
           {
             "item_name":"Malt Green Milk Tea",
-            "description":null,
+            "description":"",
             "price":5.2
           },
           {
             "item_name":"Honey Green Milk Tea",
-            "description":null,
+            "description":"",
             "price":5.2
           },
           {
             "item_name":"Coffee Milk Tea",
-            "description":null,
+            "description":"",
             "price":5.5
           },
           {
             "item_name":"Hojicha Milk Tea",
-            "description":null,
+            "description":"",
             "price":5.5
           },
           {
             "item_name":"Squeezed Lemon Slush",
-            "description":null,
+            "description":"",
             "price":5.25
           },
           {
             "item_name":"Lychee Slush",
-            "description":null,
+            "description":"",
             "price":5.75
           },
           {
             "item_name":"Pineapple Slush",
-            "description":null,
+            "description":"",
             "price":5.75
           },
           {
             "item_name":"Passion Fruit Slush",
-            "description":null,
+            "description":"",
             "price":5.75
           },
           {
             "item_name":"Strawberry Slush",
-            "description":null,
+            "description":"",
             "price":5.95
           },
           {
             "item_name":"Blueberry Slush",
-            "description":null,
+            "description":"",
             "price":5.95
           },
           {
             "item_name":"Mango Slush",
-            "description":null,
+            "description":"",
             "price":5.95
           },
           {
             "item_name":"Strawberry Lemon Slush",
-            "description":null,
+            "description":"",
             "price":5.95
           },
           {
             "item_name":"Mango Banana Slush",
-            "description":null,
+            "description":"",
             "price":5.95
           },
           {
             "item_name":"Strawberry Mango Slush",
-            "description":null,
+            "description":"",
             "price":5.95
           },
           {
             "item_name":"Mango Peach Slush",
-            "description":null,
+            "description":"",
             "price":5.95
           },
           {
             "item_name":"Strawberry Black Tea Slush",
-            "description":null,
+            "description":"",
             "price":5.95
           },
           {
             "item_name":"Strawberry Natural Yoghurt Smoothie",
-            "description":null,
+            "description":"",
             "price":5.95
           },
           {
             "item_name":"Mango Natural Yoghurt Smoothie",
-            "description":null,
+            "description":"",
             "price":5.95
           },
           {
             "item_name":"Honey Natural Yoghurt Smoothie",
-            "description":null,
+            "description":"",
             "price":5.95
           },
           {
             "item_name":"Blueberry Natural Yoghurt Smoothie",
-            "description":null,
+            "description":"",
             "price":6.25
           },
           {
             "item_name":"Taro Milk Slush",
-            "description":null,
+            "description":"",
             "price":5.25
           },
           {
             "item_name":"Honeydew Milk Slush",
-            "description":null,
+            "description":"",
             "price":5.25
           },
           {
             "item_name":"Coconut Milk Slush",
-            "description":null,
+            "description":"",
             "price":5.25
           },
           {
             "item_name":"Almond Milk Slush",
-            "description":null,
+            "description":"",
             "price":5.25
           },
           {
             "item_name":"Pudding Milk Slush",
-            "description":null,
+            "description":"",
             "price":5.25
           },
           {
             "item_name":"Chocolate Milk Slush",
-            "description":null,
+            "description":"",
             "price":5.25
           },
           {
             "item_name":"Choco Pudding and Malt Milk Slush",
-            "description":null,
+            "description":"",
             "price":5.25
           },
           {
             "item_name":"Pina Colada Slush",
-            "description":null,
+            "description":"",
             "price":5.75
           },
           {
             "item_name":"Strawberry Colada Slush",
-            "description":null,
+            "description":"",
             "price":5.75
           },
           {
             "item_name":"Mango Colada Slush",
-            "description":null,
+            "description":"",
             "price":5.75
           },
           {
             "item_name":"Oreo Ice Cream Smoothie",
-            "description":null,
+            "description":"",
             "price":5.25
           },
           {
             "item_name":"Vanilla Ice Cream Smoothie",
-            "description":null,
+            "description":"",
             "price":5.25
           },
           {
             "item_name":"Milk Tea Ice Cream Smoothie",
-            "description":null,
+            "description":"",
             "price":5.25
           },
           {
             "item_name":"Jasmine Green Milk Tea Ice Cream Smoothie",
-            "description":null,
+            "description":"",
             "price":5.25
           },
           {
             "item_name":"Hojicha Milk Tea Ice Cream Smoothie",
-            "description":null,
+            "description":"",
             "price":5.5
           },
           {
             "item_name":"Matcha Green Tea Ice Cream Smoothie",
-            "description":null,
+            "description":"",
             "price":5.95
           },
           {
             "item_name":"Strawberry Ice Cream Smoothie",
-            "description":null,
+            "description":"",
             "price":5.95
           },
           {
             "item_name":"Mango Ice Cream Smoothie",
-            "description":null,
+            "description":"",
             "price":5.95
           },
           {
             "item_name":"Matcha Green Tea with Red Bean Ice Cream Smoothie",
-            "description":null,
+            "description":"",
             "price":6.25
           },
           {
             "item_name":"Blueberry Ice Cream Smoothie",
-            "description":null,
+            "description":"",
             "price":6.25
           },
           {
             "item_name":"Coffee Espresso Smoothie",
-            "description":null,
+            "description":"",
             "price":5.25
           },
           {
             "item_name":"Mocha Espresso Smoothie",
-            "description":null,
+            "description":"",
             "price":5.5
           },
           {
             "item_name":"Vanilla  Espresso Smoothie",
-            "description":null,
+            "description":"",
             "price":5.5
           },
           {
             "item_name":"Caramel Espresso Smoothie",
-            "description":null,
+            "description":"",
             "price":5.5
           },
           {
             "item_name":"Hazelnut Espresso Smoothie",
-            "description":null,
+            "description":"",
             "price":5.5
           },
           {
             "item_name":"Oreo Espresso Smoothie",
-            "description":null,
+            "description":"",
             "price":5.75
           }
         ]
@@ -877,7 +877,7 @@
     },
     {
       "name":"Pacific Poke - Burnaby",
-      "address":"4461 Lougheed Hwy, V5C 3Z2 Vancouver",
+      "address":"4461 Lougheed Hwy, V5C 3Z2 Surrey",
       "rating":4.3,
       "category":"Japanese",
       "image": "rest_2",
@@ -933,7 +933,7 @@
     },
     {
       "name":"Dae Ji Cutlet House",
-      "address":"4883 Kingsway, V5H 4T5 Vancouver",
+      "address":"4883 Kingsway, V5H 4T5 Surrey",
       "rating":4.3,
       "category":"Korean",
       "image": "rest_3",
@@ -941,32 +941,32 @@
         "menus":[
           {
             "item_name":"Steamed Egg",
-            "description":null,
+            "description":"",
             "price":6.99
           },
           {
             "item_name":"Poutine",
-            "description":null,
+            "description":"",
             "price":8.99
           },
           {
             "item_name":"Sweet Corn Cheese",
-            "description":null,
+            "description":"",
             "price":8.99
           },
           {
             "item_name":"Spicy Cheese Rice Cake",
-            "description":null,
+            "description":"",
             "price":14.99
           },
           {
             "item_name":"Pork Cutlet A la carte",
-            "description":null,
+            "description":"",
             "price":17.99
           },
           {
             "item_name":"Assorted Cutlets",
-            "description":null,
+            "description":"",
             "price":19.99
           },
           {
@@ -1171,47 +1171,47 @@
           },
           {
             "item_name":"Fried Egg",
-            "description":null,
+            "description":"",
             "price":0.99
           },
           {
             "item_name":"Kimchi",
-            "description":null,
+            "description":"",
             "price":0.99
           },
           {
             "item_name":"Miso Soup",
-            "description":null,
+            "description":"",
             "price":0.99
           },
           {
             "item_name":"Rice",
-            "description":null,
+            "description":"",
             "price":1.99
           },
           {
             "item_name":"Kimchi Soup",
-            "description":null,
+            "description":"",
             "price":1.99
           },
           {
             "item_name":"Pop and Miso Soup",
-            "description":null,
+            "description":"",
             "price":2.5
           },
           {
             "item_name":"Pop and Kimchi Soup",
-            "description":null,
+            "description":"",
             "price":3.5
           },
           {
             "item_name":"French Fries",
-            "description":null,
+            "description":"",
             "price":5.99
           },
           {
             "item_name":"Pop",
-            "description":null,
+            "description":"",
             "price":1.99
           }
         ]
@@ -1219,7 +1219,7 @@
     },
     {
       "name":"Riz Sushi & Poke",
-      "address":"2887 E Broadway, V5M 1Y9 Vancouver",
+      "address":"2887 E Broadway, V5M 1Y9 New Westminster",
       "rating":4.8,
       "category":"Japanese,Sushi",
       "image": "rest_4",
@@ -1227,7 +1227,7 @@
         "menus":[
           {
             "item_name":"Miso Soup",
-            "description":null,
+            "description":"",
             "price":1.25
           },
           {
@@ -1247,27 +1247,27 @@
           },
           {
             "item_name":"3 Scoops Large Fish",
-            "description":null,
+            "description":"",
             "price":13
           },
           {
             "item_name":"2 Scoops Regular Fish",
-            "description":null,
+            "description":"",
             "price":10.5
           },
           {
             "item_name":"Coke",
-            "description":null,
+            "description":"",
             "price":1.5
           },
           {
             "item_name":"Sprite",
-            "description":null,
+            "description":"",
             "price":1.5
           },
           {
             "item_name":"Iced Tea",
-            "description":null,
+            "description":"",
             "price":1.5
           }
         ]
@@ -1275,7 +1275,7 @@
     },
     {
       "name":"Freshslice Pizza - E Hastings",
-      "address":"2529 E Hastings St, V5K1Z2 Vancouver",
+      "address":"2529 E Hastings St, V5K1Z2 New Westminster",
       "rating":4.1,
       "category":"Japanese, pizza",
       "image": "rest_1",
@@ -1323,22 +1323,22 @@
           },
           {
             "item_name":"Hawaiian Feast",
-            "description":null,
+            "description":"",
             "price":6.79
           },
           {
             "item_name":"Combo Feast",
-            "description":null,
+            "description":"",
             "price":6.99
           },
           {
             "item_name":"Create Your Own Personal Pizza",
-            "description":null,
+            "description":"",
             "price":5.99
           },
           {
             "item_name":"Dipping Sauce",
-            "description":null,
+            "description":"",
             "price":0.69
           },
           {
@@ -1358,32 +1358,32 @@
           },
           {
             "item_name":"Apple Juice",
-            "description":null,
+            "description":"",
             "price":1.43
           },
           {
             "item_name":"Bottled Water",
-            "description":null,
+            "description":"",
             "price":1.99
           },
           {
             "item_name":"Gatorade (Blue)",
-            "description":null,
+            "description":"",
             "price":2.62
           },
           {
             "item_name":"Pepsi Bottle (Small)",
-            "description":null,
+            "description":"",
             "price":2.32
           },
           {
             "item_name":"Pepsi Bottle (Large)",
-            "description":null,
+            "description":"",
             "price":2.99
           },
           {
             "item_name":"Pure Leaf Iced Tea",
-            "description":null,
+            "description":"",
             "price":2.99
           }
         ]
@@ -1391,7 +1391,7 @@
     },
     {
       "name":"Mordimi Bite of Italy",
-      "address":"2638 E Hastings, V5K 1Z6 Vancouver",
+      "address":"2638 E Hastings, V5K 1Z6 New Westminster",
       "rating":4,
       "category":"Pizza,Italian",
       "image": "rest_2",
@@ -1469,17 +1469,17 @@
           },
           {
             "item_name":"Traditional",
-            "description":null,
+            "description":"",
             "price":12.5
           },
           {
             "item_name":"Bigne",
-            "description":null,
+            "description":"",
             "price":5
           },
           {
             "item_name":"Pop",
-            "description":null,
+            "description":"",
             "price":3.5
           },
           {

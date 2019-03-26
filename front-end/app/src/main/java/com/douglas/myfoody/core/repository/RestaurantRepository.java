@@ -19,6 +19,10 @@ public class RestaurantRepository implements BaseRepository<Restaurant> {
         return restaurantDAO.findAll();
     }
 
+    public List<Restaurant> findAllByLocation(String location) {
+        return restaurantDAO.findAllByLocation(location);
+    }
+
     @Override
     public Restaurant findById(int id) {
         return restaurantDAO.findById(id);

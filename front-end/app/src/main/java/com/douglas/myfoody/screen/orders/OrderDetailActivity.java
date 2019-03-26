@@ -1,8 +1,9 @@
-package com.douglas.myfoody.screen.restaurant;
+package com.douglas.myfoody.screen.orders;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.support.v7.app.AppCompatActivity;
@@ -10,31 +11,36 @@ import android.support.v7.app.ActionBar;
 import android.view.MenuItem;
 
 import com.douglas.myfoody.R;
-import com.douglas.myfoody.core.models.Order;
-import com.douglas.myfoody.screen.place_order.OrderActivity;
 
 /**
- * An activity representing a single Restaurant detail screen. This
+ * An activity representing a single Order detail screen. This
  * activity is only used on narrow width devices. On tablet-size devices,
  * item details are presented side-by-side with a list of items
- * in a {@link RestaurantListActivity}.
+ * in a {@link OrderListActivity}.
  */
-public class RestaurantDetailActivity extends AppCompatActivity {
-
-    String location;
+public class OrderDetailActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_restaurant_detail);
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.detail_toolbar);
-//        //setSupportActionBar(toolbar);
+        setContentView(R.layout.activity_order_detail);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.detail_toolbar);
+        setSupportActionBar(toolbar);
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own detail action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
 
         // Show the Up button in the action bar.
-//        ActionBar actionBar = getSupportActionBar();
-//        if (actionBar != null) {
-//            actionBar.setDisplayHomeAsUpEnabled(true);
-//        }
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
 
         // savedInstanceState is non-null when there is fragment state
         // saved from previous configurations of this activity
@@ -45,36 +51,18 @@ public class RestaurantDetailActivity extends AppCompatActivity {
         //
         // http://developer.android.com/guide/components/fragments.html
         //
-
-        Intent intent = getIntent();
-        location = intent.getStringExtra("search_location");
-
-        final RestaurantDetailFragment fragment = new RestaurantDetailFragment();
         if (savedInstanceState == null) {
             // Create the detail fragment and add it to the activity
             // using a fragment transaction.
             Bundle arguments = new Bundle();
-            arguments.putString(RestaurantDetailFragment.ARG_ITEM_ID,
-                    getIntent().getStringExtra(RestaurantDetailFragment.ARG_ITEM_ID));
-
+            arguments.putString(OrderDetailFragment.ARG_ITEM_ID,
+                    getIntent().getStringExtra(OrderDetailFragment.ARG_ITEM_ID));
+            OrderDetailFragment fragment = new OrderDetailFragment();
             fragment.setArguments(arguments);
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.restaurant_detail_container, fragment)
+                    .add(R.id.order_detail_container, fragment)
                     .commit();
         }
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(fragment.itemAddedToOrder()) {
-                    Intent intent = new Intent(RestaurantDetailActivity.this, OrderActivity.class);
-                    fragment.addExtraToIntent(intent);
-                    startActivity(intent);
-                }
-            }
-        });
-
     }
 
     @Override
@@ -87,14 +75,9 @@ public class RestaurantDetailActivity extends AppCompatActivity {
             //
             // http://developer.android.com/design/patterns/navigation.html#up-vs-back
             //
-            navigateUpTo(new Intent(this, RestaurantListActivity.class));
+            navigateUpTo(new Intent(this, OrderListActivity.class));
             return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    private void backToHome() {
-        // pass Order Items into next Activity
-        startActivity(new Intent(this, OrderActivity.class));
     }
 }

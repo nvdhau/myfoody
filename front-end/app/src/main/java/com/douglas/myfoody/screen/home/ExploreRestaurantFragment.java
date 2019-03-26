@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.douglas.myfoody.R;
 import com.douglas.myfoody.core.models.User;
@@ -59,7 +60,10 @@ public class ExploreRestaurantFragment extends Fragment implements OnClickListen
 //                fragmentManager.beginTransaction()
 //                        .replace(R.id.homeFrameContainer, new ListRestaurantFragment(),
 //                                "List_Restaurant_Fragment").commit();
-                startActivity(new Intent(getActivity(), RestaurantListActivity.class));
+                TextView searchLocation = view.findViewById(R.id.search_restaurant);
+                Intent intent = new Intent(getActivity(), RestaurantListActivity.class);
+                intent.putExtra("search_location", searchLocation.getText().toString());
+                startActivity(intent);
                 break;
         }
 

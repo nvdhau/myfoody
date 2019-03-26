@@ -29,6 +29,7 @@
     <string name="changePasswordTitle">CHANGE PASSWORD</string>
     <string name="userInfoTitle">USER INFO</string>
     <string name="exploreRestaurantTitle">EXPLORE RESTAURANT</string>
+    <string name="orderHistory">Order Histories</string>
     <string name="listRestaurantTitle">List of Restaurant Nearby</string>
     <string name="menuItems">*** Menu ***</string>
     <string name="addItem">Add</string>
@@ -72,4 +73,6 @@
     <string name="title_restaurant_list">Restaurants</string>
     <string name="title_restaurant_detail">Restaurant Detail</string>
     <string name="title_activity_order">OrderActivity</string>
+    <string name="title_order_list">Orders</string>
+    <string name="title_order_detail">Order Detail</string>
 </resources>
