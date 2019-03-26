@@ -24,7 +24,6 @@ import com.douglas.myfoody.R;
 import com.douglas.myfoody.core.models.User;
 import com.douglas.myfoody.core.utilities.Utils;
 import com.douglas.myfoody.screen.main.MainActivity;
-import com.douglas.myfoody.screen.orders.OrderListActivity;
 import com.douglas.myfoody.screen.promotion.InviteFriendFragment;
 import com.douglas.myfoody.screen.viewmodel.UserViewModel;
 
@@ -157,9 +156,7 @@ public class HomeActivity extends AppCompatActivity
                             "User_Info_Fragment").commit();
 
         } else if (id == R.id.nav_my_orders) {
-            Intent intent = new Intent(this, OrderListActivity.class);
-            // should pass user object to get the history
-            startActivity(intent);
+
 
         } else if (id == R.id.nav_invite_friend) {
             fragmentManager.beginTransaction()
