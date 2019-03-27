@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_horizontal|center_vertical"
+    android:padding="20sp"
     android:orientation="vertical">
 
     <TextView
@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="5sp"
         android:textAlignment="textEnd"
+        android:padding="10dp"
         android:textSize="24sp" />
 
     <TextView
@@ -20,6 +21,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="5sp"
         android:textAlignment="textEnd"
+        android:padding="10dp"
         android:textSize="24sp" />
 
     <View
@@ -33,29 +35,38 @@
     <TextView
         android:id="@+id/textViewInstruction"
         android:layout_width="match_parent"
-        android:layout_height="46dp"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="5sp"
         android:text="@string/place_order_instruction"
-        android:textSize="24sp" />
+        android:padding="10dp"
+        android:textSize="20sp" />
 
     <EditText
         android:id="@+id/editTextInstructions"
-        android:layout_width="match_parent"
+        android:layout_width="fill_parent"
         android:layout_height="94dp"
-        android:ems="10"
         android:hint="@string/place_order_instruction"
         android:inputType="textMultiLine"
-        android:textAlignment="viewStart"
-        android:textSize="24sp"
-        tools:ignore="AutoFill" />
+        android:ems="10"
+        android:layout_marginTop="5dp"
+        android:background="@android:color/transparent"
+        android:drawablePadding="8dp"
+        android:gravity="center_vertical"
+        android:padding="20dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textSize="18sp"
+        tools:ignore="AutoFill"
+        />
 
     <View
         android:id="@+id/divider2"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="5dp"
         android:layout_marginEnd="10sp"
         android:layout_marginBottom="10sp"
         android:background="?android:attr/listDivider" />
+
 
     <TextView
         android:id="@+id/textViewDiscountCode"
@@ -63,13 +74,15 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="5sp"
         android:text="@string/place_order_promotion"
-        android:textSize="24sp" />
+        android:padding="10dp"
+        android:textSize="20sp" />
 
     <Spinner
         android:id="@+id/spinnerDiscountCodes"
-        android:layout_width="match_parent"
+        android:layout_width="fill_parent"
         android:layout_height="50dp"
         android:entries="@array/discount_code"
+        android:padding="10dp"
         android:spinnerMode="dialog" />
 
     <View
@@ -85,33 +98,54 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/place_order_delivery"
-        android:textSize="24sp" />
+        android:padding="10dp"
+        android:textSize="20sp" />
 
     <Spinner
         android:id="@+id/spinnerDeliveryOptions"
         android:layout_width="match_parent"
         android:layout_height="50sp"
+        android:padding="10dp"
         android:entries="@array/delivery_options" />
+
+    <View
+        android:id="@+id/divider4"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_marginEnd="10sp"
+        android:layout_marginBottom="10sp"
+        android:background="?android:attr/listDivider" />
+
 
     <TextView
         android:id="@+id/textViewDeliveryTo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/place_order_delivery_to"
-        android:textSize="24sp" />
+        android:padding="10dp"
+        android:textSize="20sp" />
 
     <EditText
         android:id="@+id/editTextDeliveryTo"
-        android:layout_width="match_parent"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/place_order_delivery_to"
         android:inputType="textPersonName"
-        android:textSize="24sp"
-        tools:ignore="AutoFill" />
+        android:layout_marginTop="5dp"
+        android:background="@android:color/transparent"
+        android:drawablePadding="8dp"
+        android:gravity="center_vertical"
+        android:padding="20dp"
+        android:singleLine="true"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textSize="16sp"
+        tools:ignore="AutoFill"
+        />
 
     <View
-        android:id="@+id/divider4"
+        android:id="@+id/divider5"
         android:layout_width="match_parent"
         android:layout_height="5dp"
         android:layout_marginEnd="10sp"
@@ -122,6 +156,7 @@
         android:id="@+id/buttonPlaceOrder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+
         android:text="@string/place_order_to_payment"
         android:textSize="24sp" />
 
