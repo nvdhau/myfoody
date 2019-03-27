@@ -12,7 +12,9 @@ import android.widget.TextView;
 import com.douglas.myfoody.R;
 import com.douglas.myfoody.core.models.Order;
 
+import java.text.NumberFormat;
 import java.util.List;
+import java.util.Locale;
 
 public class MyOrdersAdapter extends RecyclerView.Adapter<MyOrdersAdapter.MyOrdersViewHolder> {
 
@@ -66,10 +68,11 @@ public class MyOrdersAdapter extends RecyclerView.Adapter<MyOrdersAdapter.MyOrde
     public void onBindViewHolder(MyOrdersAdapter.MyOrdersViewHolder holder, int position) {
         if (mOrders != null) {
             Order current = mOrders.get(position);
+            NumberFormat format = NumberFormat.getCurrencyInstance(Locale.CANADA);
 
             holder.restaurantNameView.setText(current.getRestaurantName());
             holder.orderDateView.setText("Date: " + current.getCreatedAt());
-            holder.totalView.setText("Total: $" + current.getTotal());
+            holder.totalView.setText("Total: " + format.format(current.getTotal()));
 
             holder.itemView.setTag(mOrders.get(position));
             holder.itemView.setOnClickListener(mOnClickListener);
