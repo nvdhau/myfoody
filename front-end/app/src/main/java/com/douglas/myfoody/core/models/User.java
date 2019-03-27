@@ -16,7 +16,6 @@ public class User extends LiveData<User> implements Parcelable {
     private String address;
     private String orderCount;
     private String createAt;
-    private String isLoggedIn;
 
     public User() {
 
@@ -32,7 +31,6 @@ public class User extends LiveData<User> implements Parcelable {
         address = in.readString();
         orderCount = in.readString();
         createAt = in.readString();
-        isLoggedIn = in.readString();
     }
 
     // DEFINE TABLE USER
@@ -48,7 +46,6 @@ public class User extends LiveData<User> implements Parcelable {
             public static final String ADDRESS = "address";
             public static final String ORDER_COUNT= "order_count";
             public static final String CREATED_AT = "create_at";
-            public static final String IS_LOGGED_IN = "is_logged_in";
         }
     }
 
@@ -116,14 +113,6 @@ public class User extends LiveData<User> implements Parcelable {
         this.createAt = createAt;
     }
 
-    public String isLoggedIn() {
-        return isLoggedIn;
-    }
-
-    public void setLoggedIn(String loggedIn) {
-        isLoggedIn = loggedIn;
-    }
-
     @Override
     public int describeContents() {
         return 0;
@@ -139,7 +128,6 @@ public class User extends LiveData<User> implements Parcelable {
         dest.writeString(address);
         dest.writeString(orderCount);
         dest.writeString(createAt);
-        dest.writeString(isLoggedIn);
     }
 
     public static final Creator<User> CREATOR = new Creator<User>() {

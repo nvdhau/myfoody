@@ -67,6 +67,12 @@ public class MyOrdersFragment extends Fragment {
                     .getName());
         }
 
+        if(myOrders.isEmpty()) {
+            Order emptyOrder = new Order();
+            emptyOrder.setID(-1);
+            myOrders.add(emptyOrder);
+        }
+
         adapter.setOrders(myOrders);
     }
 }

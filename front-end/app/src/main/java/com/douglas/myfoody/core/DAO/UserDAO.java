@@ -46,7 +46,7 @@ public class UserDAO implements BaseDAO<User> {
                     User.USER_TABLE.TB_COL.ID, User.USER_TABLE.TB_COL.EMAIL,
                     User.USER_TABLE.TB_COL.PASSWORD, User.USER_TABLE.TB_COL.FULL_NAME,
                     User.USER_TABLE.TB_COL.PHONE, User.USER_TABLE.TB_COL.ADDRESS,
-                    User.USER_TABLE.TB_COL.ORDER_COUNT, User.USER_TABLE.TB_COL.IS_LOGGED_IN,
+                    User.USER_TABLE.TB_COL.ORDER_COUNT,
             };
 
             Cursor cursor = getReadDB().query(User.USER_TABLE.TB_NAME, columns,
@@ -62,7 +62,6 @@ public class UserDAO implements BaseDAO<User> {
                 user.setPhone(cursor.getString(4));
                 user.setAddress(cursor.getString(5));
                 user.setOrderCount(cursor.getString(6));
-                user.setLoggedIn(cursor.getString(7));
                 return user;
             }
 
@@ -88,7 +87,6 @@ public class UserDAO implements BaseDAO<User> {
             values.put(User.USER_TABLE.TB_COL.PHONE, user.getPhone());
             values.put(User.USER_TABLE.TB_COL.ADDRESS, user.getAddress());
             values.put(User.USER_TABLE.TB_COL.ORDER_COUNT, user.getOrderCount());
-            values.put(User.USER_TABLE.TB_COL.IS_LOGGED_IN, "false"); // default
 
             // Inserting Row
             long result = getWriteDB().insert(User.USER_TABLE.TB_NAME, null, values);

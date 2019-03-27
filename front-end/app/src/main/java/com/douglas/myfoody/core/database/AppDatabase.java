@@ -60,8 +60,7 @@ public class AppDatabase extends SQLiteOpenHelper {
                 User.USER_TABLE.TB_COL.PHONE + ", " +
                 User.USER_TABLE.TB_COL.ADDRESS + ", " +
                 User.USER_TABLE.TB_COL.ORDER_COUNT + ", " +
-                User.USER_TABLE.TB_COL.CREATED_AT + ", " +
-                User.USER_TABLE.TB_COL.IS_LOGGED_IN +
+                User.USER_TABLE.TB_COL.CREATED_AT +
                 ")"
         );
 
@@ -87,7 +86,6 @@ public class AppDatabase extends SQLiteOpenHelper {
             values.put(User.USER_TABLE.TB_COL.PHONE, "123456789");
             values.put(User.USER_TABLE.TB_COL.ADDRESS, "Douglas College");
             values.put(User.USER_TABLE.TB_COL.ORDER_COUNT, "0");
-            values.put(User.USER_TABLE.TB_COL.IS_LOGGED_IN, "false"); // default
 
             // Inserting Row
             if (database.insert(User.USER_TABLE.TB_NAME, null, values) <= 0)

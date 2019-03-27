@@ -66,8 +66,9 @@ public class MyOrdersAdapter extends RecyclerView.Adapter<MyOrdersAdapter.MyOrde
 
     @Override
     public void onBindViewHolder(MyOrdersAdapter.MyOrdersViewHolder holder, int position) {
-        if (mOrders != null) {
-            Order current = mOrders.get(position);
+        Order current = mOrders.get(position);
+
+        if (current.getID() > 0) {
             NumberFormat format = NumberFormat.getCurrencyInstance(Locale.CANADA);
 
             holder.restaurantNameView.setText(current.getRestaurantName());
@@ -80,6 +81,8 @@ public class MyOrdersAdapter extends RecyclerView.Adapter<MyOrdersAdapter.MyOrde
         } else {
             // Covers the case of data not being ready yet.
             holder.restaurantNameView.setText("No orders yet!");
+            holder.orderDateView.setText("");
+            holder.totalView.setText("");
         }
     }
 
