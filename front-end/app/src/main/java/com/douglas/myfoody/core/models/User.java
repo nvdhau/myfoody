@@ -14,7 +14,6 @@ public class User extends LiveData<User> implements Parcelable {
     private String fullName;
     private String phone;
     private String address;
-    private String orderCount;
     private String createAt;
 
     public User() {
@@ -29,7 +28,6 @@ public class User extends LiveData<User> implements Parcelable {
         fullName = in.readString();
         phone = in.readString();
         address = in.readString();
-        orderCount = in.readString();
         createAt = in.readString();
     }
 
@@ -44,7 +42,6 @@ public class User extends LiveData<User> implements Parcelable {
             public static final String FULL_NAME = "full_name";
             public static final String PHONE = "phone";
             public static final String ADDRESS = "address";
-            public static final String ORDER_COUNT= "order_count";
             public static final String CREATED_AT = "create_at";
         }
     }
@@ -97,14 +94,6 @@ public class User extends LiveData<User> implements Parcelable {
         this.address = address;
     }
 
-    public String getOrderCount() {
-        return orderCount;
-    }
-
-    public void setOrderCount(String orderCount) {
-        this.orderCount = orderCount;
-    }
-
     public String getCreateAt() {
         return createAt;
     }
@@ -126,7 +115,6 @@ public class User extends LiveData<User> implements Parcelable {
         dest.writeString(fullName);
         dest.writeString(phone);
         dest.writeString(address);
-        dest.writeString(orderCount);
         dest.writeString(createAt);
     }
 

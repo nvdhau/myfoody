@@ -59,7 +59,6 @@ public class AppDatabase extends SQLiteOpenHelper {
                 User.USER_TABLE.TB_COL.FULL_NAME + ", " +
                 User.USER_TABLE.TB_COL.PHONE + ", " +
                 User.USER_TABLE.TB_COL.ADDRESS + ", " +
-                User.USER_TABLE.TB_COL.ORDER_COUNT + ", " +
                 User.USER_TABLE.TB_COL.CREATED_AT +
                 ")"
         );
@@ -80,12 +79,11 @@ public class AppDatabase extends SQLiteOpenHelper {
         // Tables for User - Start
         try {
             ContentValues values = new ContentValues();
-            values.put(User.USER_TABLE.TB_COL.EMAIL, "admin@gmail.com");
+            values.put(User.USER_TABLE.TB_COL.EMAIL, "user@gmail.com");
             values.put(User.USER_TABLE.TB_COL.PASSWORD, "123");
-            values.put(User.USER_TABLE.TB_COL.FULL_NAME, "Admin");
+            values.put(User.USER_TABLE.TB_COL.FULL_NAME, "User");
             values.put(User.USER_TABLE.TB_COL.PHONE, "123456789");
             values.put(User.USER_TABLE.TB_COL.ADDRESS, "Douglas College");
-            values.put(User.USER_TABLE.TB_COL.ORDER_COUNT, "0");
 
             // Inserting Row
             if (database.insert(User.USER_TABLE.TB_NAME, null, values) <= 0)
