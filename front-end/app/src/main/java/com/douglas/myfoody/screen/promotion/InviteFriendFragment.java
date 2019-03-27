@@ -1,6 +1,5 @@
 package com.douglas.myfoody.screen.promotion;
 
-import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -11,16 +10,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.douglas.myfoody.R;
 import com.douglas.myfoody.core.models.Promotion;
 import com.douglas.myfoody.core.models.User;
-import com.douglas.myfoody.core.repository.PromotionRepository;
 import com.douglas.myfoody.screen.viewmodel.PromotionViewModel;
 import com.douglas.myfoody.screen.viewmodel.UserViewModel;
-
-import java.util.regex.Pattern;
 
 public class InviteFriendFragment extends Fragment implements View.OnClickListener {
     private static final String INVITE_CODE = "INVITE10";

@@ -4,13 +4,9 @@ import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
-import android.widget.Toast;
 
-import com.douglas.myfoody.core.DAO.RestaurantDAO;
 import com.douglas.myfoody.core.models.Restaurant;
-import com.douglas.myfoody.core.models.User;
 import com.douglas.myfoody.core.repository.RestaurantRepository;
-import com.douglas.myfoody.core.repository.UserRepository;
 
 import java.util.List;
 

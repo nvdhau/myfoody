@@ -44,6 +44,9 @@ public class AppDatabase extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + User.USER_TABLE.TB_NAME);
         db.execSQL("DROP TABLE IF EXISTS " + Restaurant.RESTAURANT_TABLE.TB_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + Order.ORDER_TABLE.TB_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + Promotion.PROMOTION_TABLE.TB_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + Promotion.DISCOUNT_TABLE.TB_NAME);
         onCreate(db);
     }
 

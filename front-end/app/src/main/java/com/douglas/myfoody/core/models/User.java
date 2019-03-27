@@ -2,7 +2,6 @@ package com.douglas.myfoody.core.models;
 
 
 import android.arch.lifecycle.LiveData;
-import android.content.Intent;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.provider.BaseColumns;

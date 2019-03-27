@@ -1,16 +1,10 @@
 package com.douglas.myfoody.screen.login_signup;
 
 
-import com.douglas.myfoody.R;
-import com.douglas.myfoody.core.models.User;
-import com.douglas.myfoody.screen.main.MainActivity;
-import com.douglas.myfoody.screen.viewmodel.UserViewModel;
-
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -20,7 +14,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import static android.support.v4.content.ContextCompat.getSystemService;
+import com.douglas.myfoody.R;
+import com.douglas.myfoody.core.models.User;
+import com.douglas.myfoody.screen.main.MainActivity;
+import com.douglas.myfoody.screen.viewmodel.UserViewModel;
 
 
 public class SignUpFragment extends Fragment implements OnClickListener {

@@ -20,8 +20,6 @@ import com.douglas.myfoody.screen.login_signup.MyToast;
 import com.douglas.myfoody.screen.viewmodel.OrderViewModel;
 import com.douglas.myfoody.screen.viewmodel.PromotionViewModel;
 
-import org.w3c.dom.Text;
-
 public class OrderPaymentFragment extends Fragment implements View.OnClickListener {
     private static View view;
     private static FragmentManager fragmentManager;

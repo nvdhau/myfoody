@@ -1,19 +1,15 @@
 package com.douglas.myfoody.screen.restaurant;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.douglas.myfoody.R;
 import com.douglas.myfoody.core.models.MenuItem;
-import com.douglas.myfoody.core.models.Restaurant;
 
 import java.util.List;
 
@@ -42,19 +38,19 @@ public class RestaurantMenuAdapter extends RecyclerView.Adapter<RestaurantMenuAd
     private Context context;
 
     private final View.OnClickListener mOnClickListener = new View.OnClickListener() {
-    @Override
-    public void onClick(View view) {
-        MenuItem item = mMenuRestaurants.get((int) view.getTag());
-        if(view.getId() == R.id.addItem) {
-            item.setQuantity(item.getQuantity() + 1);
-        } else if(view.getId() == R.id.minusItem) {
-            if(item.getQuantity() > 0)
-                item.setQuantity(item.getQuantity() - 1);
-        }
+        @Override
+        public void onClick(View view) {
+            MenuItem item = mMenuRestaurants.get((int) view.getTag());
+            if(view.getId() == R.id.addItem) {
+                item.setQuantity(item.getQuantity() + 1);
+            } else if(view.getId() == R.id.minusItem) {
+                if(item.getQuantity() > 0)
+                    item.setQuantity(item.getQuantity() - 1);
+            }
 
-        notifyDataSetChanged();
-    }
-};
+            notifyDataSetChanged();
+        }
+    };
 
     public RestaurantMenuAdapter(Context context) {
         mInflater = LayoutInflater.from(context);

@@ -71,8 +71,6 @@ public class UserInfoFragment extends Fragment {
         //disable edit texts
         for (EditText editText : editTextInputs)
             UIHelper.disableEditText(editText);
-
-        // add more field here ???
     }
 
     @Override
@@ -93,15 +91,6 @@ public class UserInfoFragment extends Fragment {
                     currentUser.setEmail(email.getText().toString());
                     currentUser.setPhone(mobileNumber.getText().toString());
                     currentUser.setAddress(location.getText().toString());
-
-//                System.out.println("USER: " + currentUser.getID());
-//                System.out.println("USER: " + currentUser.getFullName());
-//                System.out.println("USER: " + currentUser.getEmail());
-//                System.out.println("USER: " + currentUser.getPassword());
-//                System.out.println("USER: " + currentUser.getAddress());
-//                System.out.println("USER: " + currentUser.getOrderCount());
-//                System.out.println("USER: " + currentUser.getCreateAt());
-//                System.out.println("USER: " + currentUser.isLoggedIn());
 
                     if(mUserViewModel.updateUser(currentUser)){//update success
                         mUserViewModel.setUser(currentUser);

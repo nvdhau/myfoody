@@ -6,7 +6,6 @@ import android.support.annotation.NonNull;
 
 import com.douglas.myfoody.core.models.Promotion;
 import com.douglas.myfoody.core.repository.PromotionRepository;
-import com.douglas.myfoody.core.repository.UserRepository;
 
 import java.util.List;
 

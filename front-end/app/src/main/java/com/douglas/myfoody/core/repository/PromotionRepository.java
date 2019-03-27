@@ -2,7 +2,6 @@ package com.douglas.myfoody.core.repository;
 
 import android.app.Application;
 
-import com.douglas.myfoody.core.DAO.OrderDAO;
 import com.douglas.myfoody.core.DAO.PromotionDAO;
 import com.douglas.myfoody.core.models.Promotion;
 

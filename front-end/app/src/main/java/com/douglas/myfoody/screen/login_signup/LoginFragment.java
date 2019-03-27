@@ -1,7 +1,5 @@
 package com.douglas.myfoody.screen.login_signup;
 
-
-
 import com.douglas.myfoody.R;
 import com.douglas.myfoody.core.models.User;
 import android.arch.lifecycle.Observer;
@@ -93,9 +91,6 @@ public class LoginFragment extends Fragment implements OnClickListener {
                 }
                 break;
             case R.id.createAccount:
-//                fragmentManager.beginTransaction()
-//                               .replace(R.id.frameContainer, new SignUpFragment(), "SignUpFragment")
-//                               .commit();
                 MainActivity.signupFragment();
                 break;
         }

@@ -3,14 +3,11 @@ package com.douglas.myfoody.screen.restaurant;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.app.ActionBar;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.douglas.myfoody.R;
-import com.douglas.myfoody.core.models.Order;
 import com.douglas.myfoody.screen.login_signup.MyToast;
 import com.douglas.myfoody.screen.place_order.OrderActivity;
 
@@ -28,14 +25,11 @@ public class RestaurantDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurant_detail);
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.detail_toolbar);
-//        //setSupportActionBar(toolbar);
 
-        // Show the Up button in the action bar.
-//        ActionBar actionBar = getSupportActionBar();
-//        if (actionBar != null) {
-//            actionBar.setDisplayHomeAsUpEnabled(true);
-//        }
+        Intent intent = getIntent();
+        location = intent.getStringExtra("search_location");
+
+        final RestaurantDetailFragment fragment = new RestaurantDetailFragment();
 
         // savedInstanceState is non-null when there is fragment state
         // saved from previous configurations of this activity
@@ -46,11 +40,6 @@ public class RestaurantDetailActivity extends AppCompatActivity {
         //
         // http://developer.android.com/guide/components/fragments.html
         //
-
-        Intent intent = getIntent();
-        location = intent.getStringExtra("search_location");
-
-        final RestaurantDetailFragment fragment = new RestaurantDetailFragment();
         if (savedInstanceState == null) {
             // Create the detail fragment and add it to the activity
             // using a fragment transaction.

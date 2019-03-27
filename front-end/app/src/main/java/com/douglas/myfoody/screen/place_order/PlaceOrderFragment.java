@@ -9,11 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.douglas.myfoody.R;
 import com.douglas.myfoody.core.models.MenuItem;
@@ -148,6 +146,9 @@ public class PlaceOrderFragment extends Fragment implements View.OnClickListener
                 // TODO: calculate delivery fee
                 mOrder.setDeliveryFee(10.0);
             }
+        } else {
+            mOrder.setDeliveryAddress("Pick Up");
+            mOrder.setDeliveryFee(0.0);
         }
 
         String promotionOption = (String) ((Spinner) view.findViewById(R.id.spinnerDiscountCodes)).getSelectedItem();

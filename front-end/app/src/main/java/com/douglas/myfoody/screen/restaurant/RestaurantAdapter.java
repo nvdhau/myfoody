@@ -39,16 +39,16 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
     private Context context;
 
     private final View.OnClickListener mOnClickListener = new View.OnClickListener() {
-    @Override
-    public void onClick(View view) {
+        @Override
+        public void onClick(View view) {
 
-        Restaurant restaurant = (Restaurant) view.getTag();
-        Context context = view.getContext();
-        Intent intent = new Intent(context, RestaurantDetailActivity.class);
-        intent.putExtra(RestaurantDetailFragment.ARG_ITEM_ID, String.valueOf(restaurant.getID()));
-        context.startActivity(intent);
-    }
-};
+            Restaurant restaurant = (Restaurant) view.getTag();
+            Context context = view.getContext();
+            Intent intent = new Intent(context, RestaurantDetailActivity.class);
+            intent.putExtra(RestaurantDetailFragment.ARG_ITEM_ID, String.valueOf(restaurant.getID()));
+            context.startActivity(intent);
+        }
+    };
 
     public RestaurantAdapter(Context context) {
         mInflater = LayoutInflater.from(context);

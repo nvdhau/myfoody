@@ -1,11 +1,8 @@
 package com.douglas.myfoody.screen.home;
 
 
-import android.arch.lifecycle.Observer;
-import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
@@ -16,11 +13,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.douglas.myfoody.R;
-import com.douglas.myfoody.core.models.User;
-//import com.douglas.myfoody.screen.restaurant.ListRestaurantActivity;
 import com.douglas.myfoody.screen.restaurant.RestaurantListActivity;
 import com.douglas.myfoody.screen.viewmodel.UserViewModel;
-
 
 public class ExploreRestaurantFragment extends Fragment implements OnClickListener {
     private static View view;
@@ -56,10 +50,6 @@ public class ExploreRestaurantFragment extends Fragment implements OnClickListen
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.exploreBtn:
-                // get address and display restaurants
-//                fragmentManager.beginTransaction()
-//                        .replace(R.id.homeFrameContainer, new ListRestaurantFragment(),
-//                                "List_Restaurant_Fragment").commit();
                 TextView searchLocation = view.findViewById(R.id.search_restaurant);
                 Intent intent = new Intent(getActivity(), RestaurantListActivity.class);
                 intent.putExtra("search_location", searchLocation.getText().toString());

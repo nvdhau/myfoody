@@ -7,7 +7,6 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.douglas.myfoody.core.database.AppDatabase;
 import com.douglas.myfoody.core.models.Restaurant;
-import com.douglas.myfoody.core.models.User;
 
 
 import java.util.ArrayList;

@@ -1,7 +1,6 @@
 package com.douglas.myfoody.core.repository;
 
 import android.app.Application;
-import android.arch.lifecycle.LiveData;
 import com.douglas.myfoody.core.DAO.RestaurantDAO;
 import com.douglas.myfoody.core.models.Restaurant;
 import java.util.List;

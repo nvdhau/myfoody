@@ -10,7 +10,6 @@ import android.widget.Toast;
 import com.douglas.myfoody.core.models.Order;
 import com.douglas.myfoody.core.repository.OrderRepository;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class OrderViewModel extends AndroidViewModel {
@@ -65,26 +64,6 @@ public class OrderViewModel extends AndroidViewModel {
             return true;
         }
     }
-
-//    public LiveData<List<Order>> findAllOrders(int userId) {
-//        //will load from repos
-//        List<Order> orderList = new ArrayList<>();
-//
-//        for(int i=1; i<20; i++){
-//            Order order;
-//            order = new Order();
-//            order.setID(i);
-//            order.setTotal(100*i);
-//            order.setCreatedAt("2018-09-2"+i);
-//            order.setRestaurantId(i);
-//
-//            orderList.add(order);
-//        }
-//
-//        mAllOrders.setValue(orderList);
-//
-//        return mAllOrders;
-//    }
 
     public List<Order> findByUserEmail(String email) {
         return orderRepository.findByUserEmail(email);

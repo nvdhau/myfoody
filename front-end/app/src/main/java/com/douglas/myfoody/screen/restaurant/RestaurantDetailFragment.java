@@ -4,9 +4,9 @@ import android.app.Activity;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CollapsingToolbarLayout;
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -22,10 +22,8 @@ import com.douglas.myfoody.core.models.Restaurant;
 import com.douglas.myfoody.core.utilities.JSONHelper;
 import com.douglas.myfoody.screen.restaurant.dummy.DummyContent;
 import com.douglas.myfoody.screen.viewmodel.RestaurantViewModel;
-import com.douglas.myfoody.screen.viewmodel.UserViewModel;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * A fragment representing a single Restaurant detail screen.

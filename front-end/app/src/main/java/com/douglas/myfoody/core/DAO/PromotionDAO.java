@@ -6,7 +6,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.douglas.myfoody.core.database.AppDatabase;
-import com.douglas.myfoody.core.models.Order;
 import com.douglas.myfoody.core.models.Promotion;
 import com.douglas.myfoody.core.utilities.Utils;
 
