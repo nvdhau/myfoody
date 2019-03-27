@@ -7,30 +7,30 @@
         <item
             android:id="@+id/nav_explore_restaurant"
             android:icon="@drawable/location"
-            android:title="Explore Restaurant" />
+            android:title="@string/menu_item_explore_restaurant" />
         <item
             android:id="@+id/nav_user_info"
             android:icon="@drawable/user"
-            android:title="User Info" />
+            android:title="@string/menu_item_user_info" />
         <item
             android:id="@+id/nav_my_orders"
             android:icon="@drawable/order"
-            android:title="My Orders" />
+            android:title="@string/menu_item_my_orders" />
         <item
             android:id="@+id/nav_invite_friend"
             android:icon="@drawable/invite"
-            android:title="Invite Friends" />
+            android:title="@string/menu_item_invite_friends" />
     </group>
 
     <group android:id="@+id/secondary_menu" android:checkableBehavior="single">
         <item
             android:id="@+id/nav_change_password"
             android:icon="@drawable/password"
-            android:title="Change Password" />
+            android:title="@string/menu_item_change_password" />
         <item
             android:id="@+id/nav_logout"
             android:icon="@drawable/ic_menu_share"
-            android:title="Log out" />
+            android:title="@string/menu_item_logout" />
     </group>
 
 </menu>

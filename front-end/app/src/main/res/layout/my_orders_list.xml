@@ -10,4 +10,4 @@
     android:layout_marginRight="16dp"
     app:layoutManager="LinearLayoutManager"
     tools:context=".screen.home.my_orders.MyOrdersFragment"
-    tools:listitem="@layout/order_list_content" />
+    tools:listitem="@layout/my_order_list_content" />

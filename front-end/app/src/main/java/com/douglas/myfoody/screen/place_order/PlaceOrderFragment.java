@@ -121,7 +121,9 @@ public class PlaceOrderFragment extends Fragment implements View.OnClickListener
         promotions = pvm.getUserDiscounts(currentUser.getEmail());
         List<String> sPromotions = new ArrayList<String>();
         for(int i=0; i<promotions.size(); i++) {
-            sPromotions.add(promotions.get(i).getPromotionCode());
+            sPromotions.add(promotions.get(i).getPromotionCode()
+                    + " - " + promotions.get(i).getDiscountAmount()
+                    + (Promotion.DISCOUNT_TYPE_PERCENT.equals(promotions.get(i).getDiscountType()) ? "%" : " CAD"));
         }
         sPromotions.add("None");
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), R.layout.support_simple_spinner_dropdown_item, sPromotions);

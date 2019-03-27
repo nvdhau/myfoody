@@ -14,30 +14,31 @@
         <!-- android:layout_span configure how many columns to span by this column. -->
         <TextView
             android:id="@+id/restaurant_name"
-            android:layout_span="3"
-            android:layout_marginLeft="@dimen/text_margin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="24sp"
+            android:layout_marginStart="@dimen/text_margin"
+            android:layout_span="3"
+            android:text="@string/title_restaurant_detail"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-            android:text="Restaurant"/>
+            android:textSize="24sp" />
     </TableRow>
 
     <TableRow
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/text_margin"
+        android:layout_marginStart="@dimen/text_margin"
         android:layout_marginBottom="@dimen/nav_header_vertical_spacing"
         >
+
         <TextView
             android:id="@+id/order_date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/text_margin"
             android:layout_span="3"
-            android:layout_marginRight="@dimen/text_margin"
+            android:text="@string/title_restaurant_detail"
             android:textAppearance="?attr/textAppearanceListItem"
-            android:textSize="18sp"
-            android:text="Restaurant"/>
+            android:textSize="18sp" />
     </TableRow>
 
     <View
@@ -51,8 +52,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/nav_header_vertical_spacing"
-            android:layout_marginLeft="@dimen/text_margin"
-            android:layout_marginRight="@dimen/text_margin"
+            android:layout_marginStart="@dimen/text_margin"
+            android:layout_marginEnd="@dimen/text_margin"
             android:stretchColumns="0"
             >
 
@@ -75,7 +76,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_column="0"
-            android:layout_marginLeft="@dimen/text_margin"
+            android:layout_marginStart="@dimen/text_margin"
             android:text="@string/my_orders_subtotal"
             android:textAppearance="?attr/textAppearanceListItem"
             android:textSize="18sp" />
@@ -86,7 +87,7 @@
             android:layout_height="wrap_content"
             android:layout_column="2"
             android:textAlignment="textEnd"
-            android:layout_marginRight="@dimen/text_margin"
+            android:layout_marginEnd="@dimen/text_margin"
             android:textAppearance="?attr/textAppearanceListItem"
             android:textSize="18sp" />
     </TableRow>
@@ -100,7 +101,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_column="0"
-            android:layout_marginLeft="@dimen/text_margin"
+            android:layout_marginStart="@dimen/text_margin"
             android:text="@string/my_order_delivery_fee"
             android:textAppearance="?attr/textAppearanceListItem"
             android:textSize="18sp" />
@@ -110,7 +111,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_column="2"
-            android:layout_marginRight="@dimen/text_margin"
+            android:layout_marginEnd="@dimen/text_margin"
             android:textAlignment="textEnd"
             android:textAppearance="?attr/textAppearanceListItem"
             android:textSize="18sp" />
@@ -125,7 +126,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_column="0"
-            android:layout_marginLeft="@dimen/text_margin"
+            android:layout_marginStart="@dimen/text_margin"
             android:text="@string/my_order_tax"
             android:textAppearance="?attr/textAppearanceListItem"
             android:textSize="18sp" />
@@ -135,7 +136,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_column="2"
-            android:layout_marginRight="@dimen/text_margin"
+            android:layout_marginEnd="@dimen/text_margin"
             android:textAlignment="textEnd"
             android:textAppearance="?attr/textAppearanceListItem"
             android:textSize="18sp" />
@@ -151,7 +152,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_column="0"
-            android:layout_marginLeft="@dimen/text_margin"
+            android:layout_marginStart="@dimen/text_margin"
             android:text="@string/my_order_discount"
             android:textAppearance="?attr/textAppearanceListItem"
             android:textSize="18sp" />
@@ -161,7 +162,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_column="2"
-            android:layout_marginRight="@dimen/text_margin"
+            android:layout_marginEnd="@dimen/text_margin"
             android:textAlignment="textEnd"
             android:textAppearance="?attr/textAppearanceListItem"
             android:textSize="18sp" />
@@ -181,7 +182,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_column="0"
-            android:layout_marginLeft="@dimen/text_margin"
+            android:layout_marginStart="@dimen/text_margin"
             android:text="@string/my_order_total"
             android:textAppearance="?attr/textAppearanceListItem"
             android:textSize="18sp" />
@@ -191,7 +192,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_column="2"
-            android:layout_marginRight="@dimen/text_margin"
+            android:layout_marginEnd="@dimen/text_margin"
             android:textAlignment="textEnd"
             android:textAppearance="?attr/textAppearanceListItem"
             android:textSize="18sp" />
@@ -210,7 +211,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_span="3"
-            android:layout_marginLeft="@dimen/text_margin"
+            android:layout_marginStart="@dimen/text_margin"
             android:text="@string/my_order_delivery_address"
             android:textAppearance="?attr/textAppearanceListItem"
             android:textSize="18sp" />
@@ -226,7 +227,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_span="3"
-            android:layout_marginLeft="@dimen/text_margin"
+            android:layout_marginStart="@dimen/text_margin"
             android:textAppearance="?attr/textAppearanceListItem"
             android:textSize="18sp" />
     </TableRow>
@@ -244,7 +245,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_span="3"
-            android:layout_marginLeft="@dimen/text_margin"
+            android:layout_marginStart="@dimen/text_margin"
             android:text="@string/my_order_special_instruction"
             android:textAppearance="?attr/textAppearanceListItem"
             android:textSize="18sp" />
@@ -260,7 +261,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_span="3"
-            android:layout_marginLeft="@dimen/text_margin"
+            android:layout_marginStart="@dimen/text_margin"
             android:textAppearance="?attr/textAppearanceListItem"
             android:textSize="18sp" />
     </TableRow>

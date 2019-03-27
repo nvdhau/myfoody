@@ -37,6 +37,7 @@
             android:id="@+id/imageView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:contentDescription="@string/nav_header_title"
             android:src="@mipmap/ic_launcher_round" />
 
         <TextView
@@ -44,7 +45,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Loading ..."
+            android:text="@string/splash_loading"
             android:textColor="@color/white_greyish"
             android:textSize="24sp" />
     </LinearLayout>

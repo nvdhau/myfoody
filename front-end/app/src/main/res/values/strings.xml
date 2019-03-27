@@ -1,6 +1,12 @@
 <resources>
     <string name="app_name">MyFoody</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="splash_loading">Loading...</string>
+    <string name="menu_item_explore_restaurant">Explore Restaurants</string>
+    <string name="menu_item_user_info">User Info</string>
+    <string name="menu_item_my_orders">My Orders</string>
+    <string name="menu_item_invite_friends">Invite Friends</string>
+    <string name="menu_item_change_password">Change Password</string>
+    <string name="menu_item_logout">Logout</string>
     <string name="action_settings">Settings</string>
     <string name="email">Email</string>
     <string name="password">Password</string>

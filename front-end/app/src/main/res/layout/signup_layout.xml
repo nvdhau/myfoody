@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
@@ -21,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:background="@android:color/transparent"
-        android:drawableLeft="@drawable/user"
+        android:drawableStart="@drawable/user"
         android:drawablePadding="8dp"
         android:gravity="center_vertical"
         android:hint="@string/fullName"
@@ -30,7 +31,8 @@
         android:singleLine="true"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        tools:ignore="AutoFill" />
 
     <View
         android:layout_width="fill_parent"
@@ -43,7 +45,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:background="@android:color/transparent"
-        android:drawableLeft="@drawable/email"
+        android:drawableStart="@drawable/email"
         android:drawablePadding="8dp"
         android:gravity="center_vertical"
         android:hint="@string/email"
@@ -52,7 +54,8 @@
         android:singleLine="true"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        tools:ignore="AutoFill" />
 
     <View
         android:layout_width="fill_parent"
@@ -65,7 +68,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:background="@android:color/transparent"
-        android:drawableLeft="@drawable/phone"
+        android:drawableStart="@drawable/phone"
         android:drawablePadding="8dp"
         android:gravity="center_vertical"
         android:hint="@string/mobileNumber"
@@ -74,7 +77,8 @@
         android:singleLine="true"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        tools:ignore="AutoFill" />
 
     <View
         android:layout_width="fill_parent"
@@ -87,7 +91,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:background="@android:color/transparent"
-        android:drawableLeft="@drawable/location"
+        android:drawableStart="@drawable/location"
         android:drawablePadding="8dp"
         android:gravity="center_vertical"
         android:hint="@string/location"
@@ -96,7 +100,8 @@
         android:singleLine="true"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        tools:ignore="AutoFill" />
 
     <View
         android:layout_width="fill_parent"
@@ -109,7 +114,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:background="@android:color/transparent"
-        android:drawableLeft="@drawable/password"
+        android:drawableStart="@drawable/password"
         android:drawablePadding="8dp"
         android:gravity="center_vertical"
         android:hint="@string/password"
@@ -118,7 +123,8 @@
         android:singleLine="true"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        tools:ignore="AutoFill" />
 
     <View
         android:layout_width="fill_parent"
@@ -131,7 +137,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:background="@android:color/transparent"
-        android:drawableLeft="@drawable/confirm_password"
+        android:drawableStart="@drawable/confirm_password"
         android:drawablePadding="8dp"
         android:gravity="center_vertical"
         android:hint="@string/confirmPassword"
@@ -140,7 +146,8 @@
         android:singleLine="true"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        tools:ignore="AutoFill" />
 
     <Button
         android:id="@+id/signUpBtn"

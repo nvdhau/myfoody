@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -50,8 +51,6 @@
         android:id="@+id/textViewShowTax"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/textViewShowTotal"
-        android:layout_alignParentStart="true"
         android:layout_marginBottom="5sp"
         android:text="@string/place_order_tax"
         android:textAlignment="viewEnd"
@@ -61,8 +60,6 @@
         android:id="@+id/textViewShowTotal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
         android:layout_marginBottom="5sp"
         android:text="@string/place_order_total"
         android:textAlignment="viewEnd"
@@ -88,8 +85,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:hint="@string/place_order_payment_card_name"
         android:inputType="textPersonName"
-        android:textSize="24sp" />
+        android:textSize="24sp"
+        tools:ignore="AutoFill" />
 
     <TextView
         android:id="@+id/textViewCardNumber"
@@ -105,7 +104,8 @@
         android:ems="10"
         android:hint="@string/place_order_payment_card_number_hint"
         android:inputType="number"
-        android:textSize="24sp" />
+        android:textSize="24sp"
+        tools:ignore="AutoFill" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -132,8 +132,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="17dp"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <EditText
@@ -144,7 +143,8 @@
             android:ems="10"
             android:hint="@string/place_order_payment_card_expiry_hint"
             android:inputType="date"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            tools:ignore="AutoFill" />
 
         <EditText
             android:id="@+id/editTextCardCode"
@@ -154,7 +154,8 @@
             android:ems="10"
             android:hint="@string/place_order_payment_card_code_hint"
             android:inputType="number"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            tools:ignore="AutoFill" />
 
     </LinearLayout>
 
