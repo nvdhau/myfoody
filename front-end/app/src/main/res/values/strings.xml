@@ -75,4 +75,11 @@
     <string name="title_activity_order">OrderActivity</string>
     <string name="title_order_list">Orders</string>
     <string name="title_order_detail">Order Detail</string>
+    <string name="my_orders_subtotal">Subtotal</string>
+    <string name="my_order_delivery_fee">Delivery fee</string>
+    <string name="my_order_tax">Tax</string>
+    <string name="my_order_discount">Discount</string>
+    <string name="my_order_total">Total</string>
+    <string name="my_order_delivery_address">Delivery address</string>
+    <string name="my_order_special_instruction">Special instructions</string>
 </resources>

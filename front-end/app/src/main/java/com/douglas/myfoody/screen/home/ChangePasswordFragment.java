@@ -1,7 +1,6 @@
 package com.douglas.myfoody.screen.home;
 
 
-import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -16,7 +15,6 @@ import android.widget.Toast;
 
 import com.douglas.myfoody.R;
 import com.douglas.myfoody.core.models.User;
-import com.douglas.myfoody.core.utilities.UIHelper;
 import com.douglas.myfoody.screen.viewmodel.UserViewModel;
 
 

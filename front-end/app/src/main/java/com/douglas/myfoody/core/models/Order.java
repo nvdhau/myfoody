@@ -19,6 +19,8 @@ public class Order extends LiveData<Order> implements Parcelable {
     private double total;
     private String createdAt;
 
+    private String restaurantName;// runtime attribute (not persist in database)
+
     public Order() {
 
     }
@@ -151,6 +153,14 @@ public class Order extends LiveData<Order> implements Parcelable {
 
     public void setCreatedAt(String createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public String getRestaurantName() {
+        return restaurantName;
+    }
+
+    public void setRestaurantName(String restaurantName) {
+        this.restaurantName = restaurantName;
     }
 
     @Override

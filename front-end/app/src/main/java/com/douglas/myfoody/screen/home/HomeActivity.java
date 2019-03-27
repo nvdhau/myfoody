@@ -23,6 +23,8 @@ import android.widget.Toast;
 import com.douglas.myfoody.R;
 import com.douglas.myfoody.core.models.User;
 import com.douglas.myfoody.core.utilities.Utils;
+import com.douglas.myfoody.screen.home.my_orders.MyOrderDetailFragment;
+import com.douglas.myfoody.screen.home.my_orders.MyOrdersFragment;
 import com.douglas.myfoody.screen.main.MainActivity;
 import com.douglas.myfoody.screen.promotion.InviteFriendFragment;
 import com.douglas.myfoody.screen.viewmodel.UserViewModel;
@@ -32,7 +34,7 @@ public class HomeActivity extends AppCompatActivity
 
     private static FragmentManager fragmentManager;
     private UserViewModel mUserViewModel;
-    private int menuToChoose = R.menu.home;
+    private int menuToChoose = 0;
     private static NavigationView navigationView;
 
     @Override
@@ -94,6 +96,10 @@ public class HomeActivity extends AppCompatActivity
             //check current fragment is explore_restaurant
             ExploreRestaurantFragment exploreFragment
                     = (ExploreRestaurantFragment)fragmentManager.findFragmentByTag("Explore_Restaurant_Fragment");
+
+            //check current fragment is MyOrderDetailFragment
+            MyOrderDetailFragment myOrderDetailFragment
+                    = (MyOrderDetailFragment)fragmentManager.findFragmentByTag("My_Order_Detail_Fragment");
             if (exploreFragment != null && exploreFragment.isVisible()) {//yes, ask for exit app
                 //confirm to exit app
                 new AlertDialog.Builder(this)
@@ -105,7 +111,11 @@ public class HomeActivity extends AppCompatActivity
                                 System.exit(0);
                             }})
                         .setNegativeButton(android.R.string.no, null).show();
-            }else{//no, navigate to the explore restaurant fragment
+            }else if(myOrderDetailFragment != null && myOrderDetailFragment.isVisible()){//navigate to MyOrdersFragment
+                navigationView.setCheckedItem(R.id.nav_my_orders);
+                onNavigationItemSelected(navigationView.getCheckedItem());
+            }
+            else{//no, navigate to the explore restaurant fragment
                 navigationView.setCheckedItem(R.id.nav_explore_restaurant);
                 onNavigationItemSelected(navigationView.getCheckedItem());
             }
@@ -115,7 +125,8 @@ public class HomeActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(menuToChoose, menu);
+        if(menuToChoose != 0)
+            getMenuInflater().inflate(menuToChoose, menu);
         return true;
     }
 
@@ -142,7 +153,7 @@ public class HomeActivity extends AppCompatActivity
 
         if (id == R.id.nav_explore_restaurant) {
             setTitle("Explore Restaurant");
-            menuToChoose = R.menu.home;
+            menuToChoose = 0;
             fragmentManager.beginTransaction()
                     .replace(R.id.homeFrameContainer, new ExploreRestaurantFragment(),
                             "Explore_Restaurant_Fragment").commit();
@@ -156,9 +167,15 @@ public class HomeActivity extends AppCompatActivity
                             "User_Info_Fragment").commit();
 
         } else if (id == R.id.nav_my_orders) {
-
+            setTitle("My Orders");//change title
+            menuToChoose = 0;
+            fragmentManager.beginTransaction()
+                    .replace(R.id.homeFrameContainer, new MyOrdersFragment(),
+                            "My_Orders_Fragment").commit();
 
         } else if (id == R.id.nav_invite_friend) {
+            menuToChoose = 0;
+            setTitle("Invite Friends");
             fragmentManager.beginTransaction()
                     .replace(R.id.homeFrameContainer, new InviteFriendFragment(),
                             "Invite_Friend_Fragment").commit();

@@ -51,4 +51,9 @@ public class RestaurantViewModel extends AndroidViewModel {
         mRestaurant.setValue(restaurantRepository.findById(id));
         return mRestaurant;
     }
+
+    public Restaurant getRestaurantByID(int id) {
+        return restaurantRepository.findById(id);
+
+    }
 }
