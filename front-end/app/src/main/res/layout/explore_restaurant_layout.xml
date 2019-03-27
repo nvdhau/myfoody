@@ -32,17 +32,6 @@
         android:layout_height="1px"
         android:background="@color/white_greyish" />
 
-    <Button
-        android:id="@+id/exploreBtn"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="3dp"
-        android:padding="3dp"
-        android:text="@string/searchBtn"
-        android:textColor="#009688"
-        android:textSize="17sp"
-        android:textStyle="bold" />
-
     <EditText
         android:id="@+id/search_restaurant"
         android:layout_width="fill_parent"
@@ -60,5 +49,16 @@
         android:textColorHint="@color/white"
         android:textSize="16sp"
         tools:ignore="AutoFill" />
+
+    <Button
+        android:id="@+id/exploreBtn"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:padding="3dp"
+        android:text="@string/searchBtn"
+        android:textColor="#009688"
+        android:textSize="17sp"
+        android:textStyle="bold" />
 
 </LinearLayout>

@@ -76,7 +76,4 @@
             tools:context=".screen.restaurant.RestaurantDetailActivity">
         </android.support.v7.widget.RecyclerView>
 
-
-
-
 </LinearLayout>
