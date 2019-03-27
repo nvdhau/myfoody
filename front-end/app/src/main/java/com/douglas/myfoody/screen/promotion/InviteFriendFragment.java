@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.douglas.myfoody.R;
 import com.douglas.myfoody.core.models.Promotion;
 import com.douglas.myfoody.core.models.User;
+import com.douglas.myfoody.screen.login_signup.MyToast;
 import com.douglas.myfoody.screen.viewmodel.PromotionViewModel;
 import com.douglas.myfoody.screen.viewmodel.UserViewModel;
 
@@ -47,6 +48,14 @@ public class InviteFriendFragment extends Fragment implements View.OnClickListen
 
             // Get input emails list
             EditText edFriendEmails = view.findViewById(R.id.editTextFriendEmails);
+
+            // Check empty input
+            if (edFriendEmails.getText().toString().isEmpty()) {
+                new MyToast().showToast(getActivity(), view,
+                        "Please enter at least one email!");
+                return;
+            }
+
             String[] emails = edFriendEmails.getText().toString().trim().split("\n");
             for(int i=0; i<emails.length; i++) {
                 if(!Patterns.EMAIL_ADDRESS.matcher(emails[i]).matches()) {
