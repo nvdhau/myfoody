@@ -3,26 +3,63 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="20sp"
+    android:padding="16dp"
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/textViewItemNumber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginEnd="5sp"
-        android:textAlignment="textEnd"
-        android:padding="10dp"
-        android:textSize="24sp" />
+        android:paddingBottom="10dp"
+        android:paddingLeft="10dp"
+        android:text="@string/orderDetailTitle"
+        android:textSize="20sp" />
 
-    <TextView
-        android:id="@+id/textViewSubTotal"
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_marginEnd="10sp"
+        android:background="?android:attr/listDivider" />
+
+    <TableLayout
+        android:id="@+id/items_table"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="5sp"
-        android:textAlignment="textEnd"
-        android:padding="10dp"
-        android:textSize="24sp" />
+        android:layout_marginBottom="@dimen/nav_header_vertical_spacing"
+        android:layout_marginStart="@dimen/text_margin"
+        android:layout_marginEnd="@dimen/text_margin"
+        android:stretchColumns="0"
+        >
+
+    </TableLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_marginEnd="10sp"
+        android:background="?android:attr/listDivider" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/my_orders_subtotal"
+            android:padding="10dp"
+            android:textSize="18sp" />
+
+
+        <TextView
+            android:id="@+id/textViewSubTotal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5sp"
+            android:textAlignment="textEnd"
+            android:padding="10dp"
+            android:textSize="18sp" />
+    </LinearLayout>
 
     <View
         android:id="@+id/divider1"

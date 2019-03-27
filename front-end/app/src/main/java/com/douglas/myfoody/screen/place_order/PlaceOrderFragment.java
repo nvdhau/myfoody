@@ -5,12 +5,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.douglas.myfoody.R;
@@ -20,12 +23,15 @@ import com.douglas.myfoody.core.models.Promotion;
 import com.douglas.myfoody.core.models.Restaurant;
 import com.douglas.myfoody.core.models.User;
 import com.douglas.myfoody.core.utilities.JSONHelper;
+import com.douglas.myfoody.core.utilities.UIHelper;
 import com.douglas.myfoody.core.utilities.Utils;
 import com.douglas.myfoody.screen.login_signup.MyToast;
 import com.douglas.myfoody.screen.viewmodel.PromotionViewModel;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class PlaceOrderFragment extends Fragment implements View.OnClickListener {
     private static View view;
@@ -95,16 +101,44 @@ public class PlaceOrderFragment extends Fragment implements View.OnClickListener
         mOrder.setDiscount(0.0);
 
         double subTotal = 0.0;
-        int itemQuantity = 0;
         ArrayList<MenuItem> nonZeroItems = new ArrayList<>();
+
+        TableLayout itemsTable = (TableLayout)view.findViewById(R.id.items_table);
+        NumberFormat format = NumberFormat.getCurrencyInstance(Locale.CANADA);
+
+        // Set new table row layout parameters.
+        TableRow.LayoutParams layoutParams = new TableRow.LayoutParams();
+        layoutParams.width = TableRow.LayoutParams.MATCH_PARENT;
+        layoutParams.height = TableRow.LayoutParams.WRAP_CONTENT;
+        layoutParams.bottomMargin = 16;
+
+
         for(int i=0; i<mItems.size(); i++) {
             MenuItem currentItem = mItems.get(i);
             if(currentItem.getQuantity() > 0) {
                 nonZeroItems.add(currentItem);
-                itemQuantity += currentItem.getQuantity();
                 subTotal += currentItem.getQuantity() * currentItem.getPrice();
+
+                //display items order details
+                // Create a new table row and set params
+                TableRow tableRow = new TableRow(getContext());
+                tableRow.setLayoutParams(layoutParams);
+
+                //add row cell data
+                tableRow.addView(UIHelper.createItemDetailsTextView(getContext(),
+                        18, "#FFFFFF", currentItem.getItemName(), Gravity.LEFT, 0), 0);
+
+                tableRow.addView(UIHelper.createItemDetailsTextView(getContext(),
+                        18, "#FFFFFF", "x" + currentItem.getQuantity(), Gravity.LEFT, 100), 1);
+
+                tableRow.addView(UIHelper.createItemDetailsTextView(getContext(),
+                        18, "#FFFFFF", format.format(currentItem.getPrice()), Gravity.RIGHT, 0), 2);
+
+                itemsTable.addView(tableRow);
             }
         }
+
+
         mOrder.setSubTotal(subTotal);
         mItems = nonZeroItems;
         mOrder.setItems(JSONHelper.parseMenuItemsListToJSON(mItems));
@@ -112,10 +146,8 @@ public class PlaceOrderFragment extends Fragment implements View.OnClickListener
         mOrder.setTax(0.0);
         mOrder.setTotal(0.0);
 
-        TextView tvQuantity = view.findViewById(R.id.textViewItemNumber);
         TextView tvSubTotal = view.findViewById(R.id.textViewSubTotal);
-        tvQuantity.setText("Quantity: " + itemQuantity);
-        tvSubTotal.setText("SubTotal: $" + subTotal);
+        tvSubTotal.setText(format.format(subTotal));
 
         PromotionViewModel pvm = ViewModelProviders.of(this).get(PromotionViewModel.class);
         promotions = pvm.getUserDiscounts(currentUser.getEmail());

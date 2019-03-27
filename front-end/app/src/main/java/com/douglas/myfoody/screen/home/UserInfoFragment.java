@@ -66,7 +66,9 @@ public class UserInfoFragment extends Fragment {
         mobileNumber = view.findViewById(R.id.mobileNumber);
         location = view.findViewById(R.id.location);
 
-        editTextInputs = new EditText[] {fullName, email, mobileNumber, location};
+        UIHelper.disableEditText(email);//do not allow change email
+
+        editTextInputs = new EditText[] {fullName, mobileNumber, location};
 
         //disable edit texts
         for (EditText editText : editTextInputs)
