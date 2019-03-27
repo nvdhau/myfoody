@@ -14,6 +14,7 @@
     <string name="login">LOGIN</string>
     <string name="close_button">Close Button for Activity</string>
     <string name="newUser">Do not have an account, sign up here.</string>
+    <string name="copyRight">MyFoody@douglas.college.</string>
     <string name="fullName">Full Name</string>
     <string name="mobileNumber">Mobile Number</string>
     <string name="location">Address</string>
