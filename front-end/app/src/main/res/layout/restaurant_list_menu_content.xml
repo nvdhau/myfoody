@@ -42,17 +42,18 @@
                 android:layout_width="36dp"
                 android:layout_height="40dp"
                 android:layout_gravity="end"
-                android:background="@color/colorPrimary"
+                android:background="@color/white"
                 android:drawableStart="@drawable/minus" />
 
             <TextView
                 android:id="@+id/textViewItemQuantity"
                 android:layout_width="50dp"
                 android:layout_height="40dp"
+                android:padding="5dp"
                 android:textAlignment="center"
-                android:textSize="20sp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                 android:textColor="@color/black"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"/>
+                android:textSize="20sp" />
 
             <Button
                 android:id="@+id/addItem"
@@ -60,7 +61,7 @@
                 android:layout_height="40dp"
                 android:layout_gravity="end"
                 android:layout_marginEnd="4dp"
-                android:background="@color/colorPrimary"
+                android:background="@color/white"
                 android:drawableStart="@drawable/add" />
 
         </LinearLayout>
