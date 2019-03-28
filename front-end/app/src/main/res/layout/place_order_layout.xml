@@ -75,13 +75,13 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="5sp"
         android:text="@string/place_order_instruction"
-        android:padding="10dp"
+        android:paddingLeft="10dp"
         android:textSize="20sp" />
 
     <EditText
         android:id="@+id/editTextInstructions"
         android:layout_width="fill_parent"
-        android:layout_height="94dp"
+        android:layout_height="50dp"
         android:hint="@string/place_order_instruction"
         android:inputType="textMultiLine"
         android:ems="10"
@@ -89,7 +89,7 @@
         android:background="@android:color/transparent"
         android:drawablePadding="8dp"
         android:gravity="center_vertical"
-        android:padding="20dp"
+        android:paddingLeft="20dp"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         android:textSize="18sp"
@@ -111,7 +111,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="5sp"
         android:text="@string/place_order_promotion"
-        android:padding="10dp"
+        android:paddingLeft="10dp"
         android:textSize="20sp" />
 
     <Spinner
@@ -135,7 +135,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/place_order_delivery"
-        android:padding="10dp"
+        android:paddingLeft="10dp"
         android:textSize="20sp" />
 
     <Spinner
@@ -159,13 +159,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/place_order_delivery_to"
-        android:padding="10dp"
+        android:paddingLeft="10dp"
         android:textSize="20sp" />
 
     <EditText
         android:id="@+id/editTextDeliveryTo"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:ems="10"
         android:hint="@string/place_order_delivery_to"
         android:inputType="textPersonName"
@@ -173,7 +173,7 @@
         android:background="@android:color/transparent"
         android:drawablePadding="8dp"
         android:gravity="center_vertical"
-        android:padding="20dp"
+        android:paddingLeft="20dp"
         android:singleLine="true"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
@@ -191,10 +191,13 @@
 
     <Button
         android:id="@+id/buttonPlaceOrder"
-        android:layout_width="match_parent"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-
+        android:layout_marginTop="3dp"
+        android:padding="3dp"
         android:text="@string/place_order_to_payment"
-        android:textSize="24sp" />
+        android:textColor="#009688"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
 </LinearLayout>

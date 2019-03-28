@@ -155,11 +155,25 @@
         android:background="?android:attr/listDivider" />
 
     <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/place_order_card_info"
+        android:layout_marginTop="16dp"
+        android:textSize="20sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_marginBottom="10sp"
+        android:layout_marginEnd="10sp"
+        android:background="?android:attr/listDivider" />
+
+    <TextView
         android:id="@+id/textViewCardName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/place_order_payment_card_name"
-        android:textSize="24sp" />
+        android:textSize="20sp" />
 
     <EditText
         android:id="@+id/editTextCardName"
@@ -168,7 +182,7 @@
         android:ems="10"
         android:hint="@string/place_order_payment_card_name"
         android:inputType="textPersonName"
-        android:textSize="24sp"
+        android:textSize="20sp"
         tools:ignore="AutoFill" />
 
     <TextView
@@ -176,7 +190,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/place_order_payment_card_number"
-        android:textSize="24sp" />
+        android:textSize="20sp" />
 
     <EditText
         android:id="@+id/editTextCardNumber"
@@ -185,7 +199,7 @@
         android:ems="10"
         android:hint="@string/place_order_payment_card_number_hint"
         android:inputType="number"
-        android:textSize="24sp"
+        android:textSize="20sp"
         tools:ignore="AutoFill" />
 
     <LinearLayout
@@ -199,7 +213,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/place_order_payment_card_expiry"
-            android:textSize="24sp" />
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/textViewCardCode"
@@ -207,7 +221,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/place_order_payment_card_code"
-            android:textSize="24sp" />
+            android:textSize="20sp" />
 
     </LinearLayout>
 
@@ -224,7 +238,7 @@
             android:ems="10"
             android:hint="@string/place_order_payment_card_expiry_hint"
             android:inputType="date"
-            android:textSize="24sp"
+            android:textSize="20sp"
             tools:ignore="AutoFill" />
 
         <EditText
@@ -235,16 +249,20 @@
             android:ems="10"
             android:hint="@string/place_order_payment_card_code_hint"
             android:inputType="number"
-            android:textSize="24sp"
+            android:textSize="20sp"
             tools:ignore="AutoFill" />
 
     </LinearLayout>
 
     <Button
         android:id="@+id/buttonPayment"
-        android:layout_width="match_parent"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:padding="3dp"
         android:text="@string/place_order_confirm"
-        android:textSize="24sp" />
+        android:textColor="#009688"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
 </LinearLayout>
