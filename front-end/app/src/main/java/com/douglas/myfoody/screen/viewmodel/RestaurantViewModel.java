@@ -40,8 +40,6 @@ public class RestaurantViewModel extends AndroidViewModel {
             restaurantList = restaurantRepository.findAll();
         }
 
-        Collections.shuffle(restaurantList);
-
         mAllRestaurants.setValue(restaurantList);
 
         return mAllRestaurants;
