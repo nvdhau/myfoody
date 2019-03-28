@@ -25,7 +25,7 @@ import com.douglas.myfoody.core.models.User;
 import com.douglas.myfoody.core.utilities.JSONHelper;
 import com.douglas.myfoody.core.utilities.UIHelper;
 import com.douglas.myfoody.core.utilities.Utils;
-import com.douglas.myfoody.screen.login_signup.MyToast;
+import com.douglas.myfoody.screen.main.login_signup.MyToast;
 import com.douglas.myfoody.screen.viewmodel.PromotionViewModel;
 
 import java.text.NumberFormat;

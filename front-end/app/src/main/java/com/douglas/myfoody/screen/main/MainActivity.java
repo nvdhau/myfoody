@@ -7,8 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.douglas.myfoody.R;
-import com.douglas.myfoody.screen.login_signup.LoginFragment;
-import com.douglas.myfoody.screen.login_signup.SignUpFragment;
+import com.douglas.myfoody.screen.main.login_signup.LoginFragment;
+import com.douglas.myfoody.screen.main.login_signup.SignUpFragment;
 
 public class MainActivity extends AppCompatActivity {
 

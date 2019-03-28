@@ -25,7 +25,6 @@ import com.douglas.myfoody.core.utilities.Utils;
 import com.douglas.myfoody.screen.home.my_orders.MyOrderDetailFragment;
 import com.douglas.myfoody.screen.home.my_orders.MyOrdersFragment;
 import com.douglas.myfoody.screen.main.MainActivity;
-import com.douglas.myfoody.screen.promotion.InviteFriendFragment;
 import com.douglas.myfoody.screen.viewmodel.UserViewModel;
 
 public class HomeActivity extends AppCompatActivity
@@ -193,8 +192,7 @@ public class HomeActivity extends AppCompatActivity
                             "Change_Password_Fragment").commit();
 
         } else if (id == R.id.nav_logout) {
-            mUserViewModel.setUser(new User());//delete User object
-            Utils.setLoggedInUser(new User());
+            Utils.setLoggedInUser(new User());//delete User object
             startActivity(new Intent(this, MainActivity.class));//navigate to login
         }
 

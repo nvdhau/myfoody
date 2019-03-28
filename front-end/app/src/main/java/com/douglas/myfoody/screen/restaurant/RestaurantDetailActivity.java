@@ -8,7 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.douglas.myfoody.R;
-import com.douglas.myfoody.screen.login_signup.MyToast;
+import com.douglas.myfoody.screen.main.login_signup.MyToast;
 import com.douglas.myfoody.screen.place_order.OrderActivity;
 
 /**

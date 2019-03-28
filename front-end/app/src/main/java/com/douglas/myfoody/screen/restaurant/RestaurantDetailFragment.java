@@ -20,7 +20,6 @@ import com.douglas.myfoody.R;
 import com.douglas.myfoody.core.models.MenuItem;
 import com.douglas.myfoody.core.models.Restaurant;
 import com.douglas.myfoody.core.utilities.JSONHelper;
-import com.douglas.myfoody.screen.restaurant.dummy.DummyContent;
 import com.douglas.myfoody.screen.viewmodel.RestaurantViewModel;
 
 import java.util.ArrayList;
@@ -41,8 +40,6 @@ public class RestaurantDetailFragment extends Fragment {
     /**
      * The dummy content this fragment is presenting.
      */
-    private DummyContent.DummyItem mItem;
-
     private RestaurantViewModel mRestaurantViewModel;
 
     private Restaurant mRestaurant;

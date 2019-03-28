@@ -1,4 +1,4 @@
-package com.douglas.myfoody.screen.promotion;
+package com.douglas.myfoody.screen.home;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
@@ -14,7 +14,7 @@ import android.widget.TextView;
 import com.douglas.myfoody.R;
 import com.douglas.myfoody.core.models.Promotion;
 import com.douglas.myfoody.core.models.User;
-import com.douglas.myfoody.screen.login_signup.MyToast;
+import com.douglas.myfoody.screen.main.login_signup.MyToast;
 import com.douglas.myfoody.screen.viewmodel.PromotionViewModel;
 import com.douglas.myfoody.screen.viewmodel.UserViewModel;
 

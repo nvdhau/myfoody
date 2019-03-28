@@ -1,4 +1,4 @@
-package com.douglas.myfoody.screen.login_signup;
+package com.douglas.myfoody.screen.main.login_signup;
 
 
 import android.arch.lifecycle.ViewModelProviders;
