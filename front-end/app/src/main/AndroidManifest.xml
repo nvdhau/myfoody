@@ -9,24 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity
-            android:name=".screen.orders.OrderListActivity"
-            android:label="@string/title_order_list"
-            android:parentActivityName=".screen.home.HomeActivity"
-            android:theme="@style/NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.douglas.myfoody.screen.home.HomeActivity" />
-        </activity>
-        <activity
-            android:name=".screen.orders.OrderDetailActivity"
-            android:label="@string/title_order_detail"
-            android:parentActivityName=".screen.orders.OrderListActivity"
-            android:theme="@style/NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.douglas.myfoody.screen.orders.OrderListActivity" />
-        </activity>
+
         <activity
             android:name=".screen.place_order.OrderActivity"
             android:label="@string/title_activity_order"
