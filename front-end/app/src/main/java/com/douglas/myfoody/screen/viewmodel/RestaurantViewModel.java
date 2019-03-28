@@ -8,6 +8,7 @@ import android.arch.lifecycle.MutableLiveData;
 import com.douglas.myfoody.core.models.Restaurant;
 import com.douglas.myfoody.core.repository.RestaurantRepository;
 
+import java.util.Collections;
 import java.util.List;
 
 public class RestaurantViewModel extends AndroidViewModel {
@@ -30,11 +31,18 @@ public class RestaurantViewModel extends AndroidViewModel {
     }
 
     public LiveData<List<Restaurant>> findAllRestaurants(String location) {
-        if (location.isEmpty()) {
-            mAllRestaurants.setValue(restaurantRepository.findAll());
-        } else {
-            mAllRestaurants.setValue(restaurantRepository.findAllByLocation(location));
+        List<Restaurant> restaurantList = null;
+        if (!location.isEmpty()) {
+            restaurantList = restaurantRepository.findAllByLocation(location);
         }
+
+        if(location.isEmpty() || restaurantList.isEmpty()) {
+            restaurantList = restaurantRepository.findAll();
+        }
+
+        Collections.shuffle(restaurantList);
+
+        mAllRestaurants.setValue(restaurantList);
 
         return mAllRestaurants;
     }
