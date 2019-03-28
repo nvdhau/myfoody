@@ -34,6 +34,8 @@ public class OrderPaymentFragment extends Fragment implements View.OnClickListen
         view = inflater.inflate(R.layout.place_order_payment_layout, container, false);
         fragmentManager = getActivity().getSupportFragmentManager();
         if(loadOrderFromIntent()) setListeners();
+
+        getActivity().setTitle("Make Payment");
         return view;
     }
 
@@ -66,19 +68,19 @@ public class OrderPaymentFragment extends Fragment implements View.OnClickListen
         currentUser = Utils.getLoggedInUser();
 
         TextView subTotal = view.findViewById(R.id.textViewShowSubTotal);
-        subTotal.setText(subTotal.getText().toString() + String.format("%.2f", mOrder.getSubTotal()));
+        subTotal.setText("$" + String.format("%.2f", mOrder.getSubTotal()));
 
         TextView deliveryFee = view.findViewById(R.id.textViewShowDeliveryFee);
-        deliveryFee.setText(deliveryFee.getText().toString() + String.format("%.2f", mOrder.getDeliveryFee()));
+        deliveryFee.setText("$" + String.format("%.2f", mOrder.getDeliveryFee()));
 
         TextView discount = view.findViewById(R.id.textViewShowDiscount);
-        discount.setText(discount.getText().toString() + String.format("%.2f", mOrder.getDiscount()));
+        discount.setText("$" + String.format("%.2f", mOrder.getDiscount()));
 
         TextView tax = view.findViewById(R.id.textViewShowTax);
-        tax.setText(tax.getText().toString() + String.format("%.2f", mOrder.getTax()));
+        tax.setText("$" + String.format("%.2f", mOrder.getTax()));
 
         TextView total = view.findViewById(R.id.textViewShowTotal);
-        total.setText(total.getText().toString() + String.format("%.2f", mOrder.getTotal()));
+        total.setText("$" + String.format("%.2f", mOrder.getTotal()));
 
         return true;
     }

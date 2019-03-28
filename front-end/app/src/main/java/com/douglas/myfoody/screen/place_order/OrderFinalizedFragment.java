@@ -21,6 +21,8 @@ public class OrderFinalizedFragment extends Fragment implements View.OnClickList
         view = inflater.inflate(R.layout.place_order_finalized_layout, container, false);
         fragmentManager = getActivity().getSupportFragmentManager();
         setListeners();
+
+        getActivity().setTitle("");
         return view;
     }
 

@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="16dp"
     android:orientation="vertical">
 
     <TextView
@@ -10,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/place_order_payment"
-        android:textSize="30sp" />
+        android:textSize="20sp" />
 
     <View
         android:id="@+id/divider5"
@@ -20,50 +21,130 @@
         android:layout_marginEnd="10sp"
         android:background="?android:attr/listDivider" />
 
-    <TextView
-        android:id="@+id/textViewShowSubTotal"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="5sp"
-        android:text="@string/place_order_subtotal"
-        android:textAlignment="viewEnd"
-        android:textSize="24sp" />
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/my_orders_subtotal"
+            android:paddingLeft="10dp"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            />
 
-    <TextView
-        android:id="@+id/textViewShowDeliveryFee"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5sp"
-        android:text="@string/place_order_fee"
-        android:textAlignment="viewEnd"
-        android:textSize="24sp" />
 
-    <TextView
-        android:id="@+id/textViewShowDiscount"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5sp"
-        android:text="@string/place_order_discount"
-        android:textAlignment="viewEnd"
-        android:textSize="24sp" />
+        <TextView
+            android:id="@+id/textViewShowSubTotal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5sp"
+            android:textAlignment="textEnd"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+    </LinearLayout>
 
-    <TextView
-        android:id="@+id/textViewShowTax"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="5sp"
-        android:text="@string/place_order_tax"
-        android:textAlignment="viewEnd"
-        android:textSize="24sp" />
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/my_order_delivery_fee"
+            android:paddingLeft="10dp"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
 
-    <TextView
-        android:id="@+id/textViewShowTotal"
+        <TextView
+            android:id="@+id/textViewShowDeliveryFee"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5sp"
+            android:textAlignment="textEnd"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="5sp"
-        android:text="@string/place_order_total"
-        android:textAlignment="viewEnd"
-        android:textSize="24sp" />
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/my_order_discount"
+            android:paddingLeft="10dp"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/textViewShowDiscount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5sp"
+            android:textAlignment="textEnd"
+            android:paddingRight="10dp"
+            android:paddingLeft="10dp"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/my_order_tax"
+            android:paddingLeft="10dp"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/textViewShowTax"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5sp"
+            android:textAlignment="textEnd"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_marginEnd="10sp"
+        android:background="?android:attr/listDivider" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/my_order_total"
+            android:padding="10dp"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/textViewShowTotal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5sp"
+            android:textAlignment="textEnd"
+            android:padding="10dp"
+            android:textSize="18sp" />
+    </LinearLayout>
 
     <View
         android:id="@+id/divider"
