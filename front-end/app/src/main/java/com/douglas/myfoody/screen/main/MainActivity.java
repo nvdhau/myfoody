@@ -33,7 +33,8 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.close_activity).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                //finish();
+                closeApplication();
             }
         });
     }
@@ -48,5 +49,10 @@ public class MainActivity extends AppCompatActivity {
         fragmentManager.beginTransaction()
                 .replace(R.id.frameContainer, new SignUpFragment(), "SignUpFragment")
                 .commit();
+    }
+
+    public void closeApplication() {
+        finishAffinity();
+        System.exit(0);
     }
 }
