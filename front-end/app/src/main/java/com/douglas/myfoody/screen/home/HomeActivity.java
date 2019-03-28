@@ -1,9 +1,11 @@
 package com.douglas.myfoody.screen.home;
 
+import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
@@ -73,11 +75,16 @@ public class HomeActivity extends AppCompatActivity
             mUserViewModel.setUser(parcelableUser);
 
             //update username and user avatar as the first letter of username
-            View headerView = navigationView.getHeaderView(0);
-            TextView avatar = headerView.findViewById(R.id.avatar);
-            avatar.setText(parcelableUser.getFullName().toUpperCase().charAt(0) + "");
-            TextView navUsername = (TextView) headerView.findViewById(R.id.username);
-            navUsername.setText(parcelableUser.getFullName());
+            mUserViewModel.getUser().observe(this, new Observer<User>() {
+                @Override
+                public void onChanged(@Nullable User user) {
+                    View headerView = navigationView.getHeaderView(0);
+                    TextView avatar = headerView.findViewById(R.id.avatar);
+                    avatar.setText(user.getFullName().toUpperCase().charAt(0) + "");
+                    TextView navUsername = (TextView) headerView.findViewById(R.id.username);
+                    navUsername.setText(user.getFullName());
+                }
+            });
 
             // Set user object to static class
             Utils.setLoggedInUser(parcelableUser);
